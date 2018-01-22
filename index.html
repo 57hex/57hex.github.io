@@ -5,6 +5,7 @@
     <title>Title</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="csshake.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 </head>
 <body>
     <div class="gift">
@@ -12,12 +13,34 @@
         <p class="gift-word">您好 <span id="username"></span>，生ㄖ快樂！</p>
         <p class="gift-from">從 <span id="fromName"></span> 來。</p>
     </div>
-    輸入鳴子：<input type="text" id="getName">
-    <button onclick="putNameIn()">卻定</button>
-    輸入季送著鳴子： <input type="text" id="inputFromName">
-    <button onclick="putFromNameIn()">卻訂寄送者鳴子</button>
+    <form action="">
+    <div class="row">
+        <div class="col s12">
+            <div class="row">
+                <div class="input-field col s6">
+                    輸入鳴子：<input type="text" id="getName" placeholder="季的兩ㄍ都要打">
+                </div>
+                <div class="input-field col s6">
+                    輸入季送著鳴子： <input type="text" id="inputFromName" placeholder="季的兩ㄍ都要打">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <div class="row">
+                <div class="btn col s4" onclick="putFromNameIn(), putNameIn()">來人上字</div>
+                <div class="col s4">
+                    <input type="reset" class="btn" value="享藥從新在來">
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+
 </body>
 <footer>
     <script src="test.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </footer>
 </html>

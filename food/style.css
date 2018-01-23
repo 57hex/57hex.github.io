@@ -35,4 +35,7 @@ html{
     font-family: "Noto Sans TC" ;
     color: aliceblue;
     font-size: 2em;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
 }

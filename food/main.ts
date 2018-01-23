@@ -7,6 +7,7 @@ function beginRandomInt(){
 function calc(){
     var x = (document.getElementById("inputNum") as HTMLInputElement).value;
     document.getElementById("total").textContent = (x * 50).toString();
+    document.getElementById("count").textContent = x.toString();
 }
 beginRandomInt();
 calc();

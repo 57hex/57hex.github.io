@@ -1,3 +1,7 @@
+@import url(notosanstc.css);
+*{
+    font-family: "Noto Sans TC";
+}
 .gift{
     position: relative;
     display: flex;
@@ -28,7 +32,7 @@
 .gift-word{
     position: absolute;
     font-size: 2.5em;
-    font-family: "PingFang HK";
+    font-family: "Noto Sans TC";
     top: 60%;
     left: 10%;
     color: #F8ECE1;
@@ -36,8 +40,31 @@
 .gift-from{
     position: absolute;
     font-size: 2em;
-    font-family: "PingFang HK";
+    font-family: "Noto Sans TC";
     top: 75%;
     right: 10%;
     color: #F8ECE1;
+}
+
+@media screen and (max-width: 360px){
+    .gift-word{
+        font-size: 1.2em;
+    }
+    .gift-from{
+        font-size: 1.2em;
+    }
+    .btn{
+        font-size: 1.2em;
+    }
+}
+@media screen and (max-width: 200px){
+    .gift-word{
+        font-size: 1em;
+    }
+    .gift-from{
+        font-size: 1em;
+    }
+    .btn{
+        font-size: 1.2em;
+    }
 }

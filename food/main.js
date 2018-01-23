@@ -9,3 +9,4 @@ function calc() {
     document.getElementById("total").textContent = (x * 50).toString();
 }
 beginRandomInt();
+calc();

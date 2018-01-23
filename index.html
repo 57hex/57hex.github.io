@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <meta name="viewport" id="view" content="width=device-width, minimum-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="csshake.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 </head>
 <body>
-    <div class="gift">
+    <div class="gift container">
         <img src="gift.svg" class="gift-pic shake-hard shake-constant" width="400px" height="200px" alt="">
-        <p class="gift-word">您好 <span id="username"></span>，生ㄖ快樂！</p>
+        <div class="row">
+            <p class="gift-word">您好 <span id="username"></span>，生ㄖ快樂！</p>
+        </div>
         <p class="gift-from">從 <span id="fromName"></span> 來。</p>
     </div>
-    <form action="">
+    <form action="" class="container">
     <div class="row">
         <div class="col s12">
             <div class="row">
@@ -31,8 +34,9 @@
             <div class="row">
                 <div class="btn col s4" onclick="putFromNameIn(), putNameIn()">來人上字</div>
                 <div class="col s4">
-                    <input type="reset" class="btn" value="享藥從新在來">
+                    <input type="reset" class="btn teal darken-2" value="享藥從新在來">
                 </div>
+                <div class="btn col s4" onclick="goodLuckHand(), putFromNameIn(), putNameIn()">ㄏㄕㄑ</div>
             </div>
         </div>
     </div>

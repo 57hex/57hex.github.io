@@ -55,6 +55,8 @@
     }
     .btn{
         font-size: 1.2em;
+        -ms-text-overflow: ellipsis;
+        text-overflow: ellipsis;
     }
 }
 @media screen and (max-width: 200px){
@@ -66,5 +68,6 @@
     }
     .btn{
         font-size: 1.2em;
+        text-overflow: ellipsis;
     }
 }

@@ -6,8 +6,8 @@ function beginRandomInt() {
     document.getElementById("inputPrice").value = generateRandomInteger(50, 200).toString();
 }
 function calc() {
-    var x = document.getElementById("inputCount").value;
-    var y = document.getElementById("inputPrice").value;
+    var x = parseInt(document.getElementById("inputCount").value, 0);
+    var y = parseInt(document.getElementById("inputPrice").value, 0);
     document.getElementById("total").textContent = (x * y).toString();
     document.getElementById("count").textContent = x.toString();
 }

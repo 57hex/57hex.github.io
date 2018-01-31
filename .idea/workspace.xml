@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="13a6309e-3bb4-4115-9615-515187962348" name="Default" comment="change to RWD">
-      <change beforePath="" afterPath="$PROJECT_DIR$/main.ts" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/notosanstc.css" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -43,7 +40,7 @@
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="207">
-              <caret line="9" column="17" lean-forward="true" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+              <caret line="9" column="25" lean-forward="false" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -229,7 +226,7 @@
       <workItem from="1517036208647" duration="3551000" />
       <workItem from="1517223260025" duration="3516000" />
       <workItem from="1517309073466" duration="7006000" />
-      <workItem from="1517384991083" duration="1814000" />
+      <workItem from="1517384991083" duration="2161000" />
     </task>
     <task id="LOCAL-00001" summary="change to RWD">
       <created>1516672989335</created>
@@ -242,7 +239,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26387000" />
+    <option name="totallyTimeSpent" value="26734000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="385" y="43" width="1064" height="987" extended-state="0" />
@@ -576,7 +573,7 @@
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
-          <caret line="9" column="17" lean-forward="true" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+          <caret line="9" column="25" lean-forward="false" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
           <folding />
         </state>
       </provider>

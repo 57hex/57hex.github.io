@@ -1,9 +1,10 @@
 .rocket{
     position: absolute;
     bottom: 0;
-    -webkit-transition: all 1s cubic-bezier(1, 0.08, 0, 1.19);
-    -moz-transition: all 1s cubic-bezier(1, 0.08, 0, 1.19);
-    -ms-transition: all 1s cubic-bezier(1, 0.08, 0, 1.19);
-    -o-transition: all 1s cubic-bezier(1, 0.08, 0, 1.19);
-    transition: all 1s cubic-bezier(1, 0.08, 0, 1.19);
+    -webkit-transition: all 5s cubic-bezier(1, 0.08, 0, 1.19);
+    -moz-transition: all 5s cubic-bezier(1, 0.08, 0, 1.19);
+    -ms-transition: all 5s cubic-bezier(1, 0.08, 0, 1.19);
+    -o-transition: all 5s cubic-bezier(1, 0.08, 0, 1.19);
+    transition: all 5s cubic-bezier(1, 0.08, 0, 1.19);
+    transform: rotate(-45deg);
 }

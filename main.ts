@@ -19,8 +19,8 @@ let allWorks = [
 let list = document.querySelector(".list");
 function listAll() {
     let strName = "";
-    for (var i = 0; i < allWorks.length; i++) {
-        strName += "<li><a href=" + allWorks[i].link + ">"  + allWorks[i].projectName + "</a></li>";
+    for (let i = 0; i < allWorks.length; i++) {
+        strName += "<div class='col s4 m4 l4 word'><li><a href=" + allWorks[i].link + ">"  + allWorks[i].projectName + "</a></li></div>";
     }
     list.innerHTML = strName;
 }

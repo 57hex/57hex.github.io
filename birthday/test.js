@@ -7,6 +7,6 @@ function putFromNameIn() {
     document.getElementById("fromName").innerText = x;
 }
 function goodLuckHand() {
-    document.getElementById("getName").value = "幹案三小ㄛ";
-    document.getElementById("inputFromName").value = "自己想很難??";
+    document.getElementById("getName").value = "？？？";
+    document.getElementById("inputFromName").value = "??";
 }

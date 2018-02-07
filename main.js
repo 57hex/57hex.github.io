@@ -30,7 +30,7 @@ workButton.addEventListener("click", addNewWork, false); // 按按鈕時觸發 a
 function listAll() {
     var strName = "";
     for (var i = 0; i < allWorks.length; i++) {
-        strName += "<div class='col s4 m4 l4 word'><li data-num =" + i + "><a href=" + allWorks[i].link + ">" + allWorks[i].projectName + "</a></li></div>";
+        strName += "<div class='col s4 m4 l4 word'><li data-num =" + i + "><a href=" + allWorks[i].link + " class='testWord'> " + allWorks[i].projectName + "</a></li></div>";
     }
     list.innerHTML = strName;
 }
@@ -70,6 +70,8 @@ function addNewWork() {
 // 儲存資料，檢查 InputBox 是否為空。
 // 夜間模式
 var seeMode = document.querySelector(".seeMode");
+var word = document.querySelectorAll(".testWord");
+var inputWord = document.querySelectorAll(".input-box");
 var btn = document.querySelectorAll(".btn");
 var card = document.querySelector(".card-panel");
 var modeToken = 0;
@@ -77,7 +79,6 @@ var modeToken = 0;
 var bodyBGColor = body.style.backgroundColor;
 var btnBGColor = btn[0].style.backgroundColor;
 var cardBGColor = card.style.backgroundColor;
-var cardTextColor = card.style.color;
 //
 localStorage.setItem("modeToken", JSON.stringify(modeToken));
 function changeMode() {
@@ -88,6 +89,12 @@ function changeMode() {
         }
         card.style.backgroundColor = "#485665";
         card.style.color = "#ffffff";
+        for (var i = 0; i < inputWord.length; i++) {
+            inputWord[i].style.color = "#ffffff";
+        }
+        for (var i = 0; i < word.length; i++) {
+            word[i].setAttribute("class", " blue-text text-lighten-4");
+        }
         modeToken++;
         seeMode.textContent = "夜間模式";
         localStorage.setItem("modeToken", JSON.stringify(modeToken));
@@ -98,11 +105,18 @@ function changeMode() {
             btn[i].style.backgroundColor = btnBGColor;
         }
         card.style.backgroundColor = cardBGColor;
-        card.style.color = cardTextColor;
+        card.style.color = "#000000";
+        for (var i = 0; i < word.length; i++) {
+            word[i].removeAttribute("class");
+        }
+        card.style.color = "#000000";
+        for (var i = 0; i < inputWord.length; i++) {
+            inputWord[i].style.color = "#000000";
+        }
         seeMode.textContent = "日間模式";
         modeToken--;
         localStorage.setItem("modeToken", JSON.stringify(modeToken));
     }
 }
 seeMode.addEventListener("click", changeMode, false);
-// 為什麼睡覺還要回家
+// 為什麼睡覺還要回家 麻煩死ㄌ= ="

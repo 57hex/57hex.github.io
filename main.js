@@ -73,10 +73,12 @@ var seeMode = document.querySelector(".seeMode");
 var btn = document.querySelectorAll(".btn");
 var card = document.querySelector(".card-panel");
 var modeToken = 0;
+// 預先儲存原本的顏色，不用再抓一次。
 var bodyBGColor = body.style.backgroundColor;
 var btnBGColor = btn[0].style.backgroundColor;
 var cardBGColor = card.style.backgroundColor;
 var cardTextColor = card.style.color;
+//
 localStorage.setItem("modeToken", JSON.stringify(modeToken));
 function changeMode() {
     if (JSON.parse(localStorage.getItem("modeToken")) === 0) {
@@ -103,3 +105,4 @@ function changeMode() {
     }
 }
 seeMode.addEventListener("click", changeMode, false);
+// 為什麼睡覺還要回家

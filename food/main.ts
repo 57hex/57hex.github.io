@@ -8,12 +8,13 @@ function beginRandomInt() {
 let count = (document.querySelector("#inputCount") as HTMLInputElement);
 let price = (document.querySelector("#inputPrice") as HTMLInputElement);
 let btn = (document.querySelector("#btn") as HTMLInputElement);
+let total = (document.querySelector("#total") as HTMLElement);
 count.addEventListener("blur", checkNull, false);
 price.addEventListener("blur", checkNull, false);
 btn.addEventListener("click", calc, false);
 function checkNull() {
     if (this.value === "") {
-        alert("此欄位不得為空");
+        alert("ㄛ？你好像沒填ㄛ？還是你填ㄌ非數字ㄉ字？");
         btn.setAttribute("disabled", "true");
     } else {
         btn.removeAttribute("disabled");
@@ -22,8 +23,11 @@ function checkNull() {
 function calc() {
     const x: number = parseInt(count.value, 0);
     const y: number = parseInt(price.value, 0);
-    document.getElementById("total").textContent = (x * y).toString();
+    total.textContent = (x * y).toString();
     document.getElementById("count").textContent = x.toString();
 }
 beginRandomInt();
 calc();
+let person = {
+    interest: ["programing", "eatSomething"],
+};

@@ -8,3 +8,41 @@
     transition: all 5s cubic-bezier(1, 0.08, 0, 1.19);
     transform: rotate(-45deg);
 }
+.leftRight{
+    display: inline-block;
+    -webkit-animation-name: rotate-flat;
+    -moz-animation-name: rotate-flat;
+    -o-animation-name: rotate-flat;
+    animation-name: rotate-flat;
+    animation-duration: 5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+@keyframes rotate-flat {
+    0%{
+        calc(left + 10 px);
+        calc(right + 10px);
+        calc(top + 10px);
+        calc(bottom + 10px);
+    }
+    25%{
+    calc(left - 10 px);
+    calc(right - 10px);
+    calc(top - 10px);
+    calc(bottom - 10px);
+    }
+    75%{
+    calc(left + 10 px);
+    calc(right + 10px);
+    calc(top + 10px);
+    calc(bottom + 10px);
+    }
+    100%{
+    calc(left - 10 px);
+    calc(right - 10px);
+    calc(top - 10px);
+    calc(bottom - 10px);
+    }
+
+
+}

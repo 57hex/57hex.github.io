@@ -1,3 +1,4 @@
+@import "sum.css";
 *{
     font-family: "Noto Sans TC";
 }
@@ -5,4 +6,10 @@
     display: inline-block;
     font-size: 30px;
     line-height: 80px;
+}
+.body{
+    transition: .3s ease;
+}
+.card{
+    transition: .3s ease;
 }

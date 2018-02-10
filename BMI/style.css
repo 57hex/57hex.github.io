@@ -1,0 +1,13 @@
+.banner-image{
+    background-image: url("img/the-urban-landscape-1698285.png");
+    background-size: cover;
+}
+.inner{
+    border: 1px solid #eee;
+    margin: 7px 0;
+    text-align: center;
+    line-height: 50px;
+    font-size: 28px;
+    color: black;
+    padding: 0;
+}

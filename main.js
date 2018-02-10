@@ -19,6 +19,10 @@ var allWorks = [
         projectName: "待辦事項",
         link: "todoList/index.html",
     },
+    {
+        projectName: "BMI計算ㄐ",
+        link: "BMI/index.html",
+    },
 ];
 // 以上用來存作品相關資料。
 //

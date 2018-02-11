@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="13a6309e-3bb4-4115-9615-515187962348" name="Default" comment="change to RWD">
-      <change beforePath="" afterPath="$PROJECT_DIR$/nutc/index.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/nutc/main.ts" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/main.js" afterPath="$PROJECT_DIR$/main.js" />
       <change beforePath="$PROJECT_DIR$/main.ts" afterPath="$PROJECT_DIR$/main.ts" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -19,17 +17,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="24">
-              <caret line="22" column="30" lean-forward="false" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+            <state relative-caret-position="-176">
+              <caret line="10" column="2" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nutc/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
@@ -124,9 +122,9 @@
         <option value="$PROJECT_DIR$/travelKao/style.css" />
         <option value="$PROJECT_DIR$/travelKao/index.html" />
         <option value="$PROJECT_DIR$/travelKao/main.ts" />
-        <option value="$PROJECT_DIR$/main.ts" />
         <option value="$PROJECT_DIR$/nutc/main.ts" />
         <option value="$PROJECT_DIR$/nutc/index.html" />
+        <option value="$PROJECT_DIR$/main.ts" />
       </list>
     </option>
   </component>
@@ -264,7 +262,7 @@
       <workItem from="1517384991083" duration="17898000" />
       <workItem from="1517930871585" duration="8597000" />
       <workItem from="1517990998514" duration="27380000" />
-      <workItem from="1518353173267" duration="5246000" />
+      <workItem from="1518353173267" duration="5431000" />
     </task>
     <task id="LOCAL-00001" summary="change to RWD">
       <created>1516672989335</created>
@@ -277,7 +275,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83694000" />
+    <option name="totallyTimeSpent" value="83879000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1064" height="878" extended-state="0" />
@@ -590,14 +588,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/travelKao/index.html" />
     <entry file="file://$PROJECT_DIR$/travelKao/main.ts" />
-    <entry file="file://$PROJECT_DIR$/main.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="22" column="30" lean-forward="false" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/BMI/main.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="421">
@@ -626,6 +616,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="10" column="38" lean-forward="false" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-176">
+          <caret line="10" column="2" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
           <folding />
         </state>
       </provider>

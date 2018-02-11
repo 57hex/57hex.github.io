@@ -23,6 +23,10 @@ var allWorks = [
         projectName: "BMI計算ㄐ",
         link: "BMI/index.html",
     },
+    {
+        projectName: "nutc資工1下課表",
+        link: "nutc/index.html",
+    },
 ];
 // 以上用來存作品相關資料。
 //

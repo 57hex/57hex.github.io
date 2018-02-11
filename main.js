@@ -24,7 +24,7 @@ var allWorks = [
         link: "BMI/index.html",
     },
     {
-        projectName: "nutc資工1下課表",
+        projectName: "資工課表",
         link: "nutc/index.html",
     },
 ];
@@ -42,7 +42,7 @@ workButton.addEventListener("click", addNewWork, false); // 按按鈕時觸發 a
 function listAll() {
     var strName = "";
     for (var i = 0; i < allWorks.length; i++) {
-        strName += "<div class='col s4 m4 l4 word'><li data-num =" + i + "><a href=" + allWorks[i].link + " class='testWord'> " + allWorks[i].projectName + "</a></li></div>";
+        strName += "<div class='col s4 m4 l4 word'><li data-num =" + i + "><a href=" + allWorks[i].link + " class='testWord flow-text'> " + allWorks[i].projectName + "</a></li></div>";
     }
     list.innerHTML = strName;
 }
@@ -105,7 +105,7 @@ function changeMode() {
             inputWord[i].style.color = "#ffffff";
         }
         for (var i = 0; i < word.length; i++) {
-            word[i].setAttribute("class", " blue-text text-lighten-4");
+            word[i].setAttribute("class", " blue-text text-lighten-4 flow-text");
         }
         modeToken++;
         seeMode.textContent = "夜間模式";
@@ -120,6 +120,7 @@ function changeMode() {
         card.style.color = "#000000";
         for (var i = 0; i < word.length; i++) {
             word[i].removeAttribute("class");
+            word[i].setAttribute("class", "flow-text");
         }
         card.style.color = "#000000";
         for (var i = 0; i < inputWord.length; i++) {

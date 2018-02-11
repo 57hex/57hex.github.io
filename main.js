@@ -42,7 +42,7 @@ workButton.addEventListener("click", addNewWork, false); // 按按鈕時觸發 a
 function listAll() {
     var strName = "";
     for (var i = 0; i < allWorks.length; i++) {
-        strName += "<div class='col s4 m4 l4 word'><li data-num =" + i + "><a href=" + allWorks[i].link + " class='testWord flow-text'> " + allWorks[i].projectName + "</a></li></div>";
+        strName += "<div class='col s4 m4 l4 word'><li data-num =" + i + "><a href=" + allWorks[i].link + " class='flow-text'> " + allWorks[i].projectName + "</a></li></div>";
     }
     list.innerHTML = strName;
 }

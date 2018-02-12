@@ -1,0 +1,8 @@
+.button{
+    height: 50%;
+    width: 50%;
+}
+.button:hover {
+    transition: filter .3s;
+    filter: brightness(0.9) contrast(110%);
+}

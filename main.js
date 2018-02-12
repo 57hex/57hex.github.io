@@ -28,6 +28,14 @@ var allWorks = [
         link: "nutc/index.html",
     },
 ];
+var test = new XMLHttpRequest();
+test.open("get", "https://57hex.github.io/file.json", true);
+test.send(null);
+if (test.responseText !== "") {
+    var test1 = test.responseText;
+    test1 = JSON.stringify(test1);
+    test1 = JSON.parse(test1);
+}
 // 以上用來存作品相關資料。
 //
 var body = document.querySelector(".body");

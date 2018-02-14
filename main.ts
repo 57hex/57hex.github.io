@@ -1,43 +1,10 @@
-let allWorks = [
-    {
-        projectName: "履歷",
-        link: "resume/resume.html",
-    },
-    {
-        projectName: "火箭",
-        link: "rocket/rocket.html",
-    },
-    {
-        projectName: "生日賀卡",
-        link: "birthday/index.html",
-    },
-    {
-        projectName: "漢堡計算機",
-        link: "food/index.html",
-    },
-    {
-        projectName: "待辦事項",
-        link: "todoList/index.html",
-    },
-    {
-        projectName: "BMI計算ㄐ",
-        link: "BMI/index.html",
-    },
-    {
-        projectName: "資工課表",
-        link: "nutc/index.html",
-    },
-];
-let test = new XMLHttpRequest();
-test.open("get", "https://57hex.github.io/file.json", true);
-test.send(null);
-    if (test.responseText !== "") {
-        let test1 = test.responseText;
-        test1 = JSON.stringify(test1);
-        test1 = JSON.parse(test1);
-    }
-
-
+let allList = new XMLHttpRequest();
+allList.open("get", "https://57hex.github.io/file.json", false);
+allList.send(null);
+let allWorks;
+if (allList.responseText !== "") {
+    allWorks = JSON.parse(allList.responseText);
+}
 // 以上用來存作品相關資料。
 //
 let body = document.querySelector(".body") as HTMLElement;

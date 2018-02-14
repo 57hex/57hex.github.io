@@ -1,0 +1,10 @@
+@import "../notosanstc.css";
+* {
+    font-family: "Noto Sans TC";
+}
+.section{
+    transition: height 2s linear 1s;
+}
+.pulse{
+    z-index: 99;
+}

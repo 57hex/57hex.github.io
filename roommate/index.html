@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <style>
+        #map{
+            height: 400px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="grey darken-2">
+    <div class="section yellow accent-4 z-depth-3 scale-transition" id="index-banner" style="
+    transition: height 2s linear 1s;">
+        <div class="container">
+            <div class="row">
+            <h1 class="header center-on-small-only grey-text text-darken-4 scale-transition scale-out scale-text">你好，我是花生罐👋</h1>
+            <h6 class="header center-on-small-only grey-text text-darken-4 flow-text">如果說每個人都在尋找一個人的話
+                <br>那我肯定是在尋找可以跟我一起住的那個人吧。</h6>
+            </div>
+            <div class="row">
+                <button class="col offset-s3 s6 l4 btn btn-large pulse white-text grey darken-4 center-on-small-only start">點了應該也沒用</button>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="section center-on-small-only">
+        <div class="container" id="introduction">
+            <h3 class="header center-on-small-only white-text">讓我先自我介紹一下吧😊</h3>
+            <h5 class="header center-on-small-only white-text flow-text">我超不想透露本名的，總之現在是夜校大學生👋<br>
+                生活習慣應該算不錯，不會有太多東西 <br> 垃圾也都會自己拿到公司或是學校丟。<br>
+                如果有上班的話都是8點左右就會出門，然後晚上十點後到家😢 <br>
+
+            </h5>
+            <div id="map"></div>
+            <script>
+                var map;
+                function initMap() {
+                    map = new google.maps.Map(document.getElementById("map"), {
+                        center: {lat: 24.150349, lng: 120.680137},
+                        zoom: 15
+                    });
+                }
+            </script>
+            <script async defer
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4MXCsVj92RPt_0hhAldKuux4ErUXfMWc&callback=initMap">
+            </script>
+        </div>
+    </div>
+</body>
+<footer>
+    <script src="main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+</footer>
+</html>

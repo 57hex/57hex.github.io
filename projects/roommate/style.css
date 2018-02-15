@@ -1,0 +1,14 @@
+@import "../../css/notosanstc.css";
+@import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light');
+* {
+    font-family: "Noto Sans TC";
+}
+.brand-logo {
+    font-family: 'Shadows Into Light', cursive;
+}
+.section{
+    transition: height 2s linear 1s;
+}
+.pulse{
+    z-index: 99;
+}

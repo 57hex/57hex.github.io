@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <style>
+        #map{
+            height: 400px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script> <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/materialize.css">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="grey darken-2">
+    <div class=" section yellow accent-4 z-depth-3 scale-transition" id="index-banner" style="
+    transition: height 2s linear 1s;">
+
+        <div class="container">
+            <div class="container-wide">
+                <nav class="yellow accent-4 z-depth-0 nav-extended">
+                    <div class="nav-wrapper">
+                        <div class="brand-logo grey-text text-darken-2">HuaShengGuan</div>
+                        <ul id="nav-mobile" class="right hide-on-med-and-down">
+                            <li><a href="https://t.me/aa68954426"><i class="fab fa-telegram fa-2x grey-text text-darken-2"></i></a></li>
+                            <li><a href="https://line.me/ti/p/acJnuK0NZS"><i class="fab fa-line fa-2x grey-text text-darken-2"></i></a></li>
+                            <li><a href="https://www.instagram.com/87_hnsk/"><i class="fab fa-instagram fa-2x grey-text text-darken-2"></i></a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="row">
+            <h1 class="header center-on-small-only grey-text text-darken-2 scale-transition scale-out scale-text">你好，我是花生罐👋</h1>
+            <h6 class="header center-on-small-only grey-text text-darken-2 flow-text">如果說每個人都在尋找一個人的話
+                <br>那我肯定是在尋找可以跟我一起住的那個人吧。</h6>
+            </div>
+            <div class="row">
+                <button class="col offset-s3 s6 l4 btn btn-large pulse white-text grey darken-4 center-on-small-only start">點了應該也沒用</button>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="section center-on-small-only">
+        <div class="container" id="introduction">
+            <h3 class="header center-on-small-only white-text">讓我先自我介紹一下吧😊</h3>
+            <h5 class="header center-on-small-only white-text flow-text">我超不想透露本名的，總之現在是夜校大學生👋<br>
+                生活習慣應該算不錯，不會有太多東西 <br> 垃圾也都會自己拿到公司或是學校丟。<br>
+                如果有上班的話都是8點左右就會出門，然後晚上十點後到家😢 <br>
+
+            </h5>
+            <div id="map"></div>
+            <script>
+                var map;
+                function initMap() {
+                    map = new google.maps.Map(document.getElementById("map"), {
+                        center: {lat: 24.150349, lng: 120.680137},
+                        zoom: 16
+                    });
+                }
+            </script>
+            <script async defer
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4MXCsVj92RPt_0hhAldKuux4ErUXfMWc&callback=initMap">
+            </script>
+        </div>
+    </div>
+    <div class="fixed-action-btn">
+        <a id="menu" href="https://t.me/aa68954426" class="waves-effect waves-light btn btn-floating blue dropdown-button btn" data-activates='dropdown1'><i class="fab fa-telegram fa-lg white-text"></i></a>
+        <div class="tap-target yellow accent-4" data-activates="menu">
+            <div class="tap-target-content">
+                <h5>點這邊的話可以直接跟我聯絡！</h5>
+            </div>
+        </div>
+    </div>
+</body>
+<footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="../../js/materialize.js"></script>
+    <script src="main.js"></script>
+</footer>
+</html>

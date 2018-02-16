@@ -27,3 +27,11 @@ startButton.addEventListener("click", function () {
     Materialize.toast("其實這邊本來要做動畫，不過他一直不工作，我ㄝㄅ知道why", 5000);
 }, false);
 $('.tap-target').tapTarget('open');
+$('.button-collapse').sideNav({
+    menuWidth: 300,
+    edge: 'left',
+    closeOnClick: true,
+    draggable: true,
+    onClose: function (el) {
+    },
+});

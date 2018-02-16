@@ -22,7 +22,18 @@ function textAppear() {
 window.onload = () => {
     textAppear();
 };
+
 startButton.addEventListener("click", () => {
     Materialize.toast("其實這邊本來要做動畫，不過他一直不工作，我ㄝㄅ知道why", 5000);
 }, false);
 $('.tap-target').tapTarget('open');
+$('.button-collapse').sideNav({
+        menuWidth: 300, // Default is 300
+        edge: 'left', // Choose the horizontal origin
+        closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+        draggable: true, // Choose whether you can drag to open on touch screens,
+        onClose: function (el) {
+
+        },
+    }
+  );

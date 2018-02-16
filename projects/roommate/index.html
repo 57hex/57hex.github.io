@@ -21,6 +21,15 @@
             <div class="container-wide">
                 <nav class="yellow accent-4 z-depth-0 nav-extended">
                     <div class="nav-wrapper">
+                        <ul id="slide-out" class="side-nav">
+                            <li>
+                                <li><a href="https://t.me/aa68954426"><i class="fab fa-telegram fa-2x grey-text text-darken-2"></i><span class="flow-text center">用telegram聯絡我</span></a></li>
+                                <li><a href="https://line.me/ti/p/acJnuK0NZS"><i class="fab fa-line fa-2x grey-text text-darken-2"></i><span class="flow-text center"> 用 LINE 聯絡我</span></a></li>
+                                <li><a href="https://www.instagram.com/87_hnsk/"><i class="fab fa-instagram fa-2x grey-text text-darken-2"></i><span class="flow-text center"> 用 Instagram 聯絡我</span></a></li>
+                            <li><div class="divider"></div></li>
+                        </ul>
+                        <a href="#" data-activates="slide-out" class="button-collapse grey-text text-darken-2 material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="點這裡的話有其他的聯絡方式！"><i class="material-icons">menu</i></a>
+
                         <div class="brand-logo grey-text text-darken-2">HuaShengGuan</div>
                         <ul id="nav-mobile" class="right hide-on-med-and-down">
                             <li><a href="https://t.me/aa68954426"><i class="fab fa-telegram fa-2x grey-text text-darken-2"></i></a></li>
@@ -36,8 +45,8 @@
                 </div>
                 <div class="col s12 m8 l8">
                     <h1 class="with-header center-on-small-only grey-text text-darken-2 scale-transition scale-out scale-text">你好，我是花生罐</h1>
-                    <h6 class="subheader center-on-small-only grey-text text-darken-2 flow-text">如果說每個人都在尋找一個人的話
-                    <br>那我肯定是在尋找可以跟我一起住的那個人吧。</h6>
+                    <h5 class="subheader center-on-small-only grey-text text-darken-2">如果說每個人都在尋找一個人的話
+                    <br>那我肯定是在尋找可以跟我一起住的那個人吧。</h5>
                 </div>
 
             </div>
@@ -54,17 +63,16 @@
                     <h2 class="header center-on-small-only white-text">先自我介紹一下吧😊</h2>
                     <h4 class="header center-on-small-only white-text flow-text">我超不想透露本名，總之現在是夜校大學生👋<br>
                         生活習慣應該算不錯，不會有太多東西 <br> 垃圾也都會自己拿到公司或是學校丟。<br>
-                        如果有上班的話都是8點左右就會出門，<br> 然後晚上十點後到家😢 <br>
+                        如果有上班的話都是8點左右就會出門<br> 然後晚上十點後到家😢 <br>
                         基本不帶朋友回家，有的話應該也是帶男友。
                     </h4>
-                    <h1><br></h1>
                 </div>
                 <div class="col s12 m4 l4">
-                    <div class="row">
-                        <div class="col s0 m12 l12"><br></div>
-                        <div class="col s0 m12 l12"><br></div>
-                        <div class="col s0 m12 l12"><br></div>
+                    <div class="row ">
                         <div class="col s12 m12 l12">
+                            <br class="col hide-on-small-and-down">
+                            <br class="col hide-on-small-and-down">
+                            <br class="col hide-on-small-and-down">
                             <h1 class="center center-align" style="font-size:8rem">😃</h1>
                         </div>
                     </div>
@@ -72,53 +80,61 @@
             </div>
         </div>
     </div>
-    <div class="section yellow accent-4 z-depth-3 scale-transition">
+    <div class="section yellow accent-4 z-depth-3">
         <div class="container">
-            <h1 class="with-header center-on-small-only grey-text text-darken-2">如果可以的話我想要住在這附近</h1>
-            <div id="map"></div>
+            <h1 class="with-header center-on-small-only grey-text text-darken-2">如果可以的話我想住這附近</h1>
+            <div class="row">
+                <div id="map" class="col s12 m6 l6"></div>
+                    <div class="col s12 m6 l6">
+                        <div class="wrapper">
+                            <h4 class="flow-text valign-wrapper">其實也沒有一定要住在標注的地點 <br>
+                                只要在這地圖裡的範圍都還可接受 <br>
+                                想要住的地方我也還沒找 <br>
+                                可能要跟徵到的您一起討論👌</h4>
+                        </div>
+                    </div>
+            </div>
             <script>
                 var map;
-                var pin = {lat: 24.151940, lng: 120.683679};
-                var pin2 = {lat: 24.153164, lng: 120.686561};
-                var pin3 = {lat: 24.152081, lng: 120.691229};
-                var pin4 = {lat: 24.153875, lng: 120.680863};
-                var pin5 = {lat: 24.160417, lng: 120.676807};
-                var pin6 = {lat: 24.145837, lng: 120.683076};
-                var pin7 = {lat: 24.161513, lng: 120.667738};
-                var marker, marker2, marker3, marker4, marker5, marker6, marker7;
                 function initMap() {
                     map = new google.maps.Map(document.getElementById("map"), {
                         center: {lat: 24.150349, lng: 120.680137},
                         zoom: 14
                     });
-                    marker = new google.maps.Marker({
-                        position: pin,
-                        map: map
-                    });
-                    marker2 = new google.maps.Marker({
-                        position: pin2,
-                        map: map
-                    });
-                    marker3 = new google.maps.Marker({
-                        position: pin3,
-                        map: map
-                    });
-                    marker4 = new google.maps.Marker({
-                        position: pin4,
-                        map: map
-                    });
-                    marker5 = new google.maps.Marker({
-                        position: pin5,
-                        map: map
-                    });
-                    marker = new google.maps.Marker({
-                        position: pin,
-                        map: map
-                    });
-                    marker6 = new google.maps.Marker({
-                        position: pin6,
-                        map: map
-                    });
+                    var pinArray = [
+                        {
+                            position: {lat: 24.151940, lng: 120.683679},
+                            map: map
+                        },
+                        {
+                            position: {lat: 24.153164, lng: 120.686561},
+                            map: map
+                        },
+                        {
+                            position: {lat: 24.152081, lng: 120.691229},
+                            map: map
+                        },
+                        {
+                            position: {lat: 24.153875, lng: 120.680863},
+                            map: map
+                        },
+                        {
+                            position: {lat: 24.160417, lng: 120.676807},
+                            map: map
+                        },
+                        {
+                            position: {lat: 24.145837, lng: 120.683076},
+                            map: map
+                        },
+                        {
+
+                            position: {lat: 24.161513, lng: 120.667738},
+                            map: map
+                        }
+                    ];
+                    for (var i = 0; i < pinArray.length; i++) {
+                        var marker = new google.maps.Marker(pinArray[i]);
+                    }
                 }
             </script>
             <script async defer
@@ -126,14 +142,29 @@
             </script>
         </div>
     </div>
-    <div class="fixed-action-btn">
-        <a id="menu" href="https://t.me/aa68954426" class="waves-effect waves-light btn btn-large btn-floating blue pulse"><i class="fab fa-telegram fa-lg white-text"></i></a>
-        <div class="tap-target yellow accent-4" data-activates="menu">
-            <div class="tap-target-content">
-                <h5>Hi there!</h5>
-                <h6>點這邊的話可以跟我聯絡！</h6>
+    <div class="section center-on-small-only transparent z-depth-3">
+        <div class="container">
+            <h1 class="with-header white-text">什麼時候開始租？</h1>
+            <div class="row">
+                <div class="col s12 m8 l8">
+                    <h4 class="white-text flow-text">現況是我去年九月左右開始租這間房間 <br>
+                        預計約到或者約快到就會搬走 <br>
+                        約到是 2018 九月的事情。</h4>
+                </div>
+                <div class="col s12 m4 l4">
+                    <h1 class="center center-align" style="font-size: 8rem">🤔</h1>
+                </div>
             </div>
         </div>
+            <div class="section yellow accent-4 z-depth-3">
+                <div class="container">
+                    <h1 class="header grey-text text-darken-2">總之，謝謝你的觀看😊</h1>
+                    <h4 class="flow-text">如果有意願的話歡迎用各種方式聯絡我，謝謝你一直看到這邊。</h4>
+                </div>
+            </div>
+    </div>
+    <div class="fixed-action-btn">
+        <a id="menu" href="https://t.me/aa68954426" class="waves-effect waves-light btn btn-large btn-floating blue pulse"><i class="fab fa-telegram fa-lg white-text"></i></a>
     </div>
 </body>
 <footer>

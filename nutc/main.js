@@ -68,7 +68,7 @@ var friDay = [
     },
     {
         lesson: "體育",
-        classRoom: "可能自己找",
+        classRoom: "可能自己找地方",
         startTimeHour: "20",
         startTimeMin: "30",
         endTimeHour: "22",
@@ -118,18 +118,11 @@ function checkWhichDay() {
             return saturDay;
     }
 }
-function test() {
-    for (var i = 0; i < whichDay.length; i++) {
-        console.log(day.getHours() >= parseInt(whichDay[i].startTimeHour, 0));
-        console.log(day.getHours() < parseInt(whichDay[i].endTimeHour, 0));
-        console.log(day.getMinutes() > parseInt(whichDay[i].startTimeMin, 0));
-    }
-}
 function loadList() {
     var str = "";
     for (var i = 0; i < whichDay.length; i++) {
         if (day.getHours() >= parseInt(whichDay[i].startTimeHour, 0) && day.getHours() <= parseInt(whichDay[i].endTimeHour, 0)) {
-            if (day.getMinutes() < parseInt(whichDay[i].endTimeMin, 0)) {
+            if (day.getHours() <= parseInt(whichDay[i].endTimeHour, 0) && (day.getHours() === parseInt(whichDay[i].startTimeHour, 0) && day.getMinutes() >= parseInt(whichDay[i].startTimeMin, 0)) || (day.getHours() > parseInt(whichDay[i].startTimeHour, 0) && (day.getHours() <= parseInt(whichDay[i].endTimeHour, 0) && day.getMinutes() < parseInt(whichDay[i].endTimeMin, 0)))) {
                 str = "";
                 str += "<div class='card-content white-text center'>" + "<p class='flow-text'>正在上的課：" + whichDay[i].lesson + "<br>在：" + whichDay[i].classRoom + "上課 <br> 時間是：" + whichDay[i].startTimeHour + "：" + whichDay[i].startTimeMin + "到" + whichDay[i].endTimeHour + "：" + whichDay[i].endTimeMin + "</div>";
                 list.innerHTML = str;

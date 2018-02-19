@@ -35,14 +35,18 @@
                                 <div class="background blue">
                                     <img src="" alt="">
                                 </div>
-                                <a href="#!user"><i class="far fa-address-card fa-4x"></i></a>
-                                <a href="#!name"><span class="white-text flow-text name">其他的聯絡方式</span></a>
-                                <a href="#!email"><span class="white-text email">   </span></a>
-                            </div></li>
+                                    <a href="#!user"><i class="far fa-address-card fa-4x"></i></a>
+                                    <a href="#!name"><span class="white-text flow-text name"></span></a>
+                                    <a href="#!email"><span class="white-text email"></span></a>
+                                </div>
+                            </li>
                             <li>
-                                <li><a href="https://t.me/aa68954426"><i class="fab fa-telegram fa-2x grey-text text-darken-2"></i><span class="flow-text center">用telegram聯絡我</span></a></li>
-                                <li><a href="https://www.instagram.com/87_hnsk/"><i class="fab fa-instagram fa-2x grey-text text-darken-2"></i><span class="flow-text center"> 用 Instagram 聯絡我</span></a></li>
-                            <li><div class="divider"></div></li>
+                                <ul id="sideNav-tw">
+                                    <li><a href="https://t.me/aa68954426"><i class="fab fa-telegram fa-2x grey-text text-darken-2"></i><span class="flow-text center">{{ sideNavTelegram }}</span></a></li>
+                                    <li><a href="https://www.instagram.com/87_hnsk/"><i class="fab fa-instagram fa-2x grey-text text-darken-2"></i><span class="flow-text center">{{ sideNavInstagram }}</span></a></li>
+                                    <li><div class="divider"></div>
+                                </ul>
+                            </li>
                         </ul>
                         <a href="#" data-activates="slide-out" class="button-collapse grey-text text-darken-2 material-icons"><i class="material-icons">menu</i></a>
 
@@ -55,28 +59,26 @@
                     </div>
                 </nav>
             </div>
-            <div class="row">
+            <div class="row" id="intro-tw">
                 <div class="col s12 m4 l4">
                     <h1 class="center center-align" style="font-size: 8rem">🤔</h1>
                 </div>
                 <div class="col s12 m8 l8">
-                    <h1 class="with-header center-on-small-only grey-text text-darken-2 scale-transition scale-out scale-text">你好，我是花生罐</h1>
-                    <h5 class="subheader center-on-small-only grey-text text-darken-2">如果說每個人都在尋找一個人的話
-                    <br>那我肯定是在尋找可以跟我一起住的那個人吧。</h5>
+                    <h1 class="with-header center-on-small-only grey-text text-darken-2">{{ title }}</h1>
+                    <h5 class="subheader center-on-small-only grey-text text-darken-2">{{ subTitle }}</h5>
                 </div>
-
-            </div>
-            <div class="row">
-                <button class="col offset-s3 offset-l7 s6 l4 btn btn-large pulse white-text grey darken-4 center-on-small-only start">點了應該也沒用</button>
+                <div class="row">
+                    <button class="col offset-s3 offset-l7 s6 l4 btn btn-large pulse white-text grey darken-4 center-on-small-only start">{{ button }}</button>
+                </div>
             </div>
         </div>
     </div>
     <br>
     <div class="section center-on-small-only transparent z-depth-3">
-        <div class="container" id="introduction">
+        <div class="container" id="section-1-tw">
             <div class="row">
                 <div class="col s12 m8 l8">
-                    <h2 class="header center-on-small-only white-text">先自我介紹一下吧😊</h2>
+                    <h2 class="header center-on-small-only white-text">{{ title }}</h2>
                     <h4 class="header center-on-small-only white-text flow-text">我超不想透露本名，總之現在是夜校大學生👋<br>
                         生活習慣應該算不錯，不會有太多東西 <br> 垃圾也都會自己拿到公司或是學校丟。<br>
                         如果有上班的話都是8點左右就會出門<br> 然後晚上十點後到家😢 <br>
@@ -182,10 +184,12 @@
     <div class="fixed-action-btn">
         <a id="menu" href="https://t.me/aa68954426" class="waves-effect waves-light btn btn-large btn-floating blue pulse"><i class="fab fa-telegram fa-lg white-text"></i></a>
     </div>
+</div>
 </body>
 <footer>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="../../js/materialize.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="main.js"></script>
 </footer>
 </html>

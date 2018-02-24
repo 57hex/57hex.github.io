@@ -19,28 +19,28 @@ $('.button-collapse').sideNav({
     },
 });
 var sideNav_tw = new Vue({
-    el: "#sideNav-tw",
+    el: "#sideNav",
     data: {
         sideNavTelegram: "用 telegram 聯絡我",
         sideNavInstagram: "用 instagram 聯絡我"
     }
 });
 var sideNav_en = new Vue({
-    el: "#sideNav-en",
+    el: "#sideNav",
     data: {
-        sideNav_telegram: "Connect with me",
-        sideNav_instagram: "",
+        sideNavTelegram: "Connect with me",
+        sideNavInstagram: "",
     }
 });
 var sideNav_jp = new Vue({
-    el: "#sideNav-jp",
+    el: "#sideNav",
     data: {
-        sideNav_telegram: "テレグラムで連絡する",
-        sideNav_instagram: "Instagram で連絡する"
+        sideNavTelegram: "テレグラムで連絡する",
+        sideNavInstagram: "Instagram で連絡する"
     }
 });
 var intro_tw = new Vue({
-    el: "#intro-tw",
+    el: "#intro",
     data: {
         title: "你好，我是花生罐",
         subTitle: "如果說每個人都在尋找一個人的話\n" +
@@ -65,7 +65,7 @@ var intro_en = new Vue({
     }
 });
 var section_1_tw = new Vue({
-    el: "#section-1-tw",
+    el: "#section-1",
     data: {
         title: "先自我介紹一下吧😊",
         subTitle: "我超不想透露本名，總之現在是夜校大學生👋<br>\n" +
@@ -85,9 +85,4 @@ var section_1_jp = new Vue({
 var sideNavId = document.getElementById("sideNav-tw");
 var introId = document.getElementById("intro-tw");
 function changeLanJP() {
-    sideNavId.removeAttribute("id");
-    sideNavId.setAttribute("id", "sideNav-jp");
-    introId.removeAttribute("id");
-    introId.setAttribute("id", "intro-jp");
-    vm.$forceUpdate();
 }

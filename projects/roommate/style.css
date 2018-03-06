@@ -12,3 +12,12 @@
 .pulse{
     z-index: 99;
 }
+.square{
+    position: fixed;
+    bottom: 0;
+    height: 75px;
+    width: 75px;
+    transform: rotate(45deg);
+    border: #F8ECE1 solid;
+    border-width: 0 4px 4px 0;
+_}

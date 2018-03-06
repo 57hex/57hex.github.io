@@ -3,100 +3,100 @@ function generateRandomInteger(min, max) {
 }
 var monDay = [
     {
-        lesson: "週會/班會",
-        classRoom: "2703",
-        startTimeHour: "18",
-        startTimeMin: "00",
-        endTimeHour: "19",
-        endTimeMin: "35",
+        lesson: '週會/班會',
+        classRoom: '2703',
+        startTimeHour: '18',
+        startTimeMin: '00',
+        endTimeHour: '19',
+        endTimeMin: '35'
     },
     {
-        lesson: "進階程式設計",
-        classRoom: "2701",
-        startTimeHour: "19",
-        startTimeMin: "40",
-        endTimeHour: "22",
-        endTimeMin: "05",
-    },
+        lesson: '進階程式設計',
+        classRoom: '2701',
+        startTimeHour: '19',
+        startTimeMin: '40',
+        endTimeHour: '22',
+        endTimeMin: '05'
+    }
 ];
 var tuesDay = [
     {
-        lesson: "微積分",
-        classRoom: "6604",
-        startTimeHour: "18",
-        startTimeMin: "00",
-        endTimeHour: "20",
-        endTimeMin: "25",
-    },
+        lesson: '微積分',
+        classRoom: '6604',
+        startTimeHour: '18',
+        startTimeMin: '00',
+        endTimeHour: '20',
+        endTimeMin: '25'
+    }
 ];
 var wednesDay = [
     {
-        lesson: "國文",
-        classRoom: "3904",
-        startTimeHour: "18",
-        startTimeMin: "00",
-        endTimeHour: "19",
-        endTimeMin: "35",
+        lesson: '國文',
+        classRoom: '3904',
+        startTimeHour: '18',
+        startTimeMin: '00',
+        endTimeHour: '19',
+        endTimeMin: '35'
     },
     {
-        lesson: "工程應用套裝軟體",
-        classRoom: "2702",
-        startTimeHour: "19",
-        startTimeMin: "40",
-        endTimeHour: "22",
-        endTimeMin: "05",
-    },
+        lesson: '工程應用套裝軟體',
+        classRoom: '2702',
+        startTimeHour: '19',
+        startTimeMin: '40',
+        endTimeHour: '22',
+        endTimeMin: '05'
+    }
 ];
 var thursDay = [
     {
-        lesson: "網際網路與應用",
-        classRoom: "2703",
-        startTimeHour: "18",
-        startTimeMin: "50",
-        endTimeHour: "22",
-        endTimeMin: "05",
-    },
+        lesson: '網際網路與應用',
+        classRoom: '2703',
+        startTimeHour: '18',
+        startTimeMin: '50',
+        endTimeHour: '22',
+        endTimeMin: '05'
+    }
 ];
 var friDay = [
     {
-        lesson: "英文",
-        classRoom: "7301",
-        startTimeHour: "18",
-        startTimeMin: "05",
-        endTimeHour: "20",
-        endTimeMin: "25",
+        lesson: '英文',
+        classRoom: '7301',
+        startTimeHour: '18',
+        startTimeMin: '05',
+        endTimeHour: '20',
+        endTimeMin: '25'
     },
     {
-        lesson: "體育",
-        classRoom: "可能自己找地方",
-        startTimeHour: "20",
-        startTimeMin: "30",
-        endTimeHour: "22",
-        endTimeMin: "05",
-    },
+        lesson: '體育',
+        classRoom: '可能自己找地方',
+        startTimeHour: '20',
+        startTimeMin: '30',
+        endTimeHour: '22',
+        endTimeMin: '05'
+    }
 ];
 var saturDay = [
     {
-        lesson: "線性代數",
-        classRoom: "2706",
-        startTimeHour: "13",
-        startTimeMin: "40",
-        endTimeHour: "16",
-        endTimeMin: "05",
+        lesson: '線性代數',
+        classRoom: '2706',
+        startTimeHour: '13',
+        startTimeMin: '40',
+        endTimeHour: '16',
+        endTimeMin: '05'
     },
     {
-        lesson: "Linux 系統實務",
-        classRoom: "2702",
-        startTimeHour: "16",
-        startTimeMin: "10",
-        endTimeHour: "19",
-        endTimeMin: "10",
-    },
+        lesson: 'Linux 系統實務',
+        classRoom: '2702',
+        startTimeHour: '16',
+        startTimeMin: '10',
+        endTimeHour: '19',
+        endTimeMin: '10'
+    }
 ];
 var sunDay = [
     {
-        lesson: "test",
-    },
+        lesson: 'test'
+    }
 ];
 var day = new Date();
 var whichDay = checkWhichDay();
@@ -119,24 +119,24 @@ function checkWhichDay() {
     }
 }
 function loadList() {
-    var str = "";
+    var str = '';
     for (var i = 0; i < whichDay.length; i++) {
         if (day.getHours() >= parseInt(whichDay[i].startTimeHour, 0) && day.getHours() <= parseInt(whichDay[i].endTimeHour, 0)) {
             if (day.getHours() <= parseInt(whichDay[i].endTimeHour, 0) && (day.getHours() === parseInt(whichDay[i].startTimeHour, 0) && day.getMinutes() >= parseInt(whichDay[i].startTimeMin, 0)) || (day.getHours() > parseInt(whichDay[i].startTimeHour, 0) && (day.getHours() <= parseInt(whichDay[i].endTimeHour, 0) && day.getMinutes() < parseInt(whichDay[i].endTimeMin, 0)))) {
-                str = "";
-                str += "<div class='card-content white-text center'>" + "<p class='flow-text'>正在上的課：" + whichDay[i].lesson + "<br>在：" + whichDay[i].classRoom + "上課 <br> 時間是：" + whichDay[i].startTimeHour + "：" + whichDay[i].startTimeMin + "到" + whichDay[i].endTimeHour + "：" + whichDay[i].endTimeMin + "</div>";
+                str = '';
+                str += "<div class='card-content white-text center'>" + "<p class='flow-text'>正在上的課：" + whichDay[i].lesson + '<br>在：' + whichDay[i].classRoom + '上課 <br> 時間是：' + whichDay[i].startTimeHour + '：' + whichDay[i].startTimeMin + '到' + whichDay[i].endTimeHour + '：' + whichDay[i].endTimeMin + '</div>';
                 list.innerHTML = str;
             }
             else {
-                str = "";
+                str = '';
             }
         }
         else {
-            str = "";
+            str = '';
         }
     }
 }
-var list = document.querySelector(".list");
-var body = document.querySelector(".body");
-body.setAttribute("class", "body grey darken-2");
+var list = document.querySelector('.list');
+var body = document.querySelector('.body');
+body.setAttribute('class', 'body grey darken-2');
 loadList();

@@ -8,7 +8,12 @@ var app = new Vue({
     },
     methods: {
         addWork: function (todo) {
-            this.inputWorks.push({ content: todo, finished: false });
+            if (todo === '' ) {
+                alert("說點什麼吧？")
+                return false
+            } else {
+							this.inputWorks.push({content: todo, finished: false});
+						}
         },
         deleteAllWorks: function () {
             this.inputWorks = [];

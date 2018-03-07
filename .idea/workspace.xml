@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="13a6309e-3bb4-4115-9615-515187962348" name="Default" comment="change to RWD">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/projects/roommate/index.html" afterPath="$PROJECT_DIR$/projects/roommate/index.html" />
-      <change beforePath="$PROJECT_DIR$/projects/roommate/main.js" afterPath="$PROJECT_DIR$/projects/roommate/main.js" />
-      <change beforePath="$PROJECT_DIR$/projects/roommate/main.ts" afterPath="$PROJECT_DIR$/projects/roommate/main.ts" />
-      <change beforePath="$PROJECT_DIR$/projects/vuePractice/index.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/projects/vuePractice/main.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/projects/vuePractice/main.js.map" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/projects/vuePractice/main.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/projects/vuePractice/style.css" afterPath="$PROJECT_DIR$/projects/vuePractice/style.css" />
-      <change beforePath="$PROJECT_DIR$/projects/vuePractice/test.vue" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/projects/vuePractice/tsconfig.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/projects/vuePractice/data.js" afterPath="$PROJECT_DIR$/projects/vuePractice/data.js" />
+      <change beforePath="$PROJECT_DIR$/projects/vuePractice/test.html" afterPath="$PROJECT_DIR$/projects/vuePractice/test.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,8 +20,18 @@
       <file leaf-file-name="test.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/projects/vuePractice/test.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1377">
-              <caret line="51" column="68" lean-forward="false" selection-start-line="51" selection-start-column="68" selection-end-line="51" selection-end-column="68" />
+            <state relative-caret-position="329">
+              <caret line="56" column="34" lean-forward="false" selection-start-line="56" selection-start-column="34" selection-end-line="56" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="data.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/projects/vuePractice/data.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="331">
+              <caret line="16" column="10" lean-forward="true" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -73,7 +74,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/intro.html" />
         <option value="$PROJECT_DIR$/intro/style.css" />
         <option value="$PROJECT_DIR$/intro/intro.html" />
         <option value="$PROJECT_DIR$/food/index.html" />
@@ -123,6 +123,7 @@
         <option value="$PROJECT_DIR$/projects/roommate/index.html" />
         <option value="$PROJECT_DIR$/projects/roommate/main.ts" />
         <option value="$PROJECT_DIR$/projects/vuePractice/build/data.js" />
+        <option value="$PROJECT_DIR$/projects/vuePractice/data.js" />
         <option value="$PROJECT_DIR$/projects/vuePractice/test.html" />
       </list>
     </option>
@@ -204,7 +205,7 @@
               <item name="57hex.github.io" type="b2602c69:ProjectViewProjectNode" />
               <item name="57hex.github.io" type="462c0819:PsiDirectoryNode" />
               <item name="projects" type="462c0819:PsiDirectoryNode" />
-              <item name="vuePractice" type="462c0819:PsiDirectoryNode" />
+              <item name="roommate" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -345,7 +346,7 @@
       <workItem from="1520011706239" duration="138000" />
       <workItem from="1520133188586" duration="2588000" />
       <workItem from="1520351689550" duration="1583000" />
-      <workItem from="1520436641948" duration="313000" />
+      <workItem from="1520436641948" duration="2191000" />
     </task>
     <task id="LOCAL-00001" summary="change to RWD">
       <created>1516672989335</created>
@@ -358,7 +359,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="180545000" />
+    <option name="totallyTimeSpent" value="182423000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="516" y="22" width="905" height="878" extended-state="0" />
@@ -375,7 +376,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3976532" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3976532" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -453,7 +454,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/travelKao/index.html" />
     <entry file="file://$PROJECT_DIR$/travelKao/main.ts" />
     <entry file="file://$PROJECT_DIR$/BMI/main.ts" />
     <entry file="file://$PROJECT_DIR$/BMI/index.html" />
@@ -656,13 +656,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/projects/todoList/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/webstorm.jar!/resources/html5-schema/html5/block.rnc">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="737">
@@ -704,10 +697,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/projects/todoList/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projects/vuePractice/data.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="16" column="10" lean-forward="true" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/projects/vuePractice/test.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1377">
-          <caret line="51" column="68" lean-forward="false" selection-start-line="51" selection-start-column="68" selection-end-line="51" selection-end-column="68" />
+        <state relative-caret-position="329">
+          <caret line="56" column="34" lean-forward="false" selection-start-line="56" selection-start-column="34" selection-end-line="56" selection-end-column="34" />
           <folding />
         </state>
       </provider>

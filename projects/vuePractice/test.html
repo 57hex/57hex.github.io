@@ -10,37 +10,57 @@
 </head>
 <body class="bg-light">
 <div class="container" id="newapp">
-    <h1>{{ title }}</h1>
-    <div class="white z-depth-3" style="border: 1px #ffffff solid;">
-        <input type="text" placeholder="請輸入待辦事項" v-model="inputWork">
-        <p>顯示全部</p>
-        <ul class="list-group list-group-flush rounded">
-            <li v-for="data in inputWorks" v-bind:class="{ active: data.finished }" class="list-group-item">
-                <input type="checkbox" v-model="data.finished">
-                {{ data.content }}
-                <a href="#" @click.prevent="deleteWork(data)">刪除</a>
-            </li>
-        </ul>
-        <p>只顯示未完成</p>
-        <ul class="list-group list-group-flush rounded">
-            <li v-for="data in inputWorks" v-bind:class="{ active: data.finished }" v-if="!data.finished" class="list-group-item">
-                <input type="checkbox" v-model="data.finished">
-                {{ data.content }}
-                <a href="#" @click.prevent="deleteWork(data)">刪除</a>
-            </li>
-        </ul>
-        <p>只顯示已完成</p>
-        <ul class="list-group list-group-flush rounded">
-            <li v-for="data in inputWorks" v-bind:class="{ active: data.finished }" v-if="data.finished" class="list-group-item">
-                <input type="checkbox" v-model="data.finished">
-                {{ data.content }}
-                <a href="#" @click.prevent="deleteWork(data)">刪除</a>
-            </li>
-        </ul>
+    <h1 class="text-center">{{ title }}</h1>
+    <div style="border: 1px #ffffff solid;">
+        <input type="text" class="form-control" placeholder="請輸入待辦事項" v-model="inputWork">
+        <div class="row">
+            <div class="col-lg">
+                <p class="col-lg col-sm-12">顯示全部</p>
+                <ul class="list-group list-group-flush rounded">
+                    <li v-for="data in inputWorks" v-bind:class="{ active: data.finished }" class="list-group-item">
+                        <input type="checkbox" v-model="data.finished">
+                        <p class="text-truncate"> {{ data.content }} </p>
+                        <a href="#" @click.prevent="deleteWork(data)">刪除</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg">
+                <p class="col-lg col-sm-12">只顯示未完成</p>
+                <ul class="list-group list-group-flush rounded">
+                    <li v-for="data in inputWorks" v-bind:class="{ active: data.finished }" v-if="!data.finished" class="list-group-item">
+                        <input type="checkbox" v-model="data.finished">
+                        <p class="text-truncate"> {{ data.content }} </p>
+                        <a href="#" @click.prevent="deleteWork(data)">刪除</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg">
+                <p class="col-lg col-sm-12">只顯示已完成</p>
+                <ul class="list-group list-group-flush rounded">
+                    <li v-for="data in inputWorks" v-bind:class="{ active: data.finished }" v-if="data.finished" class="list-group-item">
+                        <input type="checkbox" v-model="data.finished">
+                        <p class="text-truncate"> {{ data.content }} </p>
+                        <a href="#" @click.prevent="deleteWork(data)">刪除</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-4">
+                    <button class="btn" v-on:click="addWork(inputWork)">增加事項</button>
+                </div>
+                <div class="col-xs-4">
+                    <button class="btn" v-on:click="deleteAllWorks()">全部清除</button>
+                </div>
+                <div class="col-xs-4">
+                    <button class="btn" v-on:click="finishAllWorks()">全部做完</button>
+                </div>
+            </div>
+        </div>
     </div>
-    <button class="btn" v-on:click="addWork(inputWork)">增加事項！</button>
-    <button class="btn" v-on:click="deleteAllWorks()">全部清除</button>
-    <button class="btn" v-on:click="finishAllWorks()">全部做完</button>
+    <br>
 
 </div>
 </body>

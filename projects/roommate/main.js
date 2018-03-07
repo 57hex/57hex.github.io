@@ -25,7 +25,7 @@ var sideNav_tw = new Vue({
         sideNavInstagram: '用 instagram 聯絡我'
     }
 });
-var intro_tw = new Vue({
+var intro = new Vue({
     el: '#intro',
     data: {
         title: '你好，我是花生罐',
@@ -35,13 +35,13 @@ var intro_tw = new Vue({
         emoji: '🤔'
     }
 });
-var section_1_tw = new Vue({
+var section_1 = new Vue({
     el: '#section-1',
     data: {
         title: '先自我介紹一下吧😊',
-        subTitle: '我超不想透露本名，總之現在是夜校大學生👋<br>\n' +
-            '                        生活習慣應該算不錯，不會有太多東西 <br> 垃圾也都會自己拿到公司或是學校丟。<br>\n' +
-            '                        如果有上班的話都是8點左右就會出門<br> 然後晚上十點後到家😢 <br>\n' +
+        subTitle: '我超不想透露本名，總之現在是夜校大學生👋\n' +
+            '                        生活習慣應該算不錯，不會有太多東西 垃圾也都會自己拿到公司或是學校丟。\n' +
+            '                        如果有上班的話都是8點左右就會出門，晚上十點後到家😢 \n' +
             '                        '
     }
 });

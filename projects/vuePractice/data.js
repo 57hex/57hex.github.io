@@ -1,19 +1,21 @@
-"use strict";
+'use strict';
 var app = new Vue({
     el: '#newapp',
     data: {
-        title: '代辦事項',
+        title: '待辦事項',
         inputWork: '',
         inputWorks: [{ content: 'test', finished: false }]
     },
     methods: {
         addWork: function (todo) {
-            if (todo === '' ) {
-                alert("說點什麼吧？")
-                return false
-            } else {
-							this.inputWorks.push({content: todo, finished: false});
-						}
+            if (todo === '') {
+                alert('說點什麼吧？');
+                return false;
+            }
+            else {
+                this.inputWorks.push({ content: todo, finished: false });
+                localStorage.setItem('savedData', JSON.stringify(this.inputWorks));
+            }
         },
         deleteAllWorks: function () {
             this.inputWorks = [];
@@ -22,8 +24,18 @@ var app = new Vue({
             this.inputWorks.splice(this.inputWorks.indexOf(todo), 1);
         },
         finishAllWorks: function () {
-					for (let obj of this.inputWorks) {
-            obj.finished = true
-					}}
+            for (var _i = 0, _a = this.inputWorks; _i < _a.length; _i++) {
+                var obj = _a[_i];
+                obj.finished = true;
+            }
+        },
+        finishWork: function (todo) {
+            if (todo.finished === true) {
+                todo.finished = false;
+            }
+            else if (todo.finished === false) {
+                todo.finished = true;
+            }
+        }
     }
-})
+});

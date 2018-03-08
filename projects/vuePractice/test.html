@@ -17,9 +17,8 @@
             <div class="col-lg">
                 <p class="col-lg col-sm-12">顯示全部</p>
                 <ul class="list-group list-group-flush rounded">
-                    <li v-for="data in inputWorks" v-bind:class="{ active: data.finished }" class="list-group-item">
-                        <input type="checkbox" v-model="data.finished">
-                        <p class="text-truncate"> {{ data.content }} </p>
+                    <li v-for="data in inputWorks" v-bind:class="{ active: data.finished }" v-on:click="finishWork(data)" class="list-group-item">
+                       <p class="text-truncate"> {{ data.content }} </p>
                         <a href="#" @click.prevent="deleteWork(data)">刪除</a>
                     </li>
                 </ul>
@@ -27,8 +26,7 @@
             <div class="col-lg">
                 <p class="col-lg col-sm-12">只顯示未完成</p>
                 <ul class="list-group list-group-flush rounded">
-                    <li v-for="data in inputWorks" v-bind:class="{ active: data.finished }" v-if="!data.finished" class="list-group-item">
-                        <input type="checkbox" v-model="data.finished">
+                    <li v-for="data in inputWorks" v-bind:class="{ active: data.finished }" v-if="!data.finished" v-on:click="finishWork(data)" class="list-group-item">
                         <p class="text-truncate"> {{ data.content }} </p>
                         <a href="#" @click.prevent="deleteWork(data)">刪除</a>
                     </li>
@@ -37,8 +35,7 @@
             <div class="col-lg">
                 <p class="col-lg col-sm-12">只顯示已完成</p>
                 <ul class="list-group list-group-flush rounded">
-                    <li v-for="data in inputWorks" v-bind:class="{ active: data.finished }" v-if="data.finished" class="list-group-item">
-                        <input type="checkbox" v-model="data.finished">
+                    <li v-for="data in inputWorks" v-bind:class="{ active: data.finished }" v-if="data.finished" v-on:click="finishWork(data)" class="list-group-item">
                         <p class="text-truncate"> {{ data.content }} </p>
                         <a href="#" @click.prevent="deleteWork(data)">刪除</a>
                     </li>

@@ -1,4 +1,7 @@
 "use strict";
+if (localStorage.getItem('savedData') === null || localStorage.getItem('savedData') === undefined || localStorage.getItem('savedData') === '') {
+    localStorage.setItem('savedData', JSON.stringify({ content: 'test', finished: false }));
+}
 var filters = {
     all: function (todo) {
         return todo;
@@ -29,7 +32,7 @@ var app = new Vue({
     data: {
         title: '待辦事項',
         inputWork: '',
-        inputWorks: [{ content: 'test', finished: false }],
+        inputWorks: [JSON.parse(localStorage.getItem('savedData'))],
         visibility: 'all'
     },
     computed: {
@@ -48,6 +51,7 @@ var app = new Vue({
             }
             else {
                 this.inputWorks.push({ content: todo, finished: false });
+                localStorage.setItem('savedData', '');
                 localStorage.setItem('savedData', JSON.stringify(this.inputWorks));
             }
         },

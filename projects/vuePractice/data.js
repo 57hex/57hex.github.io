@@ -1,6 +1,7 @@
 "use strict";
-if (localStorage.getItem('savedData') === null || localStorage.getItem('savedData') === undefined || localStorage.getItem('savedData') === '') {
-    localStorage.setItem('savedData', JSON.stringify({ content: 'test', finished: false }));
+var STORAGE_KEY = 'savedData';
+if (localStorage.getItem(STORAGE_KEY) === '' || localStorage.getItem(STORAGE_KEY) === undefined || localStorage.getItem(STORAGE_KEY) === null) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify([{ content: '123', finished: false }]));
 }
 var filters = {
     all: function (todo) {
@@ -32,7 +33,7 @@ var app = new Vue({
     data: {
         title: '待辦事項',
         inputWork: '',
-        inputWorks: [JSON.parse(localStorage.getItem('savedData'))],
+        inputWorks: JSON.parse(localStorage.getItem(STORAGE_KEY)),
         visibility: 'all'
     },
     computed: {
@@ -57,14 +58,20 @@ var app = new Vue({
         },
         deleteAllWorks: function () {
             this.inputWorks = [];
+            localStorage.setItem(STORAGE_KEY, '');
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(this.inputWorks));
         },
         deleteWork: function (todo) {
             this.inputWorks.splice(this.inputWorks.indexOf(todo), 1);
+            localStorage.setItem(STORAGE_KEY, '');
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(this.inputWorks));
         },
         finishAllWorks: function () {
             for (var _i = 0, _a = this.inputWorks; _i < _a.length; _i++) {
                 var obj = _a[_i];
                 obj.finished = true;
+                localStorage.setItem(STORAGE_KEY, '');
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(this.inputWorks));
             }
         },
         finishWork: function (todo) {
@@ -74,6 +81,8 @@ var app = new Vue({
             else if (todo.finished === false) {
                 todo.finished = true;
             }
+            localStorage.setItem(STORAGE_KEY, '');
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(this.inputWorks));
         },
         changeVisToAll: function () {
             return this.visibility = 'all';

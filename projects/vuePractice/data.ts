@@ -1,5 +1,6 @@
-if (localStorage.getItem('savedData') === null || localStorage.getItem('savedData') === undefined || localStorage.getItem('savedData') === '') {
-  localStorage.setItem('savedData', JSON.stringify({ content: 'test', finished: false }))
+let STORAGE_KEY = 'savedData'
+if (localStorage.getItem(STORAGE_KEY) === '' || localStorage.getItem(STORAGE_KEY) === undefined || localStorage.getItem(STORAGE_KEY) === null) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify([{ content: '123', finished: false }]))
 }
 let filters = {
   all: function (todo: any) {
@@ -29,7 +30,7 @@ let app = new Vue({
   data: {
     title: '待辦事項',
     inputWork: '',
-    inputWorks: [JSON.parse(localStorage.getItem('savedData'))],
+    inputWorks: JSON.parse(localStorage.getItem(STORAGE_KEY)),
     visibility: 'all'
   },
   computed: {
@@ -53,13 +54,19 @@ let app = new Vue({
     },
     deleteAllWorks: function () {
       this.inputWorks = []
+	    localStorage.setItem(STORAGE_KEY, '')
+	    localStorage.setItem(STORAGE_KEY, JSON.stringify(this.inputWorks))
     },
     deleteWork: function (todo) {
       this.inputWorks.splice(this.inputWorks.indexOf(todo), 1)
+      localStorage.setItem(STORAGE_KEY, '')
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.inputWorks))
     },
     finishAllWorks: function () {
       for (let obj of this.inputWorks) {
         obj.finished = true
+	      localStorage.setItem(STORAGE_KEY, '')
+	      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.inputWorks))
       }
     },
     finishWork: function (todo) {
@@ -68,6 +75,8 @@ let app = new Vue({
       } else if (todo.finished === false) {
         todo.finished = true
       }
+	    localStorage.setItem(STORAGE_KEY, '')
+	    localStorage.setItem(STORAGE_KEY, JSON.stringify(this.inputWorks))
     },
     changeVisToAll: function () {
       return this.visibility = 'all'

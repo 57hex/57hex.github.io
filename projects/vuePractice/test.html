@@ -12,37 +12,9 @@
 <div class="container" id="newapp">
     <h1 class="text-center">{{ title }}</h1>
     <div style="border: 1px #ffffff solid;">
-        <input type="text" class="form-control" placeholder="請輸入待辦事項" v-model="inputWork">
-        <div class="row">
-            <div class="col-lg">
-                <p class="col-lg col-sm-12">顯示全部</p>
-                <ul class="list-group list-group-flush rounded">
-                    <li v-for="data in inputWorks" v-bind:class="{ active: data.finished }" v-on:click="finishWork(data)" class="list-group-item">
-                       <p class="text-truncate"> {{ data.content }} </p>
-                        <a href="#" @click.prevent="deleteWork(data)">刪除</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-lg">
-                <p class="col-lg col-sm-12">只顯示未完成</p>
-                <ul class="list-group list-group-flush rounded">
-                    <li v-for="data in inputWorks" v-bind:class="{ active: data.finished }" v-if="!data.finished" v-on:click="finishWork(data)" class="list-group-item">
-                        <p class="text-truncate"> {{ data.content }} </p>
-                        <a href="#" @click.prevent="deleteWork(data)">刪除</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-lg">
-                <p class="col-lg col-sm-12">只顯示已完成</p>
-                <ul class="list-group list-group-flush rounded">
-                    <li v-for="data in inputWorks" v-bind:class="{ active: data.finished }" v-if="data.finished" v-on:click="finishWork(data)" class="list-group-item">
-                        <p class="text-truncate"> {{ data.content }} </p>
-                        <a href="#" @click.prevent="deleteWork(data)">刪除</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <br>
+        <input type="text" class="form-control" placeholder="請輸入待辦事項" v-model="inputWork"
+               @keyup.enter="addWork(inputWork)">
+
         <div class="container">
             <div class="row">
                 <div class="col-xs-4">
@@ -56,6 +28,29 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-lg">
+                <ul class="list-group list-group-flush rounded">
+                    <li v-for="data in filterWorks" v-bind:class="{ active: data.finished }"
+                        v-on:click="finishWork(data)" class="list-group-item">
+                        <p class="text-truncate"> {{ data.content }} </p>
+                        <a href="#" @click.prevent="deleteWork(data)">刪除</a>
+                    </li>
+                    <div class="container">
+                        <div class="row">
+                                <button @click="changeVisToHaveFinished" class="btn text-light bg-primary col-lg-2">
+                                    已完成
+                                </button>
+                                <button @click="changeVisToActive" class="btn text-light bg-primary col-lg-2">未完成
+                                </button>
+                                <button @click="changeVisToAll" class="btn text-light bg-primary col-lg-2">顯示全部</button>
+                                <p class="col-lg-4 text-muted align-middle" style="margin-bottom: 0; margin-top: 8px">共有 {{ inputWorks.length }} 件事，還有 {{ filterNotFinishedWorks.length }}
+                                    件事情未完成。</p>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <br>
     </div>
     <br>
 

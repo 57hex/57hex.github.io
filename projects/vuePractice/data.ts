@@ -1,13 +1,45 @@
-'use strict'
+let filters = {
+  all: function (todo: any) {
+    return todo
+  },
+  active: function (todo: any) {
+    let filter = []
+	  for (let obj of todo) {
+		  if (obj.finished === false) {
+			  filter.push(obj)
+	  }
+  }
+    return filter
+  },
+  haveFinished: function (todo: any) {
+    let filter = []
+	  for (let obj of todo) {
+    if (obj.finished === true) {
+      filter.push(obj)
+    }
+	  }
+	  return filter
+  }
+}
+
 let app = new Vue({
   el: '#newapp',
   data: {
     title: '待辦事項',
     inputWork: '',
-    inputWorks: [{ content: 'test', finished: false }]
+    inputWorks: [{ content: 'test', finished: false }],
+    visibility: 'all'
+  },
+  computed: {
+    filterWorks: function () {
+      return filters[this.visibility](this.inputWorks)
+    },
+    filterNotFinishedWorks: function () {
+      return filters.active(this.inputWorks)
+    }
   },
   methods: {
-    addWork: function (todo) {
+    addWork: function (todo: any) {
       if (todo === '') {
         alert('說點什麼吧？')
         return false
@@ -33,6 +65,15 @@ let app = new Vue({
 	    } else if (todo.finished === false) {
 	    	todo.finished = true
 	    }
+    },
+    changeVisToAll: function () {
+      return this.visibility = 'all'
+    },
+    changeVisToActive: function () {
+      return this.visibility = 'active'
+    },
+    changeVisToHaveFinished: function () {
+      return this.visibility = 'haveFinished'
     }
   }
 })

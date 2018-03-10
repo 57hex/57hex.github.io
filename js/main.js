@@ -1,3 +1,4 @@
+"use strict";
 var allList = new XMLHttpRequest();
 allList.open('get', 'https://57hex.github.io/file.json', false);
 allList.send(null);

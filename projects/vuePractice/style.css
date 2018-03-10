@@ -1,3 +1,7 @@
 .active a{
     color: red !important;
 }
+@import "../../css/notosanstc.css";
+* {
+    font-family: "Noto Sans TC" !important;
+}

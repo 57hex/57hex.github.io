@@ -7,7 +7,7 @@ var filters = {
     all: function (todo) {
         return todo;
     },
-    active: function (todo) {
+    yetFinished: function (todo) {
         var filter = [];
         for (var _i = 0, todo_1 = todo; _i < todo_1.length; _i++) {
             var obj = todo_1[_i];
@@ -41,7 +41,7 @@ var app = new Vue({
             return filters[this.visibility](this.inputWorks);
         },
         filterNotFinishedWorks: function () {
-            return filters.active(this.inputWorks);
+            return filters.yetFinished(this.inputWorks);
         }
     },
     methods: {
@@ -87,8 +87,8 @@ var app = new Vue({
         changeVisToAll: function () {
             return this.visibility = 'all';
         },
-        changeVisToActive: function () {
-            return this.visibility = 'active';
+        changeVisToYetFinished: function () {
+            return this.visibility = 'yetFinished';
         },
         changeVisToHaveFinished: function () {
             return this.visibility = 'haveFinished';

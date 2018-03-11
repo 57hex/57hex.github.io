@@ -6,7 +6,7 @@ let filters = {
   all: function (todo: any) {
     return todo
   },
-  active: function (todo: any) {
+  yetFinished: function (todo: any) {
     let filter = []
     for (let obj of todo) {
       if (obj.finished === false) {
@@ -38,7 +38,7 @@ let app = new Vue({
       return filters[this.visibility](this.inputWorks)
     },
     filterNotFinishedWorks: function () {
-      return filters.active(this.inputWorks)
+      return filters.yetFinished(this.inputWorks)
     }
   },
   methods: {
@@ -81,8 +81,8 @@ let app = new Vue({
     changeVisToAll: function () {
       return this.visibility = 'all'
     },
-    changeVisToActive: function () {
-      return this.visibility = 'active'
+    changeVisToYetFinished: function () {
+      return this.visibility = 'yetFinished'
     },
     changeVisToHaveFinished: function () {
       return this.visibility = 'haveFinished'

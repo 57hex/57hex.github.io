@@ -53,7 +53,7 @@
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="294">
-                <caret line="32" column="6" lean-forward="false" selection-start-line="32" selection-start-column="6" selection-end-line="32" selection-end-column="6" />
+                <caret line="32" column="22" lean-forward="true" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -382,7 +382,7 @@
       <workItem from="1520669121878" duration="5166000" />
       <workItem from="1520674945878" duration="4188000" />
       <workItem from="1520693632090" duration="543000" />
-      <workItem from="1520766223184" duration="1651000" />
+      <workItem from="1520766223184" duration="1838000" />
     </task>
     <task id="LOCAL-00001" summary="change to RWD">
       <created>1516672989335</created>
@@ -395,7 +395,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="212865000" />
+    <option name="totallyTimeSpent" value="213052000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="297" y="22" width="905" height="878" extended-state="0" />
@@ -744,7 +744,7 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="294">
-            <caret line="32" column="6" lean-forward="false" selection-start-line="32" selection-start-column="6" selection-end-line="32" selection-end-column="6" />
+            <caret line="32" column="22" lean-forward="true" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
             <folding />
           </first_editor>
           <second_editor />

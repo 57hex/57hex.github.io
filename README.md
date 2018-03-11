@@ -1,5 +1,5 @@
 ## This is a project for practicing my web development skill
-#### In this project, I will practice the following thing
+#### In this project, I will practice the following things
 * Vue.js (now)
 * materialize CSS (now)
 * Angular (future)
@@ -31,9 +31,9 @@
 ###### í-siōng, kám-siā lí khuànn kàu tsia 💗
 ------------
 
-## **これは何ですか？**
+## **これは何ですか**
 これは、ウェブ開発を勉強のためのプロジェクトです。
-## **何を勉強するか？**
+## **何を勉強するか**
 * Vue.js (勉強中)
 * materialize CSS (これも勉強中)
 * Angular (未来)

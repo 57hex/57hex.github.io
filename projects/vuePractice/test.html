@@ -8,73 +8,84 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-light">
+<body class="bg-light loginbg">
 <div class="container" id="newapp">
     <section v-if='login === false' class="loginbg">
         <div class="container">
-            <div class="square container">
-                <form action="" class="input-group">
+            <div class="square container clearfix">
+                <form action="">
+                    <div class="row input-group">
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control" v-model="account" placeholder="請輸入帳號" style="width: 304px;">
+                        </div>
+                    </div>
+                    <div class="row input-group">
+                        <div class="col-xs-12">
+                            <input type="password" class="form-control" v-model="password" placeholder="請輸入密碼" style="width: 304px;">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="g-recaptcha" data-sitekey="6LcYEEwUAAAAAE0Sym2lbwWvBJahbfPqnjg-nwkv"></div>
+                    </div>
+                    <div class="row input-group">
+                        <input type="submit" class="btn btn-primary loginbtn text-center"
+                               @click.prevent="firebaseTest()" style="width: 304px; height: 45px;" value="登入">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <section v-if='login === true'>
+        <h1 class="text-center">{{ title }}</h1>
+        <div class="formBody">
+            <input type="text" class="form-control" placeholder="請輸入待辦事項" v-model="inputWork"
+                   @keyup.enter="addWork(inputWork)">
+            <div class="container">
+                <div class="container align-items-center">
                     <div class="row">
                         <div class="col-xs-4">
-                            <input type="text" class="form-control" v-model="account" placeholder="請輸入帳號">
+                            <button class="btn" v-on:click="addWork(inputWork)">增加事項</button>
                         </div>
                         <div class="col-xs-4">
-                            <input type="password" class="form-control" v-model="password" placeholder="請輸入密碼">
+                            <button class="btn" v-on:click="deleteAllWorks()">全部清除</button>
                         </div>
-                            <input type="submit" class="btn btn-primary form-control text-center" @click.prevent="firebaseTest()" value="測試">
+                        <div class="col-xs-4">
+                            <button class="btn" v-on:click="finishAllWorks()">全部做完</button>
+                        </div>
                     </div>
-            </form>
-        </div>
-</div>
-</section>
-<section v-if='login === true'>
-    <h1 class="text-center">{{ title }}</h1>
-    <div style="border: 1px #ffffff solid;">
-        <input type="text" class="form-control" placeholder="請輸入待辦事項" v-model="inputWork"
-               @keyup.enter="addWork(inputWork)">
-        <div class="container">
+                </div>
+            </div>
             <div class="row">
-                <div class="col-xs-4">
-                    <button class="btn" v-on:click="addWork(inputWork)">增加事項</button>
-                </div>
-                <div class="col-xs-4">
-                    <button class="btn" v-on:click="deleteAllWorks()">全部清除</button>
-                </div>
-                <div class="col-xs-4">
-                    <button class="btn" v-on:click="finishAllWorks()">全部做完</button>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg">
-                <ul class="list-group list-group-flush rounded">
-                    <li v-for="data in filterWorks" v-bind:class="{ active: data.finished }"
-                        v-on:click="finishWork(data)" class="list-group-item">
-                        <p class="text-truncate"> {{ data.content }} </p>
-                        <a href="#" @click.prevent="deleteWork(data)">刪除</a>
-                    </li>
-                    <div class="container">
-                        <div class="row">
-                            <button @click="changeVisToHaveFinished" class="btn text-light bg-primary col-lg-2">
-                                已完成
-                            </button>
-                            <button @click="changeVisToYetFinished" class="btn text-light bg-primary col-lg-2">未完成
-                            </button>
-                            <button @click="changeVisToAll" class="btn text-light bg-primary col-lg-2">顯示全部</button>
-                            <p class="col-lg-4 text-muted align-middle" style="margin-bottom: 0; margin-top: 8px">共有
-                                {{ inputWorks.length }} 件事，還有 {{ filterNotFinishedWorks.length }}
-                                件事情未完成。</p>
+                <div class="col-lg">
+                    <ul class="list-group list-group-flush rounded">
+                        <li v-for="data in filterWorks" v-bind:class="{ active: data.finished }"
+                            v-on:click="finishWork(data)" class="list-group-item">
+                            <p class="text-truncate"> {{ data.content }} </p>
+                            <a href="#" @click.prevent="deleteWork(data)">刪除</a>
+                        </li>
+                        <div class="container">
+                            <div class="row">
+                                <button @click="changeVisToHaveFinished" class="btn text-light bg-primary col-lg-2">
+                                    已完成
+                                </button>
+                                <button @click="changeVisToYetFinished" class="btn text-light bg-primary col-lg-2">未完成
+                                </button>
+                                <button @click="changeVisToAll" class="btn text-light bg-primary col-lg-2">顯示全部</button>
+                                <p class="col-lg-4 text-muted align-middle" style="margin-bottom: 0; margin-top: 8px">共有
+                                    {{ inputWorks.length }} 件事，還有 {{ filterNotFinishedWorks.length }}
+                                    件事情未完成。</p>
+                            </div>
                         </div>
-                    </div>
+                </div>
             </div>
+            <br>
         </div>
         <br>
-    </div>
-    <br>
-</section>
+    </section>
 </div>
 </body>
 <footer>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

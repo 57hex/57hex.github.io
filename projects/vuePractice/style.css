@@ -5,3 +5,12 @@
 * {
     font-family: "Noto Sans TC" !important;
 }
+.square {
+    position: absolute;
+    width: 600px;
+    height: 300px;
+    margin: -150px 0 0 -300px;
+    top: 50%;
+    left: 50%;
+    background-color: darkgrey;
+}

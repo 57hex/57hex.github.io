@@ -10,11 +10,22 @@
 </head>
 <body class="bg-light">
 <div class="container" id="newapp">
+    <section v-if='login === false'>
+        <div class="container">
+            <div class="square container">
+                <form action="">
+                    <input type="text" v-model="account">
+                    <input type="password" v-model="password">
+                    <input type="submit" @click.prevent="firebaseTest()">
+            </form>
+        </div>
+</div>
+</section>
+<section v-if='login === true'>
     <h1 class="text-center">{{ title }}</h1>
     <div style="border: 1px #ffffff solid;">
         <input type="text" class="form-control" placeholder="請輸入待辦事項" v-model="inputWork"
                @keyup.enter="addWork(inputWork)">
-
         <div class="container">
             <div class="row">
                 <div class="col-xs-4">
@@ -38,14 +49,15 @@
                     </li>
                     <div class="container">
                         <div class="row">
-                                <button @click="changeVisToHaveFinished" class="btn text-light bg-primary col-lg-2">
-                                    已完成
-                                </button>
-                                <button @click="changeVisToYetFinished" class="btn text-light bg-primary col-lg-2">未完成
-                                </button>
-                                <button @click="changeVisToAll" class="btn text-light bg-primary col-lg-2">顯示全部</button>
-                                <p class="col-lg-4 text-muted align-middle" style="margin-bottom: 0; margin-top: 8px">共有 {{ inputWorks.length }} 件事，還有 {{ filterNotFinishedWorks.length }}
-                                    件事情未完成。</p>
+                            <button @click="changeVisToHaveFinished" class="btn text-light bg-primary col-lg-2">
+                                已完成
+                            </button>
+                            <button @click="changeVisToYetFinished" class="btn text-light bg-primary col-lg-2">未完成
+                            </button>
+                            <button @click="changeVisToAll" class="btn text-light bg-primary col-lg-2">顯示全部</button>
+                            <p class="col-lg-4 text-muted align-middle" style="margin-bottom: 0; margin-top: 8px">共有
+                                {{ inputWorks.length }} 件事，還有 {{ filterNotFinishedWorks.length }}
+                                件事情未完成。</p>
                         </div>
                     </div>
             </div>
@@ -53,10 +65,11 @@
         <br>
     </div>
     <br>
-
+</section>
 </div>
 </body>
 <footer>
+    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>

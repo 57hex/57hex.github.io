@@ -3,6 +3,15 @@ var STORAGE_KEY = 'savedData';
 if (localStorage.getItem(STORAGE_KEY) === '' || localStorage.getItem(STORAGE_KEY) === undefined || localStorage.getItem(STORAGE_KEY) === null) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify([{ content: '123', finished: false }]));
 }
+var config = {
+    apiKey: 'AIzaSyAVpPL0_unC-ElX6Qfein_Ki6xil2AxFo0',
+    authDomain: 'project-4fe4c.firebaseapp.com',
+    databaseURL: 'https://project-4fe4c.firebaseio.com',
+    projectId: 'project-4fe4c',
+    storageBucket: 'project-4fe4c.appspot.com',
+    messagingSenderId: '36011476367'
+};
+firebase.initializeApp(config);
 var filters = {
     all: function (todo) {
         return todo;
@@ -34,7 +43,10 @@ var app = new Vue({
         title: '待辦事項',
         inputWork: '',
         inputWorks: JSON.parse(localStorage.getItem(STORAGE_KEY)),
-        visibility: 'all'
+        visibility: 'all',
+        login: false,
+        account: '',
+        password: ''
     },
     computed: {
         filterWorks: function () {
@@ -92,6 +104,9 @@ var app = new Vue({
         },
         changeVisToHaveFinished: function () {
             return this.visibility = 'haveFinished';
+        },
+        firebaseTest: function () {
+            return firebase.database().ref(this.account).set(this.inputWorks);
         }
     }
 });

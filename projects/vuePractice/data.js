@@ -47,12 +47,18 @@ var app = new Vue({
     data: {
         title: '待辦事項',
         inputWork: '',
-        inputWorks: [{ content: '', finished: false, vis: false }],
+        inputWorks: [{ vis: false }],
         visibility: 'all',
         login: false,
         loginVis: 'login',
         account: '',
-        password: ''
+        password: '',
+        regAccount: '',
+        regPassword: '',
+        regFirstName: '',
+        regLastName: '',
+        regError: '',
+        loading: true
     },
     computed: {
         filterWorks: function () {
@@ -121,10 +127,12 @@ var app = new Vue({
                 var fire_1 = firebase.database().ref(app.account);
                 fire_1.once('value', function (s) {
                     if (s.val() === null || s.val().length === 0 || app.inputWorks === null) {
-                        fire_1.set([{ content: '', finished: false, vis: false }]);
-                        app.inputWorks = [{ content: '', finished: false, vis: false }];
+                        fire_1.set([{ vis: false }]);
+                        app.loading = false;
+                        app.inputWorks = [{ vis: false }];
                     }
                     localStorage.setItem(STORAGE_KEY, JSON.stringify(s.val()));
+                    app.loading = false;
                     app.inputWorks = (JSON.parse(localStorage.getItem(STORAGE_KEY)));
                 });
                 this.login = true;
@@ -135,7 +143,23 @@ var app = new Vue({
             }
         },
         firebaseReg: function () {
-            console.log('test');
+            firebase.auth().createUserWithEmailAndPassword(app.regAccount, app.regPassword).catch(function (error) {
+                var errorCode = error.code;
+                var errorMsg = error.message;
+                app.regError = errorMsg;
+                if (app.regError === 'The email address is badly formatted.') {
+                    app.regError = '帳號或是密碼格式錯誤。';
+                }
+                else if (app.regError === 'Password should be at least 6 characters') {
+                    app.regError = '密碼必須大於六個字。';
+                }
+                else if (app.regError === 'The email address is already in use by another account.') {
+                    app.regError = '這個帳號已被註冊。';
+                }
+                else if (app.regError === 'The password must be 6 characters long or more.') {
+                    app.regError = '密碼必須大於六個字母。';
+                }
+            });
         }
     }
 });

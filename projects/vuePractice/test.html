@@ -21,9 +21,10 @@
                     <button class="btn btn-primary btn-block" @click.prevent="changeVisToRegister()">註冊</button>
                 </div>
                 <div v-if="loginVis === 'register'">
-                    <input type="text" class="form-control" placeholder="請輸入帳號" v-model="account" required autofocus>
-                    <input type="password" class="form-control" placeholder="請輸入密碼" v-model="password">
-                    <button class="btn btn-lg btn-primary btn-block" type="submit" @click.prevent="firebaseRegister">註冊</button>
+                    <input type="text" class="form-control" placeholder="請輸入要註冊的帳號" v-model="regAccount" required autofocus>
+                    <input type="password" class="form-control" placeholder="請輸入要註冊的密碼" v-model="regPassword" required>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit" @click.prevent="firebaseReg">註冊</button>
+                    <p v-if="regError !== ''" class="text-error"> {{ regError }} </p>
                     <button class="btn btn-primary btn-block" @click.prevent="changeVisToLogin()">已經有帳號？</button>
                 </div>
             </form>
@@ -55,6 +56,7 @@
                             <p class="text-truncate"> {{ data.content }} </p>
                             <a href="#" @click.prevent="deleteWork(data)">刪除</a>
                         </li>
+                        <p v-if="loading === true" class="text-white">載入中...</p>
                         <div class="container">
                             <div class="row">
                                 <button @click="changeVisToHaveFinished" class="btn text-light bg-primary col-lg-2">
@@ -64,7 +66,7 @@
                                 </button>
                                 <button @click="changeVisToAll" class="btn text-light bg-primary col-lg-2">顯示全部</button>
                                 <p class="col-lg-4 text-white align-middle" style="margin-bottom: 0; margin-top: 8px">共有
-                                    {{ inputWorks.length }} 件事，還有 {{ filterNotFinishedWorks.length }}
+                                    {{ inputWorks.length -1 }} 件事，還有 {{ filterNotFinishedWorks.length }}
                                     件事情未完成。</p>
                             </div>
                         </div>

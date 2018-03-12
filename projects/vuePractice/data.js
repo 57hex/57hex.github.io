@@ -106,7 +106,13 @@ var app = new Vue({
             return this.visibility = 'haveFinished';
         },
         firebaseTest: function () {
-            return firebase.database().ref(this.account).set(this.inputWorks);
+            if (this.account !== '' || this.password !== '') {
+                this.login = true;
+                // return firebase.database().ref(this.account).set(this.inputWorks)
+            }
+            else {
+                alert('你好像忘記打帳號ㄌ');
+            }
         }
     }
 });

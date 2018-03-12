@@ -10,13 +10,19 @@
 </head>
 <body class="bg-light">
 <div class="container" id="newapp">
-    <section v-if='login === false'>
+    <section v-if='login === false' class="loginbg">
         <div class="container">
             <div class="square container">
-                <form action="">
-                    <input type="text" v-model="account">
-                    <input type="password" v-model="password">
-                    <input type="submit" @click.prevent="firebaseTest()">
+                <form action="" class="input-group">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control" v-model="account" placeholder="請輸入帳號">
+                        </div>
+                        <div class="col-xs-4">
+                            <input type="password" class="form-control" v-model="password" placeholder="請輸入密碼">
+                        </div>
+                            <input type="submit" class="btn btn-primary form-control text-center" @click.prevent="firebaseTest()" value="測試">
+                    </div>
             </form>
         </div>
 </div>

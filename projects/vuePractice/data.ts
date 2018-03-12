@@ -10,12 +10,18 @@ let config = {
 }
 firebase.initializeApp(config);let filters = {
   all: function (todo: any) {
-    return todo
+	  let filter = []
+	  for (let obj of todo) {
+    if (obj.vis !== false) {
+      filter.push(obj)
+    }
+  }
+	  return filter
   },
   yetFinished: function (todo: any) {
     let filter = []
     for (let obj of todo) {
-      if (obj.finished === false) {
+      if (obj.finished === false && obj.vis !== false) {
         filter.push(obj)
       }
     }
@@ -24,7 +30,7 @@ firebase.initializeApp(config);let filters = {
   haveFinished: function (todo: any) {
     let filter = []
     for (let obj of todo) {
-      if (obj.finished === true) {
+      if (obj.finished === true && obj.vis !== false) {
         filter.push(obj)
       }
     }
@@ -36,9 +42,10 @@ let app = new Vue({
   data: {
     title: '待辦事項',
     inputWork: '',
-    inputWorks: [{ content: '', finished: false }],
+    inputWorks: [{ content: '', finished: false , vis: false }],
     visibility: 'all',
     login: false,
+    loginVis: 'login',
     account: '',
     password: ''
   },
@@ -101,25 +108,34 @@ let app = new Vue({
     changeVisToHaveFinished: function () {
       return this.visibility = 'haveFinished'
     },
+    changeVisToRegister: function () {
+      return this.loginVis = 'register'
+    },
+    changeVisToLogin: function () {
+      return this.loginVis = 'login'
+    },
     firebaseLogin: function () {
       if (this.account !== '' || this.password !== '') {
-	      this.login = true
-        const fire = firebase.database().ref(this.account)
+        const fire = firebase.database().ref(app.account)
         fire.once('value', function (s) {
-          if (s.val() === null) {
-            app.inputWorks.push({ content: '' , finished: false })
+          if (s.val() === null || s.val().length === 0) {
+            fire.set([{ content: '' , finished: false }])
+            app.inputWorks = s.val()
           }
           localStorage.setItem(STORAGE_KEY, JSON.stringify(s.val()))
           app.inputWorks = (JSON.parse(localStorage.getItem(STORAGE_KEY)))
 		        }
         )
+	      this.login = true
 	      // return firebase.database().ref(this.account).set(this.inputWorks)
       } else {
         alert('你好像忘記打帳號ㄌ')
       }
+    },
+    firebaseReg: function () {
+      console.log('test')
     }
-  }
-})
+  })
 let fire = firebase.database().ref('test')
 fire.once('value',
     function (snapshot) {

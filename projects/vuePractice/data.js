@@ -12,13 +12,20 @@ var config = {
 firebase.initializeApp(config);
 var filters = {
     all: function (todo) {
-        return todo;
-    },
-    yetFinished: function (todo) {
         var filter = [];
         for (var _i = 0, todo_1 = todo; _i < todo_1.length; _i++) {
             var obj = todo_1[_i];
-            if (obj.finished === false) {
+            if (obj.vis !== false) {
+                filter.push(obj);
+            }
+        }
+        return filter;
+    },
+    yetFinished: function (todo) {
+        var filter = [];
+        for (var _i = 0, todo_2 = todo; _i < todo_2.length; _i++) {
+            var obj = todo_2[_i];
+            if (obj.finished === false && obj.vis !== false) {
                 filter.push(obj);
             }
         }
@@ -26,9 +33,9 @@ var filters = {
     },
     haveFinished: function (todo) {
         var filter = [];
-        for (var _i = 0, todo_2 = todo; _i < todo_2.length; _i++) {
-            var obj = todo_2[_i];
-            if (obj.finished === true) {
+        for (var _i = 0, todo_3 = todo; _i < todo_3.length; _i++) {
+            var obj = todo_3[_i];
+            if (obj.finished === true && obj.vis !== false) {
                 filter.push(obj);
             }
         }
@@ -40,9 +47,10 @@ var app = new Vue({
     data: {
         title: '待辦事項',
         inputWork: '',
-        inputWorks: [{ content: '', finished: false }],
+        inputWorks: [{ content: '', finished: false, vis: false }],
         visibility: 'all',
         login: false,
+        loginVis: 'login',
         account: '',
         password: ''
     },
@@ -108,22 +116,32 @@ var app = new Vue({
         changeVisToHaveFinished: function () {
             return this.visibility = 'haveFinished';
         },
+        changeVisToRegister: function () {
+            return this.loginVis = 'register';
+        },
+        changeVisToLogin: function () {
+            return this.loginVis = 'login';
+        },
         firebaseLogin: function () {
             if (this.account !== '' || this.password !== '') {
-                this.login = true;
-                var fire_1 = firebase.database().ref(this.account);
+                var fire_1 = firebase.database().ref(app.account);
                 fire_1.once('value', function (s) {
-                    if (s.val() === null) {
-                        app.inputWorks.push({ content: '', finished: false });
+                    if (s.val() === null || s.val().length === 0) {
+                        fire_1.set([{ content: '', finished: false }]);
+                        app.inputWorks = s.val();
                     }
                     localStorage.setItem(STORAGE_KEY, JSON.stringify(s.val()));
                     app.inputWorks = (JSON.parse(localStorage.getItem(STORAGE_KEY)));
                 });
+                this.login = true;
                 // return firebase.database().ref(this.account).set(this.inputWorks)
             }
             else {
                 alert('你好像忘記打帳號ㄌ');
             }
+        },
+        firebaseReg: function () {
+            console.log('test');
         }
     }
 });

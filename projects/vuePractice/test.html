@@ -14,10 +14,18 @@
         <div class="container">
 
             <form class="form-signin">
-                <h2 class="form-signin-heading">請登入</h2>
-                <input type="text" class="form-control" placeholder="請輸入帳號" v-model="account" required autofocus>
-                <input type="password" class="form-control" placeholder="請輸入密碼" v-model="password">
-                <button class="btn btn-lg btn-primary btn-block" type="submit" @click.prevent="firebaseLogin">登入</button>
+                <div v-if="loginVis === 'login'">
+                    <input type="email" class="form-control" placeholder="請輸入帳號" v-model="account" required autofocus>
+                    <input type="password" class="form-control" placeholder="請輸入密碼" v-model="password" required>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit" @click.prevent="firebaseLogin">登入</button>
+                    <button class="btn btn-primary btn-block" @click.prevent="changeVisToRegister()">註冊</button>
+                </div>
+                <div v-if="loginVis === 'register'">
+                    <input type="text" class="form-control" placeholder="請輸入帳號" v-model="account" required autofocus>
+                    <input type="password" class="form-control" placeholder="請輸入密碼" v-model="password">
+                    <button class="btn btn-lg btn-primary btn-block" type="submit" @click.prevent="firebaseRegister">註冊</button>
+                    <button class="btn btn-primary btn-block" @click.prevent="changeVisToLogin()">已經有帳號？</button>
+                </div>
             </form>
 
         </div> <!-- /container -->
@@ -58,7 +66,7 @@
                                 <button @click="changeVisToYetFinished" class="btn text-light bg-primary col-lg-2">未完成
                                 </button>
                                 <button @click="changeVisToAll" class="btn text-light bg-primary col-lg-2">顯示全部</button>
-                                <p class="col-lg-4 text-muted align-middle" style="margin-bottom: 0; margin-top: 8px">共有
+                                <p class="col-lg-4 text-white align-middle" style="margin-bottom: 0; margin-top: 8px">共有
                                     {{ inputWorks.length }} 件事，還有 {{ filterNotFinishedWorks.length }}
                                     件事情未完成。</p>
                             </div>

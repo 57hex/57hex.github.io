@@ -8,7 +8,8 @@ let config = {
   storageBucket: 'project-4fe4c.appspot.com',
   messagingSenderId: '36011476367'
 }
-firebase.initializeApp(config);let filters = {
+firebase.initializeApp(config)
+let filters = {
   all: function (todo: any) {
 	  let filter = []
 	  for (let obj of todo) {
@@ -69,12 +70,6 @@ let app = new Vue({
 	      firebase.database().ref(this.account).set(this.inputWorks)
       }
     },
-    deleteAllWorks: function () {
-      this.inputWorks = []
-	    localStorage.setItem(STORAGE_KEY, '')
-	    localStorage.setItem(STORAGE_KEY, JSON.stringify(this.inputWorks))
-	    firebase.database().ref(this.account).set(this.inputWorks)
-    },
     deleteWork: function (todo) {
       this.inputWorks.splice(this.inputWorks.indexOf(todo), 1)
       localStorage.setItem(STORAGE_KEY, '')
@@ -118,9 +113,9 @@ let app = new Vue({
       if (this.account !== '' || this.password !== '') {
         const fire = firebase.database().ref(app.account)
         fire.once('value', function (s) {
-          if (s.val() === null || s.val().length === 0) {
-            fire.set([{ content: '' , finished: false }])
-            app.inputWorks = s.val()
+          if (s.val() === null || s.val().length === 0 || app.inputWorks === null) {
+            fire.set([{ content: '' , finished: false , vis: false }])
+            app.inputWorks = [{ content: '' , finished: false , vis: false }]
           }
           localStorage.setItem(STORAGE_KEY, JSON.stringify(s.val()))
           app.inputWorks = (JSON.parse(localStorage.getItem(STORAGE_KEY)))
@@ -136,9 +131,3 @@ let app = new Vue({
       console.log('test')
     }
   })
-let fire = firebase.database().ref('test')
-fire.once('value',
-    function (snapshot) {
-      console.log(snapshot.val())
-    }
-)

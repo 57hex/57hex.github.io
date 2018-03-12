@@ -75,12 +75,6 @@ var app = new Vue({
                 firebase.database().ref(this.account).set(this.inputWorks);
             }
         },
-        deleteAllWorks: function () {
-            this.inputWorks = [];
-            localStorage.setItem(STORAGE_KEY, '');
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(this.inputWorks));
-            firebase.database().ref(this.account).set(this.inputWorks);
-        },
         deleteWork: function (todo) {
             this.inputWorks.splice(this.inputWorks.indexOf(todo), 1);
             localStorage.setItem(STORAGE_KEY, '');
@@ -126,9 +120,9 @@ var app = new Vue({
             if (this.account !== '' || this.password !== '') {
                 var fire_1 = firebase.database().ref(app.account);
                 fire_1.once('value', function (s) {
-                    if (s.val() === null || s.val().length === 0) {
-                        fire_1.set([{ content: '', finished: false }]);
-                        app.inputWorks = s.val();
+                    if (s.val() === null || s.val().length === 0 || app.inputWorks === null) {
+                        fire_1.set([{ content: '', finished: false, vis: false }]);
+                        app.inputWorks = [{ content: '', finished: false, vis: false }];
                     }
                     localStorage.setItem(STORAGE_KEY, JSON.stringify(s.val()));
                     app.inputWorks = (JSON.parse(localStorage.getItem(STORAGE_KEY)));
@@ -144,8 +138,4 @@ var app = new Vue({
             console.log('test');
         }
     }
-});
-var fire = firebase.database().ref('test');
-fire.once('value', function (snapshot) {
-    console.log(snapshot.val());
 });

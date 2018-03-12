@@ -21,8 +21,8 @@
       <file leaf-file-name="data.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/projects/vuePractice/data.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-938">
-              <caret line="18" column="17" lean-forward="false" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+            <state relative-caret-position="197">
+              <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -31,8 +31,8 @@
       <file leaf-file-name="test.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/projects/vuePractice/test.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="35">
-              <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state relative-caret-position="-662">
+              <caret line="42" column="30" lean-forward="false" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="30" />
               <folding>
                 <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#section#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -370,7 +370,7 @@
       <workItem from="1520766223184" duration="3815000" />
       <workItem from="1520816543311" duration="21000" />
       <workItem from="1520816584743" duration="9146000" />
-      <workItem from="1520847586366" duration="4938000" />
+      <workItem from="1520847586366" duration="5864000" />
     </task>
     <task id="LOCAL-00001" summary="change to RWD">
       <created>1516672989335</created>
@@ -383,7 +383,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="229134000" />
+    <option name="totallyTimeSpent" value="230060000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="389" y="22" width="905" height="878" extended-state="0" />
@@ -726,8 +726,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/projects/vuePractice/test.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="35">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state relative-caret-position="-662">
+          <caret line="42" column="30" lean-forward="false" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="30" />
           <folding>
             <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#section#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
@@ -736,8 +736,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/projects/vuePractice/data.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-938">
-          <caret line="18" column="17" lean-forward="false" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+        <state relative-caret-position="197">
+          <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
           <folding />
         </state>
       </provider>

@@ -1,7 +1,5 @@
 let STORAGE_KEY = 'savedData'
-if (localStorage.getItem(STORAGE_KEY) === '' || localStorage.getItem(STORAGE_KEY) === undefined || localStorage.getItem(STORAGE_KEY) === null) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify([{ content: '123', finished: false }]))
-}
+localStorage.setItem(STORAGE_KEY, '')
 let config = {
   apiKey: 'AIzaSyAVpPL0_unC-ElX6Qfein_Ki6xil2AxFo0',
   authDomain: 'project-4fe4c.firebaseapp.com',
@@ -38,7 +36,7 @@ let app = new Vue({
   data: {
     title: '待辦事項',
     inputWork: '',
-    inputWorks: JSON.parse(localStorage.getItem(STORAGE_KEY)),
+    inputWorks: [{ content: '', finished: false }],
     visibility: 'all',
     login: false,
     account: '',
@@ -61,17 +59,20 @@ let app = new Vue({
         this.inputWorks.push({ content: todo, finished: false })
         localStorage.setItem('savedData', '')
         localStorage.setItem('savedData', JSON.stringify(this.inputWorks))
+	      firebase.database().ref(this.account).set(this.inputWorks)
       }
     },
     deleteAllWorks: function () {
       this.inputWorks = []
 	    localStorage.setItem(STORAGE_KEY, '')
 	    localStorage.setItem(STORAGE_KEY, JSON.stringify(this.inputWorks))
+	    firebase.database().ref(this.account).set(this.inputWorks)
     },
     deleteWork: function (todo) {
       this.inputWorks.splice(this.inputWorks.indexOf(todo), 1)
       localStorage.setItem(STORAGE_KEY, '')
       localStorage.setItem(STORAGE_KEY, JSON.stringify(this.inputWorks))
+      firebase.database().ref(this.account).set(this.inputWorks)
     },
     finishAllWorks: function () {
       for (let obj of this.inputWorks) {
@@ -79,6 +80,7 @@ let app = new Vue({
 	      localStorage.setItem(STORAGE_KEY, '')
 	      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.inputWorks))
       }
+	    firebase.database().ref(this.account).set(this.inputWorks)
     },
     finishWork: function (todo) {
       if (todo.finished === true) {
@@ -88,6 +90,7 @@ let app = new Vue({
       }
 	    localStorage.setItem(STORAGE_KEY, '')
 	    localStorage.setItem(STORAGE_KEY, JSON.stringify(this.inputWorks))
+	    firebase.database().ref(this.account).set(this.inputWorks)
     },
     changeVisToAll: function () {
       return this.visibility = 'all'
@@ -98,9 +101,18 @@ let app = new Vue({
     changeVisToHaveFinished: function () {
       return this.visibility = 'haveFinished'
     },
-    firebaseTest: function () {
+    firebaseLogin: function () {
       if (this.account !== '' || this.password !== '') {
 	      this.login = true
+        const fire = firebase.database().ref(this.account)
+        fire.once('value', function (s) {
+          if (s.val() === null) {
+            app.inputWorks.push({ content: '' , finished: false })
+          }
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(s.val()))
+          app.inputWorks = (JSON.parse(localStorage.getItem(STORAGE_KEY)))
+		        }
+        )
 	      // return firebase.database().ref(this.account).set(this.inputWorks)
       } else {
         alert('你好像忘記打帳號ㄌ')
@@ -108,3 +120,9 @@ let app = new Vue({
     }
   }
 })
+let fire = firebase.database().ref('test')
+fire.once('value',
+    function (snapshot) {
+      console.log(snapshot.val())
+    }
+)

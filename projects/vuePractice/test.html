@@ -8,32 +8,19 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-light loginbg">
+<body class="bg-light loginbg userelative">
 <div class="container" id="newapp">
     <section v-if='login === false' class="loginbg">
         <div class="container">
-            <div class="square container clearfix">
-                <form action="">
-                    <div class="row input-group">
-                        <div class="col-xs-12">
-                            <input type="text" class="form-control" v-model="account" placeholder="請輸入帳號" style="width: 304px;">
-                        </div>
-                    </div>
-                    <div class="row input-group">
-                        <div class="col-xs-12">
-                            <input type="password" class="form-control" v-model="password" placeholder="請輸入密碼" style="width: 304px;">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="g-recaptcha" data-sitekey="6LcYEEwUAAAAAE0Sym2lbwWvBJahbfPqnjg-nwkv"></div>
-                    </div>
-                    <div class="row input-group">
-                        <input type="submit" class="btn btn-primary loginbtn text-center"
-                               @click.prevent="firebaseTest()" style="width: 304px; height: 45px;" value="登入">
-                    </div>
-                </form>
-            </div>
-        </div>
+
+            <form class="form-signin">
+                <h2 class="form-signin-heading">請登入</h2>
+                <input type="text" class="form-control" placeholder="請輸入帳號" v-model="account" required autofocus>
+                <input type="password" class="form-control" placeholder="請輸入密碼" v-model="password">
+                <button class="btn btn-lg btn-primary btn-block" type="submit" @click.prevent="firebaseLogin">登入</button>
+            </form>
+
+        </div> <!-- /container -->
     </section>
     <section v-if='login === true'>
         <h1 class="text-center">{{ title }}</h1>
@@ -41,7 +28,7 @@
             <input type="text" class="form-control" placeholder="請輸入待辦事項" v-model="inputWork"
                    @keyup.enter="addWork(inputWork)">
             <div class="container">
-                <div class="container align-items-center">
+                <div class="align-items-center">
                     <div class="row">
                         <div class="col-xs-4">
                             <button class="btn" v-on:click="addWork(inputWork)">增加事項</button>

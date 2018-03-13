@@ -49,8 +49,8 @@ let app = new Vue({
     loginVis: 'login',
     account: '',
     password: '',
-	  loginErr: '',
-	  uid: '',
+    loginErr: '',
+    uid: '',
     regAccount: '',
     regPassword: '',
     regFirstName: '',
@@ -60,7 +60,7 @@ let app = new Vue({
   },
   computed: {
     filterWorks: function () {
-      return filters[this.visibility](this.inputWorks)
+      return filters[this.visibility](app.inputWorks)
     },
     filterNotFinishedWorks: function () {
       return filters.yetFinished(this.inputWorks)
@@ -88,7 +88,7 @@ let app = new Vue({
       this.inputWorks.splice(this.inputWorks.indexOf(todo), 1)
       localStorage.setItem(STORAGE_KEY, '')
       localStorage.setItem(STORAGE_KEY, JSON.stringify(this.inputWorks))
-	    firebase.database().ref(`${this.uid}/data`).set(this.inputWorks)
+      firebase.database().ref(`${this.uid}/data`).set(this.inputWorks)
     },
     finishAllWorks: function () {
       for (let obj of this.inputWorks) {
@@ -96,7 +96,7 @@ let app = new Vue({
         localStorage.setItem(STORAGE_KEY, '')
         localStorage.setItem(STORAGE_KEY, JSON.stringify(this.inputWorks))
       }
-	    firebase.database().ref(`${this.uid}/data`).set(this.inputWorks)
+      firebase.database().ref(`${this.uid}/data`).set(this.inputWorks)
     },
     finishWork: function (todo) {
       if (todo.finished === true) {
@@ -106,7 +106,7 @@ let app = new Vue({
       }
       localStorage.setItem(STORAGE_KEY, '')
       localStorage.setItem(STORAGE_KEY, JSON.stringify(this.inputWorks))
-	    firebase.database().ref(`${this.uid}/data`).set(this.inputWorks)
+      firebase.database().ref(`${this.uid}/data`).set(this.inputWorks)
     },
     changeVisToAll: function () {
       return this.visibility = 'all'
@@ -124,101 +124,68 @@ let app = new Vue({
       return this.loginVis = 'login'
     },
     firebaseLogin: function () {
-	    if (app.account !== '') {
-		    firebase.auth().signInWithEmailAndPassword(app.account, app.password).then(
-				    function (user) {
-					    const uid = user.uid
-					    app.uid = uid
-					    app.login = true
-					    const fire = firebase.database().ref(`${app.uid}/data`)
-					    fire.once('value', function (s) {
-								    if (s.val() === null || s.val().length === 0 || app.inputWorks === null) {
-									    fire.set([{ vis: false }])
-									    app.loading = false
-									    app.inputWorks = [{ vis: false }]
-								    }
-								    localStorage.setItem(STORAGE_KEY, JSON.stringify(s.val()))
-								    app.loading = false
-								    app.inputWorks = (JSON.parse(localStorage.getItem(STORAGE_KEY)))
-							    }
-					    ).catch(
-							    function (error) {
-								    let errorCode = error.code
-								    let errorMsg = error.message
-								    app.loginErr = errorMsg
-								    if (app.loginErr === 'auth/wrong-password') {
-									    app.loginErr = '密碼錯誤。'
-								    } else if (app.loginErr === 'auth/invalid-email') {
-									    app.loginErr = '信箱格式錯誤。'
-								    }
-							    }
-					    )
-				    })
-	    } else if (app.password !== '') {
-		    firebase.auth().signInWithEmailAndPassword(app.account, app.password).then(
-				    function (user) {
-					    app.uid = user.uid
-					    const fire = firebase.database().ref(`${this.uid}/data`)
-					    fire.once('value', function (s) {
-								    if (s.val() === null || s.val().length === 0 || app.inputWorks === null) {
-									    fire.set([{ vis: false }])
-									    app.loading = false
-									    app.inputWorks = [{ vis: false }]
-								    }
-								    localStorage.setItem(STORAGE_KEY, JSON.stringify(s.val()))
-								    app.loading = false
-								    app.inputWorks = (JSON.parse(localStorage.getItem(STORAGE_KEY)))
-							    }
-					    ).catch(
-							    function (error) {
-								    let errorCode = error.code
-								    let errorMsg = error.message
-								    app.loginErr = errorMsg
-								    if (app.loginErr === 'auth/wrong-password') {
-									    app.loginErr = '密碼錯誤。'
-								    } else if (app.loginErr === 'auth/invalid-email') {
-									    app.loginErr = '信箱格式錯誤。'
-								    } else if (app.loginErr === '') {
-									    app.loginErr = ''
-								    }
-							    }
-					    )
-				    })
-	    } else {
-		    alert('你忘記打帳號密碼了！')
-	    }
-	    },
+      if (app.account !== '' && app.password !== '') {
+        firebase.auth().signInWithEmailAndPassword(app.account, app.password).then(function (user) {
+          const uid = user.uid
+          app.uid = uid
+          app.login = true
+          const fire = firebase.database().ref(`${app.uid}/data`)
+          fire.once('value', function (s) {
+            if (s.val() === null || s.val().length === 0 || app.inputWorks === null) {
+              fire.set([{ vis: false }])
+              app.loading = false
+              app.inputWorks = [{ vis: false }]
+            }
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(s.val()))
+            app.loading = false
+            app.inputWorks = (JSON.parse(localStorage.getItem(STORAGE_KEY)))
+          })
+        }).catch(function (error) {
+          let errorCode = error.code
+          let errorMessage = error.message
+          if (errorCode === 'auth/wrong-password') {
+            app.loginErr = '密碼錯誤。'
+          } else {
+            app.loginErr = '帳號格式不正確。'
+          }
+          console.log(error)
+        })
+      } else {
+        alert('你忘記打帳號密碼了！')
+      }
+    },
     firebaseReg: function () {
       firebase.auth().createUserWithEmailAndPassword(app.regAccount, app.regPassword).then(function (user) {
-	      app.uid = user.uid
-	      const fire = firebase.database().ref(`${app.uid}/data`)
-	      fire.set([{ vis: false }])
-	      app.login = true
-	      fire.once('value', function (s) {
-		      if (s.val() === null || s.val().length === 0 || app.inputWorks === null) {
-			      fire.set([{ vis: false }])
-			      app.loading = false
-			      app.inputWorks = [{ vis: false }]
-		      }
-		      localStorage.setItem(STORAGE_KEY, JSON.stringify(s.val()))
-		      app.loading = false
-		      app.inputWorks = (JSON.parse(localStorage.getItem(STORAGE_KEY)))
-	      }
-      }).catch(
-					function (error) {
-  let errorCode = error.code
-  let errorMsg = error.message
-  console.log(error.code)
-  app.regError = errorCode
-  if (app.regError !== '') {
-	  if (app.regError === 'auth/invalid-email') {
-		  app.regError = '信箱格式錯誤。'
-	  } else if (app.regError === 'auth/weak-password') {
-		  app.regError = '密碼必須大於六個字。'
-	  } else if (app.regError === 'auth/email-already-in-use') {
-		  app.regError = '這個帳號已被註冊。'
-	  }
+        app.uid = user.uid
+        const fire = firebase.database().ref(`${app.uid}/data`)
+        fire.set([{ vis: false }])
+        app.login = true
+        fire.once('value', function (s) {
+          if (s.val() === null || s.val().length === 0 || app.inputWorks === null) {
+            fire.set([{ vis: false }])
+            app.loading = false
+            app.inputWorks = [{ vis: false }]
+          }
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(s.val()))
+          app.loading = false
+          app.inputWorks = (JSON.parse(localStorage.getItem(STORAGE_KEY)))
+        })
+      }).catch(function (error) {
+        let errorCode = error.code
+        let errorMsg = error.message
+        console.log(error.code)
+        app.regError = errorCode
+        console.log(errorCode !== '')
+        if (app.regError !== '') {
+          if (errorCode === 'auth/invalid-email') {
+            app.regError = '信箱格式錯誤。'
+          } else if (errorCode === 'auth/weak-password') {
+            app.regError = '密碼必須大於六個字。'
+          } else if (errorCode === 'auth/email-already-in-use') {
+            app.regError = '這個帳號已被註冊。'
+          }
+        }
+      })
+    }
   }
 })
-    }
-  })

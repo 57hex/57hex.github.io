@@ -2,12 +2,12 @@
 function generateRandomInteger(min, max) {
     return Math.floor(min + Math.random() * (max + 1 - min));
 }
-var body = document.body;
-var rocket1 = document.querySelector(".rocket-1");
-var rocket2 = document.querySelector(".rocket-2");
-var rocket3 = document.querySelector(".rocket-3");
+let body = document.body;
+const rocket1 = document.querySelector(".rocket-1");
+const rocket2 = document.querySelector(".rocket-2");
+const rocket3 = document.querySelector(".rocket-3");
 // 預先保存原本的位置，方便火箭飛回來回來
-var rocketLocarion = [
+const rocketLocarion = [
     {
         a: rocket1.style.bottom,
         b: rocket1.style.left,
@@ -49,3 +49,4 @@ function goRocket(e) {
             rocket3.style.left = rocketLocarion[2].b;
     }
 }
+//# sourceMappingURL=test.js.map

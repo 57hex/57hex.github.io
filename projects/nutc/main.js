@@ -2,7 +2,7 @@
 function generateRandomInteger(min, max) {
     return Math.floor(min + Math.random() * (max + 1 - min));
 }
-var monDay = [
+let monDay = [
     {
         lesson: '週會/班會',
         classRoom: '2703',
@@ -20,7 +20,7 @@ var monDay = [
         endTimeMin: '05'
     }
 ];
-var tuesDay = [
+let tuesDay = [
     {
         lesson: '微積分',
         classRoom: '6604',
@@ -30,7 +30,7 @@ var tuesDay = [
         endTimeMin: '25'
     }
 ];
-var wednesDay = [
+let wednesDay = [
     {
         lesson: '國文',
         classRoom: '3904',
@@ -48,7 +48,7 @@ var wednesDay = [
         endTimeMin: '05'
     }
 ];
-var thursDay = [
+let thursDay = [
     {
         lesson: '網際網路與應用',
         classRoom: '2703',
@@ -58,7 +58,7 @@ var thursDay = [
         endTimeMin: '05'
     }
 ];
-var friDay = [
+let friDay = [
     {
         lesson: '英文',
         classRoom: '7301',
@@ -76,7 +76,7 @@ var friDay = [
         endTimeMin: '05'
     }
 ];
-var saturDay = [
+let saturDay = [
     {
         lesson: '線性代數',
         classRoom: '2706',
@@ -94,13 +94,13 @@ var saturDay = [
         endTimeMin: '10'
     }
 ];
-var sunDay = [
+let sunDay = [
     {
         lesson: 'test'
     }
 ];
-var day = new Date();
-var whichDay = checkWhichDay();
+let day = new Date();
+let whichDay = checkWhichDay();
 function checkWhichDay() {
     switch (day.getDay()) {
         case 0:
@@ -120,8 +120,8 @@ function checkWhichDay() {
     }
 }
 function loadList() {
-    var str = '';
-    for (var i = 0; i < whichDay.length; i++) {
+    let str = '';
+    for (let i = 0; i < whichDay.length; i++) {
         if (day.getHours() >= parseInt(whichDay[i].startTimeHour, 0) && day.getHours() <= parseInt(whichDay[i].endTimeHour, 0)) {
             if (day.getHours() <= parseInt(whichDay[i].endTimeHour, 0) && (day.getHours() === parseInt(whichDay[i].startTimeHour, 0) && day.getMinutes() >= parseInt(whichDay[i].startTimeMin, 0)) || (day.getHours() > parseInt(whichDay[i].startTimeHour, 0) && (day.getHours() <= parseInt(whichDay[i].endTimeHour, 0) && day.getMinutes() < parseInt(whichDay[i].endTimeMin, 0)))) {
                 str = '';
@@ -137,7 +137,8 @@ function loadList() {
         }
     }
 }
-var list = document.querySelector('.list');
-var body = document.querySelector('.body');
+let list = document.querySelector('.list');
+let body = document.querySelector('.body');
 body.setAttribute('class', 'body grey darken-2');
 loadList();
+//# sourceMappingURL=main.js.map

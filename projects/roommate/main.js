@@ -2,12 +2,12 @@
 function generateRandomInteger(min, max) {
     return Math.floor(min + Math.random() * (max + 1 - min));
 }
-var indexBanner = document.getElementById('index-banner');
-var bannerHeight = indexBanner.style.height;
-var testText = document.querySelector('.scale-text');
-var startButton = document.querySelector('.start');
-var introduction = document.getElementById('introduction');
-startButton.addEventListener('click', function () {
+let indexBanner = document.getElementById('index-banner');
+let bannerHeight = indexBanner.style.height;
+let testText = document.querySelector('.scale-text');
+let startButton = document.querySelector('.start');
+let introduction = document.getElementById('introduction');
+startButton.addEventListener('click', () => {
     Materialize.toast('其實這邊本來要做動畫，不過他一直不工作，我ㄝㄅ知道why', 5000);
 }, false);
 $('.tap-target').tapTarget('open');
@@ -19,14 +19,14 @@ $('.button-collapse').sideNav({
     onClose: function (el) {
     }
 });
-var sideNav_tw = new Vue({
+let sideNav_tw = new Vue({
     el: '#sideNav',
     data: {
         sideNavTelegram: '用 telegram 聯絡我',
         sideNavInstagram: '用 instagram 聯絡我'
     }
 });
-var intro = new Vue({
+let intro = new Vue({
     el: '#intro',
     data: {
         title: '你好，我是花生罐',
@@ -36,7 +36,7 @@ var intro = new Vue({
         emoji: '🤔'
     }
 });
-var section_1 = new Vue({
+let section_1 = new Vue({
     el: '#section-1',
     data: {
         title: '先自我介紹一下吧😊',
@@ -46,3 +46,4 @@ var section_1 = new Vue({
             '                        '
     }
 });
+//# sourceMappingURL=main.js.map

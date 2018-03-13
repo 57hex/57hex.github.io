@@ -1,33 +1,33 @@
 "use strict";
-var allList = new XMLHttpRequest();
+let allList = new XMLHttpRequest();
 allList.open('get', 'https://57hex.github.io/file.json', false);
 allList.send(null);
-var allWorks;
+let allWorks;
 if (allList.responseText !== '') {
     allWorks = JSON.parse(allList.responseText);
 }
 // 以上用來存作品相關資料。
 //
-var body = document.querySelector('.body');
-var list = document.querySelector('.list');
-var workName = document.querySelector('.workName');
-var workPath = document.querySelector('.workPath');
-var workHTML = document.querySelector('.workHtml');
-var workButton = document.querySelector('.workButton');
+let body = document.querySelector('.body');
+let list = document.querySelector('.list');
+let workName = document.querySelector('.workName');
+let workPath = document.querySelector('.workPath');
+let workHTML = document.querySelector('.workHtml');
+let workButton = document.querySelector('.workButton');
 // 這邊宣告從 ＨＴＭＬ 撈過來的變數。
 workButton.addEventListener('click', addNewWork, false); // 按按鈕時觸發 addNewWork 事件。
 //
 function listAll() {
-    var strName = '';
-    for (var i = 0; i < allWorks.length; i++) {
-        strName += "<div class='col s4 m4 l4 word'><li data-num =" + i + "><a href=" + allWorks[i].link + " class='flow-text'>" + allWorks[i].projectName + "</a></li></div>";
+    let strName = '';
+    for (let i = 0; i < allWorks.length; i++) {
+        strName += `<div class='col s4 m4 l4 word'><li data-num =${i}><a href=${allWorks[i].link} class='flow-text'>${allWorks[i].projectName}</a></li></div>`;
     }
     list.innerHTML = strName;
 }
 // 更新菜單。
 listAll(); // 網頁被載入完的時候更新一次菜單。
 function closeResume() {
-    var resumeBeClosed = document.querySelector('.word');
+    const resumeBeClosed = document.querySelector('.word');
     if (resumeBeClosed.dataset.num === '0') {
         resumeBeClosed.setAttribute('href', '#');
     }
@@ -42,7 +42,7 @@ function addToLocal() {
 function addNewWork() {
     addToLocal();
     if (workName.value !== '' && workPath.value !== '') {
-        var str = localStorage.getItem('workPath');
+        let str = localStorage.getItem('workPath');
         if (workHTML.value !== '') {
             str += '/' + workHTML.value + '.html'; // 自訂路徑補全 HTML
         }
@@ -59,30 +59,30 @@ function addNewWork() {
 }
 // 儲存資料，檢查 InputBox 是否為空。
 // 夜間模式
-var seeMode = document.querySelector('.seeMode');
-var word = document.querySelectorAll('.testWord');
-var inputWord = document.querySelectorAll('.input-box');
-var btn = document.querySelectorAll('.btn');
-var card = document.querySelector('.card-panel');
-var modeToken = 0;
+let seeMode = document.querySelector('.seeMode');
+let word = document.querySelectorAll('.testWord');
+let inputWord = document.querySelectorAll('.input-box');
+let btn = document.querySelectorAll('.btn');
+let card = document.querySelector('.card-panel');
+let modeToken = 0;
 // 預先儲存原本的顏色，不用再抓一次。
-var bodyBGColor = body.style.backgroundColor;
-var btnBGColor = btn[0].style.backgroundColor;
-var cardBGColor = card.style.backgroundColor;
+const bodyBGColor = body.style.backgroundColor;
+const btnBGColor = btn[0].style.backgroundColor;
+const cardBGColor = card.style.backgroundColor;
 //
 localStorage.setItem('modeToken', JSON.stringify(modeToken));
 function changeMode() {
     if (JSON.parse(localStorage.getItem('modeToken')) === 0) {
         body.style.backgroundColor = '#262322';
-        for (var i = 0; i < btn.length; i++) {
+        for (let i = 0; i < btn.length; i++) {
             btn[i].style.backgroundColor = '#485665';
         }
         card.style.backgroundColor = '#485665';
         card.style.color = '#ffffff';
-        for (var i = 0; i < inputWord.length; i++) {
+        for (let i = 0; i < inputWord.length; i++) {
             inputWord[i].style.color = '#ffffff';
         }
-        for (var i = 0; i < word.length; i++) {
+        for (let i = 0; i < word.length; i++) {
             word[i].setAttribute('class', ' blue-text text-lighten-4 flow-text');
         }
         modeToken++;
@@ -91,17 +91,17 @@ function changeMode() {
     }
     else if (JSON.parse(localStorage.getItem('modeToken')) !== 0) {
         body.style.backgroundColor = bodyBGColor;
-        for (var i = 0; i < btn.length; i++) {
+        for (let i = 0; i < btn.length; i++) {
             btn[i].style.backgroundColor = btnBGColor;
         }
         card.style.backgroundColor = cardBGColor;
         card.style.color = '#000000';
-        for (var i = 0; i < word.length; i++) {
+        for (let i = 0; i < word.length; i++) {
             word[i].removeAttribute('class');
             word[i].setAttribute('class', 'flow-text');
         }
         card.style.color = '#000000';
-        for (var i = 0; i < inputWord.length; i++) {
+        for (let i = 0; i < inputWord.length; i++) {
             inputWord[i].style.color = '#000000';
         }
         seeMode.textContent = '日間模式';
@@ -111,3 +111,4 @@ function changeMode() {
 }
 seeMode.addEventListener('click', changeMode, false);
 // 為什麼睡覺還要回家 麻煩死ㄌ= ="
+//# sourceMappingURL=main.js.map

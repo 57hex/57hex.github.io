@@ -6,10 +6,10 @@ function beginRandomInt() {
     document.getElementById("inputCount").value = generateRandomInteger(0, 50).toString();
     document.getElementById("inputPrice").value = generateRandomInteger(50, 200).toString();
 }
-var count = document.querySelector("#inputCount");
-var price = document.querySelector("#inputPrice");
-var btn = document.querySelector("#btn");
-var total = document.querySelector("#total");
+let count = document.querySelector("#inputCount");
+let price = document.querySelector("#inputPrice");
+let btn = document.querySelector("#btn");
+let total = document.querySelector("#total");
 count.addEventListener("blur", checkNull, false);
 price.addEventListener("blur", checkNull, false);
 btn.addEventListener("click", calc, false);
@@ -23,13 +23,14 @@ function checkNull() {
     }
 }
 function calc() {
-    var x = parseInt(count.value, 0);
-    var y = parseInt(price.value, 0);
+    const x = parseInt(count.value, 0);
+    const y = parseInt(price.value, 0);
     total.textContent = (x * y).toString();
     document.getElementById("count").textContent = x.toString();
 }
 beginRandomInt();
 calc();
-var person = {
+let person = {
     interest: ["programing", "eatSomething"],
 };
+//# sourceMappingURL=main.js.map

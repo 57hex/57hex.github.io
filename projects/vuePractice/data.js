@@ -149,6 +149,9 @@ let app = new Vue({
                     if (errorCode === 'auth/wrong-password') {
                         app.loginErr = '密碼錯誤。';
                     }
+                    else if (errorCode === 'auth/user-not-found') {
+                        app.loginErr = '使用者不存在，請註冊。';
+                    }
                     else {
                         app.loginErr = '帳號格式不正確。';
                     }

@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="13a6309e-3bb4-4115-9615-515187962348" name="Default" comment="change to RWD">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/js/main.js" afterPath="$PROJECT_DIR$/js/main.js" />
-      <change beforePath="$PROJECT_DIR$/projects/BMI/main.js" afterPath="$PROJECT_DIR$/projects/BMI/main.js" />
-      <change beforePath="$PROJECT_DIR$/projects/birthday/test.js" afterPath="$PROJECT_DIR$/projects/birthday/test.js" />
-      <change beforePath="$PROJECT_DIR$/projects/food/main.js" afterPath="$PROJECT_DIR$/projects/food/main.js" />
-      <change beforePath="$PROJECT_DIR$/projects/nutc/main.js" afterPath="$PROJECT_DIR$/projects/nutc/main.js" />
-      <change beforePath="$PROJECT_DIR$/projects/pushCartsEveryDay/main.js" afterPath="$PROJECT_DIR$/projects/pushCartsEveryDay/main.js" />
-      <change beforePath="$PROJECT_DIR$/projects/pushcarts/carts.js" afterPath="$PROJECT_DIR$/projects/pushcarts/carts.js" />
-      <change beforePath="$PROJECT_DIR$/projects/rocket/test.js" afterPath="$PROJECT_DIR$/projects/rocket/test.js" />
-      <change beforePath="$PROJECT_DIR$/projects/roommate/main.js" afterPath="$PROJECT_DIR$/projects/roommate/main.js" />
-      <change beforePath="$PROJECT_DIR$/projects/todoList/main.js" afterPath="$PROJECT_DIR$/projects/todoList/main.js" />
       <change beforePath="$PROJECT_DIR$/projects/vuePractice/data.js" afterPath="$PROJECT_DIR$/projects/vuePractice/data.js" />
+      <change beforePath="$PROJECT_DIR$/projects/vuePractice/data.js.map" afterPath="$PROJECT_DIR$/projects/vuePractice/data.js.map" />
       <change beforePath="$PROJECT_DIR$/projects/vuePractice/data.ts" afterPath="$PROJECT_DIR$/projects/vuePractice/data.ts" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -31,8 +21,8 @@
       <file leaf-file-name="data.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/projects/vuePractice/data.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="175" column="26" lean-forward="true" selection-start-line="175" selection-start-column="26" selection-end-line="175" selection-end-column="26" />
+            <state relative-caret-position="561">
+              <caret line="157" column="6" lean-forward="true" selection-start-line="157" selection-start-column="6" selection-end-line="157" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -41,13 +31,10 @@
       <file leaf-file-name="data.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/projects/vuePractice/data.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-112">
-              <caret line="145" column="33" lean-forward="false" selection-start-line="145" selection-start-column="33" selection-end-line="145" selection-end-column="33" />
+            <state relative-caret-position="193">
+              <caret line="150" column="21" lean-forward="true" selection-start-line="150" selection-start-column="21" selection-end-line="150" selection-end-column="21" />
               <folding>
-                <marker date="1520960747700" expanded="true" signature="4235:4966" ph="{...}" />
-                <marker date="1520960747700" expanded="true" signature="4296:4966" ph="{...}" />
-                <marker date="1520960747700" expanded="true" signature="4405:4966" ph="{...}" />
-                <marker date="1520960747700" expanded="true" signature="4651:4966" ph="{...}" />
+                <marker date="1520960958741" expanded="true" signature="5493:5711" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -416,7 +403,7 @@
       <workItem from="1520847586366" duration="17302000" />
       <workItem from="1520958018832" duration="84000" />
       <workItem from="1520958125561" duration="351000" />
-      <workItem from="1520958499384" duration="2159000" />
+      <workItem from="1520958499384" duration="2362000" />
     </task>
     <task id="LOCAL-00001" summary="change to RWD">
       <created>1516672989335</created>
@@ -429,7 +416,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="244092000" />
+    <option name="totallyTimeSpent" value="244295000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="456" y="22" width="905" height="878" extended-state="0" />
@@ -786,19 +773,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/projects/vuePractice/data.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-112">
-          <caret line="145" column="33" lean-forward="false" selection-start-line="145" selection-start-column="33" selection-end-line="145" selection-end-column="33" />
-          <folding>
-            <marker date="1520960747700" expanded="true" signature="4235:4966" ph="{...}" />
-            <marker date="1520960747700" expanded="true" signature="4296:4966" ph="{...}" />
-            <marker date="1520960747700" expanded="true" signature="4405:4966" ph="{...}" />
-            <marker date="1520960747700" expanded="true" signature="4651:4966" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/projects/vuePractice/test.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-318">
@@ -809,10 +783,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/projects/vuePractice/data.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="150" column="21" lean-forward="true" selection-start-line="150" selection-start-column="21" selection-end-line="150" selection-end-column="21" />
+          <folding>
+            <marker date="1520960958741" expanded="true" signature="5493:5711" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/projects/vuePractice/data.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="175" column="26" lean-forward="true" selection-start-line="175" selection-start-column="26" selection-end-line="175" selection-end-column="26" />
+        <state relative-caret-position="561">
+          <caret line="157" column="6" lean-forward="true" selection-start-line="157" selection-start-column="6" selection-end-line="157" selection-end-column="6" />
           <folding />
         </state>
       </provider>

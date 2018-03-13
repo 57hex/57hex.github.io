@@ -14,17 +14,18 @@
         <div class="container">
 
             <form class="form-signin">
-                <div v-if="loginVis === 'login'">
+                <div v-if="loginPage">
                     <input type="email" class="form-control" placeholder="請輸入帳號" v-model="account" required autofocus>
                     <input type="password" class="form-control" placeholder="請輸入密碼" v-model="password" required>
+                    <p v-if="loginErr !== ''" class="text-danger"> {{ loginErr }} </p>
                     <button class="btn btn-lg btn-primary btn-block" type="submit" @click.prevent="firebaseLogin">登入</button>
                     <button class="btn btn-primary btn-block" @click.prevent="changeVisToRegister()">註冊</button>
                 </div>
-                <div v-if="loginVis === 'register'">
+                <div v-if="regPage">
                     <input type="text" class="form-control" placeholder="請輸入要註冊的帳號" v-model="regAccount" required autofocus>
                     <input type="password" class="form-control" placeholder="請輸入要註冊的密碼" v-model="regPassword" required>
                     <button class="btn btn-lg btn-primary btn-block" type="submit" @click.prevent="firebaseReg">註冊</button>
-                    <p v-if="regError !== ''" class="text-error"> {{ regError }} </p>
+                    <p v-if="regError !== ''" class="text-danger"> {{ regError }} </p>
                     <button class="btn btn-primary btn-block" @click.prevent="changeVisToLogin()">已經有帳號？</button>
                 </div>
             </form>
@@ -32,18 +33,18 @@
         </div> <!-- /container -->
     </section>
     <section v-if='login === true'>
-        <h1 class="text-center">{{ title }}</h1>
+        <h1 class="text-center text-secondary">{{ title }}</h1>
         <div class="formBody">
-            <input type="text" class="form-control" placeholder="請輸入待辦事項" v-model="inputWork"
+            <input type="text" class="form-control darkTheme" placeholder="請輸入待辦事項" v-model="inputWork"
                    @keyup.enter="addWork(inputWork)">
             <div class="container">
                 <div class="align-items-center">
                     <div class="row">
                         <div class="col-xs-4">
-                            <button class="btn" v-on:click="addWork(inputWork)">增加事項</button>
+                            <button class="btn text-white darkTheme" v-on:click="addWork(inputWork)">增加事項</button>
                         </div>
                         <div class="col-xs-4">
-                            <button class="btn" v-on:click="finishAllWorks()">全部做完</button>
+                            <button class="btn text-white darkTheme" v-on:click="finishAllWorks()">全部做完</button>
                         </div>
                     </div>
                 </div>
@@ -52,8 +53,8 @@
                 <div class="col-lg">
                     <ul class="list-group list-group-flush rounded">
                         <li v-for="data in filterWorks" v-bind:class="{ active: data.finished }"
-                            v-on:click="finishWork(data)" class="list-group-item">
-                            <p class="text-truncate"> {{ data.content }} </p>
+                            v-on:click="finishWork(data)" class="list-group-item darkTheme">
+                            <p class="text-truncate text-white"> {{ data.content }} </p>
                             <a href="#" @click.prevent="deleteWork(data)">刪除</a>
                         </li>
                         <p v-if="loading === true" class="text-white">載入中...</p>

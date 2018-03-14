@@ -1,6 +1,10 @@
 .active a{
     color: red !important;
 }
+body {
+    height: 100%;
+    width: 100%;
+}
 @import "../../css/notosanstc.css";
 * {
     font-family: "Noto Sans TC" !important;

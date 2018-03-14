@@ -84,8 +84,7 @@ let app = new Vue({
 	  },
 	  exitingUserName: function () {
 		  if (checkExitUser()) {
-		  	let acc = JSON.parse(localStorage.getItem(STORAGE_MAIL_KEY))
-			  return acc.email
+			  return JSON.parse(localStorage.getItem(STORAGE_MAIL_KEY)).email
 		  } else {
 		  	return ''
 		  }
@@ -150,6 +149,7 @@ let app = new Vue({
         	const uid = user.uid
           app.uid = uid
           app.login = true
+	        app.password = ''
           const fire = firebase.database().ref(`${app.uid}/data`)
           fire.once('value', function (s) {
             if (s.val() === null || s.val().length === 0 || app.inputWorks === null) {
@@ -183,7 +183,7 @@ let app = new Vue({
 	      app.exitingUser = true
       	app.uid = user.uid
 	      app.account = app.regAccount
-	      app.password = app.regPassword
+	      app.regPassword = ''
 	      localStorage.setItem(STORAGE_MAIL_KEY, JSON.stringify({ email: app.account }))
 	      const fire = firebase.database().ref(`${app.uid}/data`)
         fire.set([{ vis: false }])

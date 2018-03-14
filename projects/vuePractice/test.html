@@ -4,24 +4,29 @@
     <meta charset="UTF-8">
     <title>測試</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../js/vue.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-light loginbg userelative">
+<nav class="navbar navbar-dark" style="background: rgba(0,0,0,0.25)">
+    <span class="navbar-brand mb-0 h1">Navbar</span>
+</nav>
 <div class="container" id="newapp">
     <section v-if='login === false' class="loginbg">
         <div class="container">
-
             <form class="form-signin">
-                <div v-if="loginPage">
-                    <input type="email" class="form-control" placeholder="請輸入帳號" v-model="account" required autofocus>
-                    <input type="password" class="form-control" placeholder="請輸入密碼" v-model="password" required>
+                <h1 class="text-center text-dark">{{ text.title }}</h1>
+                <div v-if="loginPage" class="formBody">
+                    <input type="email" class="form-control" :placeholder="text.inputAccount" v-model="account" required autofocus>
+                    <input type="password" class="form-control" :placeholder="text.inputPassword" v-model="password" required>
                     <p v-if="loginErr !== ''" class="text-danger"> {{ loginErr }} </p>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit" @click.prevent="firebaseLogin">登入</button>
-                    <button class="btn btn-primary btn-block" @click.prevent="changeVisToRegister()">註冊</button>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit" @click.prevent="firebaseLogin">{{ text.loginBtn }}</button>
+                    <button class="btn btn-primary btn-block" @click.prevent="changeVisToRegister()">{{ text.regBtn }}</button>
+                    <button class="btn btn-primary btn-block" v-if="exitingUser === true" @click.prevent="firebaseExitUser"> {{ exitingUserName }} 歡迎回來😊</button>
                 </div>
-                <div v-if="regPage">
+                <div v-if="regPage" class="formBody">
                     <input type="text" class="form-control" placeholder="請輸入要註冊的帳號" v-model="regAccount" required autofocus>
                     <input type="password" class="form-control" placeholder="請輸入要註冊的密碼" v-model="regPassword" required>
                     <button class="btn btn-lg btn-primary btn-block" type="submit" @click.prevent="firebaseReg">註冊</button>
@@ -33,15 +38,15 @@
         </div> <!-- /container -->
     </section>
     <section v-if='login === true'>
-        <h1 class="text-center text-secondary">{{ title }}</h1>
+        <h1 class="text-center text-secondary">{{ text.title }}</h1>
         <div class="formBody">
-            <input type="text" class="form-control darkTheme" placeholder="請輸入待辦事項" v-model="inputWork"
+            <input type="text" class="form-control" placeholder="請輸入待辦事項" v-model="inputWork"
                    @keyup.enter="addWork(inputWork)">
             <div class="container">
                 <div class="align-items-center">
                     <div class="row">
                         <div class="col-xs-4">
-                            <button class="btn text-white darkTheme" v-on:click="addWork(inputWork)">增加事項</button>
+                            <button class="btn darkTheme text-white" v-on:click="addWork(inputWork)">增加事項</button>
                         </div>
                         <div class="col-xs-4">
                             <button class="btn text-white darkTheme" v-on:click="finishAllWorks()">全部做完</button>
@@ -71,6 +76,7 @@
                                     件事情未完成。</p>
                             </div>
                         </div>
+                    </ul>
                 </div>
             </div>
             <br>
@@ -80,7 +86,6 @@
 </div>
 </body>
 <footer>
-    <script src="../../js/vue.min.js"></script>
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

@@ -1,4 +1,5 @@
 let STORAGE_KEY = 'savedData'
+let STORAGE_MAIL_KEY = 'mailUser'
 localStorage.setItem(STORAGE_KEY, '')
 let config = {
   apiKey: 'AIzaSyAVpPL0_unC-ElX6Qfein_Ki6xil2AxFo0',
@@ -41,26 +42,33 @@ let filters = {
 let app = new Vue({
   el: '#newapp',
   data: {
-    title: '待辦事項',
-    inputWork: '',
-    inputWorks: [{ vis: false }],
-    visibility: 'all',
+  	text: {
+		  title: '待辦事項',
+		  inputAccount: '請輸入帳號',
+		  inputPassword: '請輸入密碼',
+		  loginBtn: '登入',
+		  regBtn: '註冊',
+		  alreadyHaveAcc: '已經有帳號？'
+	  },
     login: false,
     loginVis: 'login',
     account: '',
     password: '',
-    loginErr: '',
     uid: '',
     regAccount: '',
     regPassword: '',
     regFirstName: '',
     regLastName: '',
-    regError: '',
+	  loginErr: '',
+	  regError: '',
+	  inputWork: '',
+	  inputWorks: [{ vis: false }],
+	  visibility: 'all',
     loading: true
   },
   computed: {
     filterWorks: function () {
-      return filters[this.visibility](app.inputWorks)
+      return filters[this.visibility](this.inputWorks)
     },
     filterNotFinishedWorks: function () {
       return filters.yetFinished(this.inputWorks)
@@ -70,7 +78,18 @@ let app = new Vue({
     },
     regPage: function () {
       return (this.loginVis === 'register') && (this.login === false)
-    }
+    },
+	  exitingUser: function () {
+		  return checkExitUser()
+	  },
+	  exitingUserName: function () {
+		  if (checkExitUser()) {
+		  	let acc = JSON.parse(localStorage.getItem(STORAGE_MAIL_KEY))
+			  return acc.email
+		  } else {
+		  	return ''
+		  }
+	  }
   },
   methods: {
     addWork: function (todo: any) {
@@ -82,6 +101,7 @@ let app = new Vue({
         localStorage.setItem('savedData', '')
         localStorage.setItem('savedData', JSON.stringify(this.inputWorks))
         firebase.database().ref(`${this.uid}/data`).set(this.inputWorks)
+	      app.inputWorrk = ''
       }
     },
     deleteWork: function (todo) {
@@ -126,7 +146,8 @@ let app = new Vue({
     firebaseLogin: function () {
       if (app.account !== '' && app.password !== '') {
         firebase.auth().signInWithEmailAndPassword(app.account, app.password).then(function (user) {
-          const uid = user.uid
+	        app.exitingUser = true
+        	const uid = user.uid
           app.uid = uid
           app.login = true
           const fire = firebase.database().ref(`${app.uid}/data`)
@@ -136,6 +157,7 @@ let app = new Vue({
               app.loading = false
               app.inputWorks = [{ vis: false }]
             }
+            localStorage.setItem(STORAGE_MAIL_KEY, JSON.stringify({ email: app.account }))
             localStorage.setItem(STORAGE_KEY, JSON.stringify(s.val()))
             app.loading = false
             app.inputWorks = (JSON.parse(localStorage.getItem(STORAGE_KEY)))
@@ -145,7 +167,7 @@ let app = new Vue({
           let errorMessage = error.message
           if (errorCode === 'auth/wrong-password') {
             app.loginErr = '密碼錯誤。'
-          } else if (errorCode === 'auth/user-not-found'){
+          } else if (errorCode === 'auth/user-not-found') {
           	app.loginErr = '使用者不存在，請註冊。'
           } else {
             app.loginErr = '帳號格式不正確。'
@@ -158,8 +180,12 @@ let app = new Vue({
     },
     firebaseReg: function () {
       firebase.auth().createUserWithEmailAndPassword(app.regAccount, app.regPassword).then(function (user) {
-        app.uid = user.uid
-        const fire = firebase.database().ref(`${app.uid}/data`)
+	      app.exitingUser = true
+      	app.uid = user.uid
+	      app.account = app.regAccount
+	      app.password = app.regPassword
+	      localStorage.setItem(STORAGE_MAIL_KEY, JSON.stringify({ email: app.account }))
+	      const fire = firebase.database().ref(`${app.uid}/data`)
         fire.set([{ vis: false }])
         app.login = true
         fire.once('value', function (s) {
@@ -188,6 +214,20 @@ let app = new Vue({
           }
         }
       })
+    },
+	  firebaseExitUser: function () {
+    if (checkExitUser()) {
+				// TODO: 這邊要加上歡迎回來功能。其實只要增加一個按鈕按下去之後會自動填入 mail 即可。
+	    let acc = JSON.parse(localStorage.getItem(STORAGE_MAIL_KEY))
+	    app.account = acc.email
     }
+	  }
   }
 })
+function checkExitUser () {
+  if (localStorage.getItem(STORAGE_MAIL_KEY) !== null && localStorage.getItem(STORAGE_MAIL_KEY) !== undefined && localStorage.getItem(STORAGE_MAIL_KEY) !== '') {
+    return true
+  } else {
+    return false
+  }
+}

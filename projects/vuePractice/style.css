@@ -13,7 +13,7 @@
 }
 .loginbg {
     height: 100%;
-    background: url("pic/background.jpg") center fixed no-repeat;
+    background: linear-gradient(to top, #6389c2, #9487c2, #bc84b7, #d886a4, #e58e8e) center fixed no-repeat;
     -webkit-background-size: cover;
     background-size: cover;
 }
@@ -26,6 +26,9 @@
     -webkit-animation: squareAppear 1s 1s;
     -o-animation: squareAppear 1s 1s;
     animation: squareAppear 1s 1s;
+    padding: 4px;
+    border: transparent solid;
+    border-radius: 7px;
 }
 .loginbtn {
     padding: 0;

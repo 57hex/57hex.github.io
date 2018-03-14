@@ -74,6 +74,9 @@ let app = new Vue({
         filterNotFinishedWorks: function () {
             return filters.yetFinished(this.inputWorks);
         },
+        filterHaveFinishedWorks: function () {
+            return filters.haveFinished(this.inputWorks);
+        },
         loginPage: function () {
             return (this.loginVis === 'login') && (this.login === false);
         },
@@ -112,6 +115,9 @@ let app = new Vue({
             localStorage.setItem(STORAGE_KEY, JSON.stringify(this.inputWorks));
             firebase.database().ref(`${this.uid}/data`).set(this.inputWorks);
         },
+        pinWork: function (todo) {
+            todo.pinned = true;
+        },
         finishAllWorks: function () {
             for (let obj of this.inputWorks) {
                 obj.finished = true;
@@ -121,6 +127,7 @@ let app = new Vue({
             firebase.database().ref(`${this.uid}/data`).set(this.inputWorks);
         },
         finishWork: function (todo) {
+            console.log(todo);
             if (todo.finished === true) {
                 todo.finished = false;
             }
@@ -161,11 +168,12 @@ let app = new Vue({
                             app.loading = false;
                             app.inputWorks = [{ vis: false }];
                         }
-                        localStorage.setItem(STORAGE_MAIL_KEY, JSON.stringify({ email: app.account }));
                         localStorage.setItem(STORAGE_KEY, JSON.stringify(s.val()));
                         app.loading = false;
                         app.inputWorks = (JSON.parse(localStorage.getItem(STORAGE_KEY)));
                     });
+                    localStorage.setItem(STORAGE_MAIL_KEY, '');
+                    localStorage.setItem(STORAGE_MAIL_KEY, JSON.stringify({ email: app.account }));
                 }).catch(function (error) {
                     let errorCode = error.code;
                     let errorMessage = error.message;
@@ -191,6 +199,7 @@ let app = new Vue({
                 app.uid = user.uid;
                 app.account = app.regAccount;
                 app.regPassword = '';
+                localStorage.setItem(STORAGE_MAIL_KEY, '');
                 localStorage.setItem(STORAGE_MAIL_KEY, JSON.stringify({ email: app.account }));
                 const fire = firebase.database().ref(`${app.uid}/data`);
                 fire.set([{ vis: false }]);

@@ -11,7 +11,7 @@ let config = {
 }
 firebase.initializeApp(config)
 let filters = {
-  all: function (todo: any) {
+  all: function (todo: any) { // 返回全部陣列
     let filter = []
     for (let obj of todo) {
       if (obj.vis !== false) {
@@ -20,7 +20,7 @@ let filters = {
     }
     return filter
   },
-  yetFinished: function (todo: any) {
+  yetFinished: function (todo: any) { // 返回未完成的資料
     let filter = []
     for (let obj of todo) {
       if (obj.finished === false && obj.vis !== false) {
@@ -29,7 +29,7 @@ let filters = {
     }
     return filter
   },
-  haveFinished: function (todo: any) {
+  haveFinished: function (todo: any) { // 返回已完成的資料
     let filter = []
     for (let obj of todo) {
       if (obj.finished === true && obj.vis !== false) {
@@ -90,6 +90,13 @@ let app = new Vue({
 			  return JSON.parse(localStorage.getItem(STORAGE_MAIL_KEY)).email
 		  } else {
 		  	return ''
+		  }
+	  },
+	  checkLoginStatus: function () {
+		  if (this.login === true) {
+		  	return true
+		  } else {
+		  	return false
 		  }
 	  }
   },
@@ -224,7 +231,6 @@ let app = new Vue({
         })
       }).catch(function (error) {
         let errorCode = error.code
-        let errorMsg = error.message
         console.log(error.code)
         app.regError = errorCode
         console.log(errorCode !== '')
@@ -241,10 +247,16 @@ let app = new Vue({
     },
 	  firebaseExitUser: function () {
     if (checkExitUser()) {
-				// TODO: 這邊要加上歡迎回來功能。其實只要增加一個按鈕按下去之後會自動填入 mail 即可。
-	    let acc = JSON.parse(localStorage.getItem(STORAGE_MAIL_KEY))
-	    app.account = acc.email
+      	// 這邊要加上歡迎回來功能。其實只要增加一個按鈕按下去之後會自動填入 mail 即可。
+	      app.account = JSON.parse(localStorage.getItem(STORAGE_MAIL_KEY)).email
     }
+	  },
+	  firebaseSignOut: function () {
+		  firebase.auth().signOut().then(
+		  		function (user) {
+					  location.reload(true)
+				  }
+		  )
 	  }
   }
 })

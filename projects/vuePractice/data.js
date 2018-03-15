@@ -93,6 +93,14 @@ let app = new Vue({
             else {
                 return '';
             }
+        },
+        checkLoginStatus: function () {
+            if (this.login === true) {
+                return true;
+            }
+            else {
+                return false;
+            }
         }
     },
     methods: {
@@ -234,7 +242,6 @@ let app = new Vue({
                 });
             }).catch(function (error) {
                 let errorCode = error.code;
-                let errorMsg = error.message;
                 console.log(error.code);
                 app.regError = errorCode;
                 console.log(errorCode !== '');
@@ -253,10 +260,14 @@ let app = new Vue({
         },
         firebaseExitUser: function () {
             if (checkExitUser()) {
-                // TODO: 這邊要加上歡迎回來功能。其實只要增加一個按鈕按下去之後會自動填入 mail 即可。
-                let acc = JSON.parse(localStorage.getItem(STORAGE_MAIL_KEY));
-                app.account = acc.email;
+                // 這邊要加上歡迎回來功能。其實只要增加一個按鈕按下去之後會自動填入 mail 即可。
+                app.account = JSON.parse(localStorage.getItem(STORAGE_MAIL_KEY)).email;
             }
+        },
+        firebaseSignOut: function () {
+            firebase.auth().signOut().then(function (user) {
+                location.reload(true);
+            });
         }
     }
 });

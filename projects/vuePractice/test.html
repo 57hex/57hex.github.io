@@ -10,83 +10,109 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-light loginbg userelative">
-<nav class="navbar navbar-dark" style="background: rgba(0,0,0,0.25)">
-    <span class="navbar-brand mb-0 h1">Navbar</span>
-</nav>
-<div class="container" id="newapp">
-    <section v-if='login === false' class="loginbg">
-        <div class="container">
-            <form class="form-signin">
-                <h1 class="text-center text-dark">{{ text.title }}</h1>
-                <div v-if="loginPage" class="formBody">
-                    <input type="email" class="form-control" :placeholder="text.inputAccount" v-model="account" required autofocus>
-                    <input type="password" class="form-control" :placeholder="text.inputPassword" v-model="password" required>
-                    <p v-if="loginErr !== ''" class="text-danger"> {{ loginErr }} </p>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit" @click.prevent="firebaseLogin">{{ text.loginBtn }}</button>
-                    <button class="btn btn-primary btn-block" @click.prevent="changeVisToRegister()">{{ text.regBtn }}</button>
-                    <button class="btn btn-primary btn-block" v-if="exitingUser === true" @click.prevent="firebaseExitUser"> {{ exitingUserName }} 歡迎回來😊</button>
-                </div>
-                <div v-if="regPage" class="formBody">
-                    <input type="text" class="form-control" placeholder="請輸入要註冊的帳號" v-model="regAccount" required autofocus>
-                    <input type="password" class="form-control" placeholder="請輸入要註冊的密碼" v-model="regPassword" required>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit" @click.prevent="firebaseReg">註冊</button>
-                    <p v-if="regError !== ''" class="text-danger"> {{ regError }} </p>
-                    <button class="btn btn-primary btn-block" @click.prevent="changeVisToLogin()">已經有帳號？</button>
-                </div>
-            </form>
-
-        </div> <!-- /container -->
-    </section>
-    <section v-if='login === true'>
-        <h1 class="text-center text-secondary">{{ text.title }}</h1>
-        <div class="formBody">
-            <input type="text" class="form-control" placeholder="請輸入待辦事項" v-model="inputWork"
-                   @keyup.enter="addWork(inputWork)">
+<div id="newapp">
+    <nav class="navbar navbar-dark" style="background: rgba(0,0,0,0.25)">
+        <span class="navbar-brand mb-0 h1">Navbar</span>
+        <a href="#" class="navbar-brand" @click.prevent="firebaseSignOut" v-if="checkLoginStatus === true">登出</a>
+    </nav>
+    <div class="container">
+        <section v-if='login === false' class="loginbg">
             <div class="container">
-                <div class="align-items-center">
-                    <div class="row">
-                        <div class="col-xs-4">
-                            <button class="btn btn-dark text-white  d-md-none d-lg-none d-xl-none" v-on:click="addWork(inputWork)">增加事項</button>
-                        </div>
-                        <div class="col-xs-4">
-                            <button class="btn btn-dark d-md-none d-lg-none d-xl-none" v-on:click="finishAllWorks()">全部做完</button>
+                <form class="form-signin">
+                    <h1 class="text-center text-dark">{{ text.title }}</h1>
+                    <div v-if="loginPage" class="formBody">
+                        <input type="email" class="form-control" :placeholder="text.inputAccount" v-model="account"
+                               required autofocus>
+                        <input type="password" class="form-control" :placeholder="text.inputPassword" v-model="password"
+                               required>
+                        <p v-if="loginErr !== ''" class="text-danger"> {{ loginErr }} </p>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit" @click.prevent="firebaseLogin">{{
+                            text.loginBtn }}
+                        </button>
+                        <button class="btn btn-primary btn-block" @click.prevent="changeVisToRegister()">{{ text.regBtn
+                            }}
+                        </button>
+                        <button class="btn btn-primary btn-block" v-if="exitingUser === true"
+                                @click.prevent="firebaseExitUser"> {{ exitingUserName }} 歡迎回來😊
+                        </button>
+                    </div>
+                    <div v-if="regPage" class="formBody">
+                        <input type="text" class="form-control" placeholder="請輸入要註冊的帳號" v-model="regAccount" required
+                               autofocus>
+                        <input type="password" class="form-control" placeholder="請輸入要註冊的密碼" v-model="regPassword"
+                               required>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit" @click.prevent="firebaseReg">註冊
+                        </button>
+                        <p v-if="regError !== ''" class="text-danger"> {{ regError }} </p>
+                        <button class="btn btn-primary btn-block" @click.prevent="changeVisToLogin()">已經有帳號？</button>
+                    </div>
+                </form>
+
+            </div> <!-- /container -->
+        </section>
+        <section v-if='login === true'>
+            <h1 class="text-center text-secondary">{{ text.title }}</h1>
+            <div class="formBody">
+                <input type="text" class="form-control" placeholder="請輸入待辦事項" v-model="inputWork"
+                       @keyup.enter="addWork(inputWork)">
+                <div class="container">
+                    <div class="align-items-center">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <button class="btn btn-dark text-white  d-md-none d-lg-none d-xl-none"
+                                        v-on:click="addWork(inputWork)">增加事項
+                                </button>
+                            </div>
+                            <div class="col-xs-4">
+                                <button class="btn btn-dark d-md-none d-lg-none d-xl-none"
+                                        v-on:click="finishAllWorks()">全部做完
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg">
-                    <ul class="list-group list-group-flush rounded">
-                        <li v-for="data in filterWorks" v-bind:class="{ active: data.finished }"
-                            class="list-group-item darkTheme">
-                            <p class="text-truncate text-white"> {{ data.content }} <span v-if="checkIsPinnedOrNot(data) === true" class="badge badge-pill badge-warning">被保護</span> </p>
-                            <button class="btn btn-outline-light" @click.prevent="finishWork(data)">已完成</button>
-                            <button v-if="checkIsPinnedOrNot(data) === false" class="btn btn-danger" @click.prevent="deleteWork(data)">刪除</button>
-                            <button class="btn btn-outline-warrning" @click.prevent="pinWork(data)">保護</button>
+                <div class="row">
+                    <div class="col-lg">
+                        <ul class="list-group list-group-flush rounded">
+                            <li v-for="data in filterWorks" v-bind:class="{ active: data.finished }"
+                                class="list-group-item darkTheme">
+                                <p class="text-truncate text-white"> {{ data.content }} <span
+                                        v-if="checkIsPinnedOrNot(data) === true" class="badge badge-pill badge-warning">被保護</span>
+                                </p>
+                                <button class="btn btn-outline-light" @click.prevent="finishWork(data)">已完成</button>
+                                <button v-if="checkIsPinnedOrNot(data) === false" class="btn btn-danger"
+                                        @click.prevent="deleteWork(data)">刪除
+                                </button>
+                                <button class="btn btn-outline-warrning" @click.prevent="pinWork(data)">保護</button>
 
-                        </li>
-                        <p v-if="loading === true" class="text-white">載入中...</p>
-                        <div class="container">
-                            <div class="row">
-                                <button @click="changeVisToYetFinished" class="btn btn-lg text-light bg-primary col-lg-2">未完成
-                                    <span class="badge badge-light">{{ filterNotFinishedWorks.length }}</span>
-                                </button>
-                                <button @click="changeVisToHaveFinished" class="btn  btn-lg text-light bg-primary col-lg-2">
-                                    已完成 <span class="badge badge-light">{{ filterHaveFinishedWorks.length }}</span>
-                                </button>
-                                <button @click="changeVisToAll" class="btn text-light bg-primary col-lg-2">顯示全部</button>
-                                <p class="col-lg-4 text-white align-middle" style="margin-bottom: 0; margin-top: 8px">共有
-                                    {{ inputWorks.length -1 }} 件事，還有 {{ filterNotFinishedWorks.length }}
-                                    件事情未完成。</p>
+                            </li>
+                            <p v-if="loading === true" class="text-white">載入中...</p>
+                            <div class="container">
+                                <div class="row">
+                                    <button @click="changeVisToYetFinished"
+                                            class="btn btn-lg text-light bg-primary col-lg-2">未完成
+                                        <span class="badge badge-light">{{ filterNotFinishedWorks.length }}</span>
+                                    </button>
+                                    <button @click="changeVisToHaveFinished"
+                                            class="btn  btn-lg text-light bg-primary col-lg-2">
+                                        已完成 <span class="badge badge-light">{{ filterHaveFinishedWorks.length }}</span>
+                                    </button>
+                                    <button @click="changeVisToAll" class="btn text-light bg-primary col-lg-2">顯示全部
+                                    </button>
+                                    <p class="col-lg-4 text-white align-middle"
+                                       style="margin-bottom: 0; margin-top: 8px">共有
+                                        {{ inputWorks.length -1 }} 件事，還有 {{ filterNotFinishedWorks.length }}
+                                        件事情未完成。</p>
+                                </div>
                             </div>
-                        </div>
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
+                <br>
             </div>
             <br>
-        </div>
-        <br>
-    </section>
+        </section>
+    </div>
 </div>
 </body>
 <footer>

@@ -1,5 +1,6 @@
 let STORAGE_KEY = 'savedData'
 let STORAGE_MAIL_KEY = 'mailUser'
+let STORAGE_UID_KEY = 'userId'
 localStorage.setItem(STORAGE_KEY, '')
 let config = {
   apiKey: 'AIzaSyAVpPL0_unC-ElX6Qfein_Ki6xil2AxFo0',
@@ -111,7 +112,7 @@ let app = new Vue({
         localStorage.setItem('savedData', '')
         localStorage.setItem('savedData', JSON.stringify(this.inputWorks))
         firebase.database().ref(`${this.uid}/data`).set(this.inputWorks)
-	      app.inputWorrk = ''
+	      app.inputWork = ''
       }
     },
     deleteWork: function (todo) {
@@ -192,6 +193,8 @@ let app = new Vue({
           })
 	        localStorage.setItem(STORAGE_MAIL_KEY, '')
 	        localStorage.setItem(STORAGE_MAIL_KEY, JSON.stringify({ email: app.account }))
+	        localStorage.setItem(STORAGE_UID_KEY, '')
+	        localStorage.setItem(STORAGE_UID_KEY, app.uid)
         }).catch(function (error) {
           let errorCode = error.code
           let errorMessage = error.message
@@ -216,6 +219,8 @@ let app = new Vue({
 	      app.regPassword = ''
 	      localStorage.setItem(STORAGE_MAIL_KEY, '')
 	      localStorage.setItem(STORAGE_MAIL_KEY, JSON.stringify({ email: app.account }))
+	      localStorage.setItem(STORAGE_UID_KEY, '')
+	      localStorage.setItem(STORAGE_UID_KEY, app.uid)
 	      const fire = firebase.database().ref(`${app.uid}/data`)
         fire.set([{ vis: false }])
         app.login = true
@@ -261,9 +266,7 @@ let app = new Vue({
   }
 })
 function checkExitUser () {
-  if (localStorage.getItem(STORAGE_MAIL_KEY) !== null && localStorage.getItem(STORAGE_MAIL_KEY) !== undefined && localStorage.getItem(STORAGE_MAIL_KEY) !== '') {
-    return true
-  } else {
-    return false
-  }
+  return localStorage.getItem(STORAGE_MAIL_KEY) !== null && localStorage.getItem(STORAGE_MAIL_KEY) !== undefined && localStorage.getItem(STORAGE_MAIL_KEY) !== '' ? true : false;
 }
+
+// 好想睡 ( ；´Д｀)

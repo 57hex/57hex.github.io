@@ -1,5 +1,6 @@
 var STORAGE_KEY = 'savedData';
 var STORAGE_MAIL_KEY = 'mailUser';
+var STORAGE_UID_KEY = 'userId';
 localStorage.setItem(STORAGE_KEY, '');
 var config = {
     apiKey: 'AIzaSyAVpPL0_unC-ElX6Qfein_Ki6xil2AxFo0',
@@ -117,7 +118,7 @@ var app = new Vue({
                 localStorage.setItem('savedData', '');
                 localStorage.setItem('savedData', JSON.stringify(this.inputWorks));
                 firebase.database().ref(this.uid + "/data").set(this.inputWorks);
-                app.inputWorrk = '';
+                app.inputWork = '';
             }
         },
         deleteWork: function (todo) {
@@ -202,6 +203,8 @@ var app = new Vue({
                     });
                     localStorage.setItem(STORAGE_MAIL_KEY, '');
                     localStorage.setItem(STORAGE_MAIL_KEY, JSON.stringify({ email: app.account }));
+                    localStorage.setItem(STORAGE_UID_KEY, '');
+                    localStorage.setItem(STORAGE_UID_KEY, app.uid);
                 }).catch(function (error) {
                     var errorCode = error.code;
                     var errorMessage = error.message;
@@ -229,6 +232,8 @@ var app = new Vue({
                 app.regPassword = '';
                 localStorage.setItem(STORAGE_MAIL_KEY, '');
                 localStorage.setItem(STORAGE_MAIL_KEY, JSON.stringify({ email: app.account }));
+                localStorage.setItem(STORAGE_UID_KEY, '');
+                localStorage.setItem(STORAGE_UID_KEY, app.uid);
                 var fire = firebase.database().ref(app.uid + "/data");
                 fire.set([{ vis: false }]);
                 app.login = true;
@@ -274,10 +279,6 @@ var app = new Vue({
     }
 });
 function checkExitUser() {
-    if (localStorage.getItem(STORAGE_MAIL_KEY) !== null && localStorage.getItem(STORAGE_MAIL_KEY) !== undefined && localStorage.getItem(STORAGE_MAIL_KEY) !== '') {
-        return true;
-    }
-    else {
-        return false;
-    }
+    return localStorage.getItem(STORAGE_MAIL_KEY) !== null && localStorage.getItem(STORAGE_MAIL_KEY) !== undefined && localStorage.getItem(STORAGE_MAIL_KEY) !== '' ? true : false;
 }
+// 好想睡 ( ；´Д｀)

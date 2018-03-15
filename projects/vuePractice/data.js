@@ -186,8 +186,7 @@ var app = new Vue({
             if (app.account !== '' && app.password !== '') {
                 firebase.auth().signInWithEmailAndPassword(app.account, app.password).then(function (user) {
                     app.exitingUser = true;
-                    var uid = user.uid;
-                    app.uid = uid;
+                    app.uid = app.account.split('.').join('_');
                     app.login = true;
                     app.password = '';
                     var fire = firebase.database().ref(app.uid + "/data");
@@ -227,8 +226,8 @@ var app = new Vue({
         firebaseReg: function () {
             firebase.auth().createUserWithEmailAndPassword(app.regAccount, app.regPassword).then(function (user) {
                 app.exitingUser = true;
-                app.uid = user.uid;
                 app.account = app.regAccount;
+                app.uid = app.account.split('.').join('_');
                 app.regPassword = '';
                 localStorage.setItem(STORAGE_MAIL_KEY, '');
                 localStorage.setItem(STORAGE_MAIL_KEY, JSON.stringify({ email: app.account }));

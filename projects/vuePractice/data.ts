@@ -121,7 +121,7 @@ let app = new Vue({
 		    localStorage.setItem(STORAGE_KEY, '')
 		    localStorage.setItem(STORAGE_KEY, JSON.stringify(this.inputWorks))
 		    firebase.database().ref(`${this.uid}/data`).set(this.inputWorks)
-	    } else if (todo.pinned === true {
+	    } else if (todo.pinned === true) {
 	    	alert('被保護不能被刪除。')
 	    }
     },
@@ -176,8 +176,7 @@ let app = new Vue({
       if (app.account !== '' && app.password !== '') {
         firebase.auth().signInWithEmailAndPassword(app.account, app.password).then(function (user) {
 	        app.exitingUser = true
-        	const uid = user.uid
-          app.uid = uid
+          app.uid = app.account.split('.').join('_')
           app.login = true
 	        app.password = ''
           const fire = firebase.database().ref(`${app.uid}/data`)
@@ -214,8 +213,8 @@ let app = new Vue({
     firebaseReg: function () {
       firebase.auth().createUserWithEmailAndPassword(app.regAccount, app.regPassword).then(function (user) {
 	      app.exitingUser = true
-      	app.uid = user.uid
 	      app.account = app.regAccount
+	      app.uid = app.account.split('.').join('_')
 	      app.regPassword = ''
 	      localStorage.setItem(STORAGE_MAIL_KEY, '')
 	      localStorage.setItem(STORAGE_MAIL_KEY, JSON.stringify({ email: app.account }))

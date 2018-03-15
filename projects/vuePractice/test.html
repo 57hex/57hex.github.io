@@ -59,19 +59,20 @@
                     <ul class="list-group list-group-flush rounded">
                         <li v-for="data in filterWorks" v-bind:class="{ active: data.finished }"
                             class="list-group-item darkTheme">
-                            <p class="text-truncate text-white"> {{ data.content }} </p>
+                            <p class="text-truncate text-white"> {{ data.content }} <span v-if="checkIsPinnedOrNot(data) === true" class="badge badge-pill badge-warning">被保護</span> </p>
                             <button class="btn btn-outline-light" @click.prevent="finishWork(data)">已完成</button>
-                            <button class="btn btn-danger" @click.prevent="deleteWork(data)">刪除</button>
+                            <button v-if="checkIsPinnedOrNot(data) === false" class="btn btn-danger" @click.prevent="deleteWork(data)">刪除</button>
                             <button class="btn btn-outline-warrning" @click.prevent="pinWork(data)">保護</button>
+
                         </li>
                         <p v-if="loading === true" class="text-white">載入中...</p>
                         <div class="container">
                             <div class="row">
-                                <button @click="changeVisToHaveFinished" class="btn  btn-lg text-light bg-primary col-lg-2">
-                                    已完成 <span class="badge badge-light">{{ filterHaveFinishedWorks.length }}</span>
-                                </button>
                                 <button @click="changeVisToYetFinished" class="btn btn-lg text-light bg-primary col-lg-2">未完成
                                     <span class="badge badge-light">{{ filterNotFinishedWorks.length }}</span>
+                                </button>
+                                <button @click="changeVisToHaveFinished" class="btn  btn-lg text-light bg-primary col-lg-2">
+                                    已完成 <span class="badge badge-light">{{ filterHaveFinishedWorks.length }}</span>
                                 </button>
                                 <button @click="changeVisToAll" class="btn text-light bg-primary col-lg-2">顯示全部</button>
                                 <p class="col-lg-4 text-white align-middle" style="margin-bottom: 0; margin-top: 8px">共有

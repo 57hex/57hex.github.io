@@ -107,13 +107,28 @@ let app = new Vue({
       }
     },
     deleteWork: function (todo) {
-      this.inputWorks.splice(this.inputWorks.indexOf(todo), 1)
-      localStorage.setItem(STORAGE_KEY, '')
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.inputWorks))
-      firebase.database().ref(`${this.uid}/data`).set(this.inputWorks)
+    	if (todo.pinned !== true) {
+		    this.inputWorks.splice(this.inputWorks.indexOf(todo), 1)
+		    localStorage.setItem(STORAGE_KEY, '')
+		    localStorage.setItem(STORAGE_KEY, JSON.stringify(this.inputWorks))
+		    firebase.database().ref(`${this.uid}/data`).set(this.inputWorks)
+	    } else if (todo.pinned === true {
+	    	alert('被保護不能被刪除。')
+	    }
     },
 	  pinWork: function (todo) {
-		  todo.pinned = true
+    	if (todo.pinned === false || todo.pinned === undefined) {
+		    todo.pinned = true
+	    } else {
+    		todo.pinned = false
+	    }
+	  },
+	  checkIsPinnedOrNot: function (todo) {
+		  if (todo.pinned === true) {
+			  return true
+		  } else {
+			  return false
+		  }
 	  },
     finishAllWorks: function () {
       for (let obj of this.inputWorks) {

@@ -259,6 +259,7 @@ let app = new Vue({
 	  firebaseSignOut: function () {
 		  firebase.auth().signOut().then(
 		  		function (user) {
+					  localStorage.clear()
 					  location.reload(true)
 				  }
 		  )

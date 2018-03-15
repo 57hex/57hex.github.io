@@ -18,11 +18,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="data.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="data.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/projects/vuePractice/data.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="114" column="22" lean-forward="true" selection-start-line="114" selection-start-column="22" selection-end-line="114" selection-end-column="22" />
+            <state relative-caret-position="422">
+              <caret line="261" column="32" lean-forward="false" selection-start-line="261" selection-start-column="32" selection-end-line="261" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/projects/vuePractice/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="19" column="16" lean-forward="false" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -381,7 +391,7 @@
       <workItem from="1520958499384" duration="19574000" />
       <workItem from="1521101405147" duration="1342000" />
       <workItem from="1521105551132" duration="86000" />
-      <workItem from="1521105664222" duration="607000" />
+      <workItem from="1521105664222" duration="1195000" />
     </task>
     <task id="LOCAL-00001" summary="change to RWD">
       <created>1516672989335</created>
@@ -394,7 +404,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="264249000" />
+    <option name="totallyTimeSpent" value="264837000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="534" y="22" width="905" height="878" extended-state="0" />
@@ -734,13 +744,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/projects/vuePractice/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1736">
-          <caret line="5" column="16" lean-forward="false" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/projects/vuePractice/data.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4887">
@@ -762,8 +765,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/projects/vuePractice/data.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="114" column="22" lean-forward="true" selection-start-line="114" selection-start-column="22" selection-end-line="114" selection-end-column="22" />
+        <state relative-caret-position="422">
+          <caret line="261" column="32" lean-forward="false" selection-start-line="261" selection-start-column="32" selection-end-line="261" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projects/vuePractice/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="19" column="16" lean-forward="false" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="31" />
           <folding />
         </state>
       </provider>

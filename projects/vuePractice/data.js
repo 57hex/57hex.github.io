@@ -1,8 +1,7 @@
-"use strict";
-let STORAGE_KEY = 'savedData';
-let STORAGE_MAIL_KEY = 'mailUser';
+var STORAGE_KEY = 'savedData';
+var STORAGE_MAIL_KEY = 'mailUser';
 localStorage.setItem(STORAGE_KEY, '');
-let config = {
+var config = {
     apiKey: 'AIzaSyAVpPL0_unC-ElX6Qfein_Ki6xil2AxFo0',
     authDomain: 'project-4fe4c.firebaseapp.com',
     databaseURL: 'https://project-4fe4c.firebaseio.com',
@@ -11,10 +10,11 @@ let config = {
     messagingSenderId: '36011476367'
 };
 firebase.initializeApp(config);
-let filters = {
+var filters = {
     all: function (todo) {
-        let filter = [];
-        for (let obj of todo) {
+        var filter = [];
+        for (var _i = 0, todo_1 = todo; _i < todo_1.length; _i++) {
+            var obj = todo_1[_i];
             if (obj.vis !== false) {
                 filter.push(obj);
             }
@@ -22,8 +22,9 @@ let filters = {
         return filter;
     },
     yetFinished: function (todo) {
-        let filter = [];
-        for (let obj of todo) {
+        var filter = [];
+        for (var _i = 0, todo_2 = todo; _i < todo_2.length; _i++) {
+            var obj = todo_2[_i];
             if (obj.finished === false && obj.vis !== false) {
                 filter.push(obj);
             }
@@ -31,8 +32,9 @@ let filters = {
         return filter;
     },
     haveFinished: function (todo) {
-        let filter = [];
-        for (let obj of todo) {
+        var filter = [];
+        for (var _i = 0, todo_3 = todo; _i < todo_3.length; _i++) {
+            var obj = todo_3[_i];
             if (obj.finished === true && obj.vis !== false) {
                 filter.push(obj);
             }
@@ -40,7 +42,7 @@ let filters = {
         return filter;
     }
 };
-let app = new Vue({
+var app = new Vue({
     el: '#newapp',
     data: {
         text: {
@@ -103,6 +105,7 @@ let app = new Vue({
             }
         }
     },
+    watch: {},
     methods: {
         addWork: function (todo) {
             if (todo === '') {
@@ -110,10 +113,10 @@ let app = new Vue({
                 return false;
             }
             else {
-                this.inputWorks.push({ content: todo, finished: false });
+                this.inputWorks.push({ content: todo, finished: false, pinned: false });
                 localStorage.setItem('savedData', '');
                 localStorage.setItem('savedData', JSON.stringify(this.inputWorks));
-                firebase.database().ref(`${this.uid}/data`).set(this.inputWorks);
+                firebase.database().ref(this.uid + "/data").set(this.inputWorks);
                 app.inputWorrk = '';
             }
         },
@@ -122,7 +125,7 @@ let app = new Vue({
                 this.inputWorks.splice(this.inputWorks.indexOf(todo), 1);
                 localStorage.setItem(STORAGE_KEY, '');
                 localStorage.setItem(STORAGE_KEY, JSON.stringify(this.inputWorks));
-                firebase.database().ref(`${this.uid}/data`).set(this.inputWorks);
+                firebase.database().ref(this.uid + "/data").set(this.inputWorks);
             }
             else if (todo.pinned === true) {
                 alert('被保護不能被刪除。');
@@ -131,26 +134,25 @@ let app = new Vue({
         pinWork: function (todo) {
             if (todo.pinned === false || todo.pinned === undefined) {
                 todo.pinned = true;
+                console.log(todo.pinned);
             }
             else {
                 todo.pinned = false;
+                console.log(todo.pinned);
             }
         },
         checkIsPinnedOrNot: function (todo) {
-            if (todo.pinned === true) {
-                return true;
-            }
-            else {
-                return false;
-            }
+            console.log(todo.pinned);
+            return todo.pinned === true;
         },
         finishAllWorks: function () {
-            for (let obj of this.inputWorks) {
+            for (var _i = 0, _a = this.inputWorks; _i < _a.length; _i++) {
+                var obj = _a[_i];
                 obj.finished = true;
                 localStorage.setItem(STORAGE_KEY, '');
                 localStorage.setItem(STORAGE_KEY, JSON.stringify(this.inputWorks));
             }
-            firebase.database().ref(`${this.uid}/data`).set(this.inputWorks);
+            firebase.database().ref(this.uid + "/data").set(this.inputWorks);
         },
         finishWork: function (todo) {
             console.log(todo);
@@ -162,7 +164,7 @@ let app = new Vue({
             }
             localStorage.setItem(STORAGE_KEY, '');
             localStorage.setItem(STORAGE_KEY, JSON.stringify(this.inputWorks));
-            firebase.database().ref(`${this.uid}/data`).set(this.inputWorks);
+            firebase.database().ref(this.uid + "/data").set(this.inputWorks);
         },
         changeVisToAll: function () {
             return this.visibility = 'all';
@@ -183,11 +185,11 @@ let app = new Vue({
             if (app.account !== '' && app.password !== '') {
                 firebase.auth().signInWithEmailAndPassword(app.account, app.password).then(function (user) {
                     app.exitingUser = true;
-                    const uid = user.uid;
+                    var uid = user.uid;
                     app.uid = uid;
                     app.login = true;
                     app.password = '';
-                    const fire = firebase.database().ref(`${app.uid}/data`);
+                    var fire = firebase.database().ref(app.uid + "/data");
                     fire.once('value', function (s) {
                         if (s.val() === null || s.val().length === 0 || app.inputWorks === null) {
                             fire.set([{ vis: false }]);
@@ -201,8 +203,8 @@ let app = new Vue({
                     localStorage.setItem(STORAGE_MAIL_KEY, '');
                     localStorage.setItem(STORAGE_MAIL_KEY, JSON.stringify({ email: app.account }));
                 }).catch(function (error) {
-                    let errorCode = error.code;
-                    let errorMessage = error.message;
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
                     if (errorCode === 'auth/wrong-password') {
                         app.loginErr = '密碼錯誤。';
                     }
@@ -227,7 +229,7 @@ let app = new Vue({
                 app.regPassword = '';
                 localStorage.setItem(STORAGE_MAIL_KEY, '');
                 localStorage.setItem(STORAGE_MAIL_KEY, JSON.stringify({ email: app.account }));
-                const fire = firebase.database().ref(`${app.uid}/data`);
+                var fire = firebase.database().ref(app.uid + "/data");
                 fire.set([{ vis: false }]);
                 app.login = true;
                 fire.once('value', function (s) {
@@ -241,7 +243,7 @@ let app = new Vue({
                     app.inputWorks = (JSON.parse(localStorage.getItem(STORAGE_KEY)));
                 });
             }).catch(function (error) {
-                let errorCode = error.code;
+                var errorCode = error.code;
                 console.log(error.code);
                 app.regError = errorCode;
                 console.log(errorCode !== '');
@@ -279,4 +281,3 @@ function checkExitUser() {
         return false;
     }
 }
-//# sourceMappingURL=data.js.map

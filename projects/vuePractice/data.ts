@@ -100,13 +100,14 @@ let app = new Vue({
 		  }
 	  }
   },
+  watch: {},
   methods: {
     addWork: function (todo: any) {
       if (todo === '') {
         alert('說點什麼吧？')
         return false
       } else {
-        this.inputWorks.push({ content: todo, finished: false })
+        this.inputWorks.push({ content: todo, finished: false, pinned: false })
         localStorage.setItem('savedData', '')
         localStorage.setItem('savedData', JSON.stringify(this.inputWorks))
         firebase.database().ref(`${this.uid}/data`).set(this.inputWorks)
@@ -126,16 +127,15 @@ let app = new Vue({
 	  pinWork: function (todo) {
     	if (todo.pinned === false || todo.pinned === undefined) {
 		    todo.pinned = true
+		    console.log(todo.pinned)
 	    } else {
     		todo.pinned = false
+		    console.log(todo.pinned)
 	    }
 	  },
 	  checkIsPinnedOrNot: function (todo) {
-		  if (todo.pinned === true) {
-			  return true
-		  } else {
-			  return false
-		  }
+    	console.log(todo.pinned)
+		  return todo.pinned === true
 	  },
     finishAllWorks: function () {
       for (let obj of this.inputWorks) {

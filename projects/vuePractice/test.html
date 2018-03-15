@@ -76,8 +76,8 @@
                         <ul class="list-group list-group-flush rounded">
                             <li v-for="data in filterWorks" v-bind:class="{ active: data.finished }"
                                 class="list-group-item darkTheme">
-                                <p class="text-truncate text-white"> {{ data.content }} <span
-                                        v-if="checkIsPinnedOrNot(data) === true" class="badge badge-pill badge-warning">被保護</span>
+                                <p class="text-truncate text-white"> {{ data.content }}
+                                    <span v-if="checkIsPinnedOrNot(data) === true" class="badge badge-pill badge-warning">被保護</span>
                                 </p>
                                 <button class="btn btn-outline-light" @click.prevent="finishWork(data)">已完成</button>
                                 <button v-if="checkIsPinnedOrNot(data) === false" class="btn btn-danger"

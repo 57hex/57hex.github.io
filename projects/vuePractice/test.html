@@ -67,7 +67,7 @@
                     <div class="align-items-center">
                         <div class="fixed-bottom">
                             <div class="d-md-none">
-                                <div class="input-group">
+                                <div class="input-group show">
                                     <input type="text" class="form-control" placeholder="請輸入事項。" v-model="inputWork"
                                            @keyup.enter="addWork(inputWork)">
                                     <div class="input-group-append">
@@ -101,11 +101,13 @@
                                 </div>
                                 <button class="btn btn-outline-light" @click.prevent="finishWork(data)">已完成
                                     </button>
-                                        <button v-if="checkIsPinnedOrNot(data) === false" class="btn btn-danger"
-                                                @click.prevent="deleteWork(data)">刪除
+                                        <button v-if="checkIsPinnedOrNot(data) === false" class="close delFixed"
+                                                @click.prevent="deleteWork(data)" aria-label="Close">
+                                            <span class="text-white h3" aria-hidden="true">&times;</span>
                                         </button>
-                                        <button class="btn btn-warrning" @click.prevent="pinWork(data)">保護
+                                        <button class="btn btn-warning" @click.prevent="pinWork(data)">保護
                                         </button>
+                                <button class="btn btn-light d-md-none">修改</button>
 
                             </li>
                             <p v-if="loading === true" class="text-white">載入中...</p>

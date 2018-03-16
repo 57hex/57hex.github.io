@@ -12,10 +12,32 @@ user = authentication.get_user()
 
 firebase = firebase.FirebaseApplication('https://project-4fe4c.firebaseio.com', authentication=authentication)
 
-while True:
-    count = str(i)
-    result = firebase.get(email, count)
-    if not result:
-        break
-    print(result['content'])
-    i += 1
+
+def showUnfinish():
+    while True:
+        count = str(i)
+        result = firebase.get(email, count)
+        if result['finished'] == "False"
+            i += 1
+            continue
+        if not result:
+            break
+        print(result['content'])
+        i += 1
+        
+        
+def showFinish():
+    while True:
+        count = str(i)
+        result = firebase.get(email, count)
+        if result['finished'] == "True"
+            i += 1
+            continue
+        if not result:
+            break
+        print(result['content'])
+        i += 1
+        
+        
+showFinish()
+showUnfinish()

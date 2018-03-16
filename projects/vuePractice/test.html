@@ -78,16 +78,28 @@
                     <div class="col-lg">
                         <ul class="list-group list-group-flush rounded">
                             <li v-for="data in filterWorks" v-bind:class="{ active: data.finished }"
-                                class="list-group-item darkTheme">
-                                <p class="text-truncate text-white"> {{ data.content }}
+                                class="list-group-item darkTheme" @dblclick="editWork(data)">
+                                <p class="text-truncate text-white" v-if="data.editing === false"
+                                   >{{ data.content }}
                                     <span v-if="checkIsPinnedOrNot(data) === true"
                                           class="badge badge-pill badge-warning">被保護</span>
                                 </p>
-                                <button class="btn btn-outline-light" @click.prevent="finishWork(data)">已完成</button>
-                                <button v-if="checkIsPinnedOrNot(data) === false" class="btn btn-danger"
-                                        @click.prevent="deleteWork(data)">刪除
-                                </button>
-                                <button class="btn btn-outline-warrning" @click.prevent="pinWork(data)">保護</button>
+                                <div class="input-group" v-if="data.editing === true">
+                                    <input type="text" class="form-control mb-3"
+                                           v-model="data.content" @keyup.enter="editWork(data)">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary mb-3" v-on:click="editWork(data)" type="button">
+                                            完成
+                                        </button>
+                                    </div>
+                                </div>
+                                <button class="btn btn-outline-light" @click.prevent="finishWork(data)">已完成
+                                    </button>
+                                        <button v-if="checkIsPinnedOrNot(data) === false" class="btn btn-danger"
+                                                @click.prevent="deleteWork(data)">刪除
+                                        </button>
+                                        <button class="btn btn-warrning" @click.prevent="pinWork(data)">保護
+                                        </button>
 
                             </li>
                             <p v-if="loading === true" class="text-white">載入中...</p>

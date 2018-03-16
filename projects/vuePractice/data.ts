@@ -108,7 +108,7 @@ let app = new Vue({
         alert('說點什麼吧？')
         return false
       } else {
-        this.inputWorks.push({ content: todo, finished: false, pinned: false })
+        this.inputWorks.push({ content: todo, finished: false, pinned: false, editing: false })
         localStorage.setItem('savedData', '')
         localStorage.setItem('savedData', JSON.stringify(this.inputWorks))
         firebase.database().ref(`${this.uid}/data`).set(this.inputWorks)
@@ -132,6 +132,14 @@ let app = new Vue({
     		todo.pinned = false
 	    }
 	  },
+	  editWork: function (todo) {
+		  if (todo.editing === true) {
+		  	todo.editing = false
+			  firebase.database().ref(`${this.uid}/data`).set(this.inputWorks)
+		  } else {
+		  	todo.editing = true
+		  }
+	  }
 	  checkIsPinnedOrNot: function (todo) {
 		  return todo.pinned === true
 	  },

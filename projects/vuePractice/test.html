@@ -55,16 +55,20 @@
         <section v-if='login === true' class="fadeInDown fadeOutLeft">
             <h1 class="text-center text-secondary">{{ text.title }}</h1>
             <div class="formBody">
-                    <input type="text" class="form-control" placeholder="請輸入待辦事項" v-model="inputWork"
-                           @keyup.enter="addWork(inputWork)">
-                 <div class="container">
+                <input type="text" class="form-control d-none d-md-block" placeholder="請輸入待辦事項" v-model="inputWork"
+                       @keyup.enter="addWork(inputWork)">
+                <div class="container">
                     <div class="align-items-center">
                         <div class="fixed-bottom">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="請輸入事項。" v-model="inputWork"
-                                       @keyup.enter="addWork(inputWork)">
-                                <div class="input-group-append">
-                                    <button class="btn btn-secondary" v-on:click="addWork(inputWork)" type="button">增加事項</button>
+                            <div class="d-md-none">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="請輸入事項。" v-model="inputWork"
+                                           @keyup.enter="addWork(inputWork)">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-secondary" v-on:click="addWork(inputWork)" type="button">
+                                            增加事項
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

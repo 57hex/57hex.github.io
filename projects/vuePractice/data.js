@@ -135,15 +135,12 @@ var app = new Vue({
         pinWork: function (todo) {
             if (todo.pinned === false || todo.pinned === undefined) {
                 todo.pinned = true;
-                console.log(todo.pinned);
             }
             else {
                 todo.pinned = false;
-                console.log(todo.pinned);
             }
         },
         checkIsPinnedOrNot: function (todo) {
-            console.log(todo.pinned);
             return todo.pinned === true;
         },
         finishAllWorks: function () {
@@ -156,7 +153,6 @@ var app = new Vue({
             firebase.database().ref(this.uid + "/data").set(this.inputWorks);
         },
         finishWork: function (todo) {
-            console.log(todo);
             if (todo.finished === true) {
                 todo.finished = false;
             }

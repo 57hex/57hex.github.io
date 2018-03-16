@@ -134,6 +134,10 @@
                                     </button>
                                     <button @click="changeVisToAll" class="btn text-light bg-primary col-lg-2">顯示全部
                                     </button>
+                                    <button @click="changeVisToSearch"
+                                            class="btn btn-lg text-light bg-primary col-lg-2" v-if="search === false">搜尋
+                                    </button>
+                                    <input type="text" class="form-control" placeholder="輸入要搜尋的內容" v-model="searchKey" v-if="search === true" @blur="cancelSearch">
                                     <p class="col-lg-4 text-white align-middle"
                                        style="margin-bottom: 0; margin-top: 8px">共有
                                         {{ inputWorks.length -1 }} 件事，還有 {{ filterNotFinishedWorks.length }}

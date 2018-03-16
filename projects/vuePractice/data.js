@@ -41,6 +41,21 @@ var filters = {
             }
         }
         return filter;
+    },
+    search: function (todo, key) {
+        var filter = [];
+        var _loop_1 = function (obj) {
+            todo.filter(function (d) {
+                if (todo.indexOf(key) > -1) {
+                    filter.push(obj);
+                }
+            });
+        };
+        for (var _i = 0, todo_4 = todo; _i < todo_4.length; _i++) {
+            var obj = todo_4[_i];
+            _loop_1(obj);
+        }
+        return filter;
     }
 };
 var app = new Vue({
@@ -71,11 +86,18 @@ var app = new Vue({
         visibility: 'all',
         loading: true,
         countOfPage: 8,
-        currPage: 1
+        currPage: 1,
+        search: false,
+        searchKey: '123'
     },
     computed: {
         filterWorks: function () {
-            return filters[this.visibility](this.inputWorks);
+            if (this.visibility !== 'search') {
+                return filters[this.visibility](this.inputWorks);
+            }
+            else if (this.visibility === 'search') {
+                return filters[this.visibility](this.inputWorks, this.searchKey);
+            }
         },
         filterNotFinishedWorks: function () {
             return filters.yetFinished(this.inputWorks);
@@ -190,6 +212,13 @@ var app = new Vue({
         changeVisToHaveFinished: function () {
             return this.visibility = 'haveFinished';
         },
+        changeVisToSearch: function () {
+            this.search = true;
+            return this.visibility = 'search';
+        },
+        cancelSearch: function () {
+            this.search = false;
+        },
         changeVisToRegister: function () {
             return this.loginVis = 'register';
         },
@@ -299,7 +328,7 @@ var app = new Vue({
             }
         },
         firebaseSignOut: function () {
-            firebase.auth().signOut().then(function (user) {
+            firebase.auth().signOut().then(function () {
                 localStorage.clear();
                 location.reload(true);
             });

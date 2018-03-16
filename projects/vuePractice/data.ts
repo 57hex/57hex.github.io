@@ -38,6 +38,17 @@ let filters = {
       }
     }
     return filter
+  },
+  search: function (todo: any, key: string) {
+	  let filter = []
+	  for (let obj of todo) {
+		  todo.filter(function (d) {
+			  if (todo.indexOf(key) > -1) {
+			  	filter.push(obj)
+			  }
+		  })
+	  }
+	  return filter
   }
 }
 let app = new Vue({
@@ -68,11 +79,17 @@ let app = new Vue({
 	  visibility: 'all',
     loading: true,
 	  countOfPage: 8,
-	  currPage: 1
+	  currPage: 1,
+	  search: false,
+	  searchKey: '123'
   },
   computed: {
     filterWorks: function () {
-      return filters[this.visibility](this.inputWorks)
+    	if (this.visibility !== 'search') {
+		    return filters[this.visibility](this.inputWorks)
+	    } else if (this.visibility === 'search') {
+    		return filters[this.visibility](this.inputWorks, this.searchKey)
+	    }
     },
     filterNotFinishedWorks: function () {
       return filters.yetFinished(this.inputWorks)
@@ -148,7 +165,7 @@ let app = new Vue({
 		  } else {
 		  	todo.editing = true
 		  }
-	  }
+	  },
 	  checkIsPinnedOrNot: function (todo) {
 		  return todo.pinned === true
 	  },
@@ -179,6 +196,13 @@ let app = new Vue({
     changeVisToHaveFinished: function () {
       return this.visibility = 'haveFinished'
     },
+	  changeVisToSearch: function () {
+		 this.search = true
+		  return this.visibility = 'search'
+	  },
+	  cancelSearch: function () {
+		  this.search = false
+	  },
     changeVisToRegister: function () {
       return this.loginVis = 'register'
     },
@@ -283,7 +307,7 @@ let app = new Vue({
 	  },
 	  firebaseSignOut: function () {
 		  firebase.auth().signOut().then(
-		  		function (user) {
+		  		function () {
 					  localStorage.clear()
 					  location.reload(true)
 				  }

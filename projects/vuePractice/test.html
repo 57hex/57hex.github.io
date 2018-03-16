@@ -107,7 +107,7 @@
                                         </button>
                                         <button class="btn btn-warning" @click.prevent="pinWork(data)">保護
                                         </button>
-                                <button class="btn btn-light d-md-none">修改</button>
+                                <button class="btn btn-light d-md-none" @click="editWork(data)">修改</button>
 
                             </li>
                             <p v-if="loading === true" class="text-white">載入中...</p>

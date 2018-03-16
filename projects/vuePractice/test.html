@@ -14,7 +14,6 @@
 <div id="newapp">
     <nav class="navbar navbar-dark" style="background: rgba(0,0,0,0.25)">
         <span class="icon-logo navbar-brand" style="font-size: 2.5rem" v-if="checkLoginStatus === true"></span>
-
         <a href="#" class="navbar-brand" @click.prevent="firebaseSignOut" v-if="checkLoginStatus === true">登出</a>
     </nav>
     <div class="container">
@@ -83,7 +82,7 @@
                 <div class="row">
                     <div class="col-lg">
                         <ul class="list-group list-group-flush rounded">
-                            <li v-for="data in filterWorks" v-bind:class="{ active: data.finished }"
+                            <li v-for="data in filterWorks.slice(pageStart, pageStart + countOfPage)" v-bind:class="{ active: data.finished }"
                                 class="list-group-item darkTheme show" @dblclick="editWork(data)">
                                 <p class="text-truncate text-white" v-if="data.editing === false"
                                    >{{ data.content }}
@@ -112,6 +111,18 @@
                             </li>
                             <p v-if="loading === true" class="text-white">載入中...</p>
                             <div class="container">
+                                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                                    <div class="btn-group mr-2" role="group">
+                                        <button v-bind:class="{'disabled': (currPage === 1)}"
+                                            class='btn btn-secondary' @click.prevent="setPage(currPage-1)">上一頁</button>
+                                        <button v-for="n in totalPage" class='btn btn-secondary'
+                                            v-bind:class="{'active': (currPage === (n))}"
+                                            @click.prevent="setPage(n)">{{n}}</button>
+                                        <button v-bind:class="{'disabled': (currPage === totalPage)}"
+                                                class='btn btn-secondary' @click.prevent="setPage(currPage+1)">下一頁</button>
+                                    </div>
+                                </div>
+                            </div>
                                 <div class="row">
                                     <button @click="changeVisToYetFinished"
                                             class="btn btn-lg text-light bg-primary col-lg-2">未完成

@@ -66,7 +66,9 @@ let app = new Vue({
 	  inputWork: '',
 	  inputWorks: [{ vis: false }],
 	  visibility: 'all',
-    loading: true
+    loading: true,
+	  countOfPage: 8,
+	  currPage: 1
   },
   computed: {
     filterWorks: function () {
@@ -100,6 +102,12 @@ let app = new Vue({
 		  } else {
 		  	return false
 		  }
+	  },
+	  pageStart: function () {
+		  return ((this.currPage - 1) * this.countOfPage)
+	  },
+	  totalPage: function () {
+		  return Math.ceil(this.filterWorks.length / this.countOfPage)
 	  }
   },
   watch: {},
@@ -183,6 +191,12 @@ let app = new Vue({
 		  } else {
 		  	this.showPassword = false
 		  }
+	  },
+	  setPage: function (idx) {
+		  if (idx <= 0 || idx > this.totalPage) {
+			  return
+		  }
+		  this.currPage = idx
 	  },
     firebaseLogin: function () {
       if (app.account !== '' && app.password !== '') {
@@ -278,7 +292,7 @@ let app = new Vue({
   }
 })
 function checkExitUser () {
-  return localStorage.getItem(STORAGE_MAIL_KEY) !== null && localStorage.getItem(STORAGE_MAIL_KEY) !== undefined && localStorage.getItem(STORAGE_MAIL_KEY) !== '' ? true : false;
+  return localStorage.getItem(STORAGE_MAIL_KEY) !== null && localStorage.getItem(STORAGE_MAIL_KEY) !== undefined && localStorage.getItem(STORAGE_MAIL_KEY) !== '' ? true : false
 }
 
 // 好想睡 ( ；´Д｀)

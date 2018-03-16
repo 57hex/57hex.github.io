@@ -21,35 +21,41 @@
         <section v-if='login === false' class="loginbg fadeInDown fadeOutLeft">
             <div class="container">
                 <form class="form-signin">
-                    <h1 class="text-center icon-logo" style="font-size: 5rem; color: whitesmoke"></h1>
+                    <h1 class="text-center icon-logo show" style="font-size: 5rem; color: whitesmoke"></h1>
                     <div v-if="loginPage" class="formBody">
                         <input type="email" class="form-control" :placeholder="text.inputAccount" v-model="account"
                                required autofocus>
-                        <input type="password" class="form-control" :placeholder="text.inputPassword" v-model="password"
-                               required>
+                        <div class="input-group">
+                            <input :type="showPassword ? 'text' : 'password'" class="form-control mb-3" :placeholder="text.inputPassword" v-model="password"
+                                   required>
+                            <div class="input-group-append">
+                                <button class="btn btn-secondary mb-3" v-on:click="changePasswordVis" type="button">
+                                    顯示密碼
+                                </button>
+                            </div>
+                        </div>
                         <p v-if="loginErr !== ''" class="text-danger"> {{ loginErr }} </p>
-                        <button class="btn btn-lg btn-primary btn-block" type="submit" @click.prevent="firebaseLogin">{{
+                        <button class="btn btn-lg btn-primary btn-block show" type="submit" @click.prevent="firebaseLogin">{{
                             text.loginBtn }}
                         </button>
-                        <button class="btn btn-primary btn-block" @click.prevent="changeVisToRegister()">{{ text.regBtn
+                        <button class="btn btn-primary btn-block show" @click.prevent="changeVisToRegister()">{{ text.regBtn
                             }}
                         </button>
-                        <button class="btn btn-primary btn-block" v-if="exitingUser === true"
-                                @click.prevent="firebaseExitUser"> {{ exitingUserName }} 歡迎回來😊
+                        <button class="btn btn-primary btn-block show" v-if="exitingUser === true"
+                                @click.prevent="firebaseExitUser"> {{ exitingUserName }} <br> 歡迎回來😊
                         </button>
                     </div>
-                    <div v-if="regPage" class="formBody">
-                        <input type="text" class="form-control" placeholder="請輸入要註冊的帳號" v-model="regAccount" required
+                    <div v-if="regPage" class="formBody show">
+                        <input type="text" class="form-control show" placeholder="請輸入要註冊的帳號" v-model="regAccount" required
                                autofocus>
-                        <input type="password" class="form-control" placeholder="請輸入要註冊的密碼" v-model="regPassword"
+                        <input type="password" class="form-control show" placeholder="請輸入要註冊的密碼" v-model="regPassword"
                                required>
-                        <button class="btn btn-lg btn-primary btn-block" type="submit" @click.prevent="firebaseReg">註冊
+                        <button class="btn btn-lg btn-primary btn-block show" type="submit" @click.prevent="firebaseReg">註冊
                         </button>
                         <p v-if="regError !== ''" class="text-danger"> {{ regError }} </p>
                         <button class="btn btn-primary btn-block" @click.prevent="changeVisToLogin()">已經有帳號？</button>
                     </div>
                 </form>
-
             </div> <!-- /container -->
         </section>
         <section v-if='login === true' class="fadeInDown fadeOutLeft">
@@ -78,7 +84,7 @@
                     <div class="col-lg">
                         <ul class="list-group list-group-flush rounded">
                             <li v-for="data in filterWorks" v-bind:class="{ active: data.finished }"
-                                class="list-group-item darkTheme" @dblclick="editWork(data)">
+                                class="list-group-item darkTheme show" @dblclick="editWork(data)">
                                 <p class="text-truncate text-white" v-if="data.editing === false"
                                    >{{ data.content }}
                                     <span v-if="checkIsPinnedOrNot(data) === true"

@@ -53,6 +53,7 @@ let app = new Vue({
 	  },
     login: false,
     loginVis: 'login',
+	  showPassword: false,
     account: '',
     password: '',
     uid: '',
@@ -176,6 +177,13 @@ let app = new Vue({
     changeVisToLogin: function () {
       return this.loginVis = 'login'
     },
+	  changePasswordVis: function () {
+		  if (this.showPassword === false) {
+		  	this.showPassword = true
+		  } else {
+		  	this.showPassword = false
+		  }
+	  },
     firebaseLogin: function () {
       if (app.account !== '' && app.password !== '') {
         firebase.auth().signInWithEmailAndPassword(app.account, app.password).then(function (user) {

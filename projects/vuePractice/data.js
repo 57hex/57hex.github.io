@@ -56,6 +56,7 @@ var app = new Vue({
         },
         login: false,
         loginVis: 'login',
+        showPassword: false,
         account: '',
         password: '',
         uid: '',
@@ -186,6 +187,14 @@ var app = new Vue({
         },
         changeVisToLogin: function () {
             return this.loginVis = 'login';
+        },
+        changePasswordVis: function () {
+            if (this.showPassword === false) {
+                this.showPassword = true;
+            }
+            else {
+                this.showPassword = false;
+            }
         },
         firebaseLogin: function () {
             if (app.account !== '' && app.password !== '') {

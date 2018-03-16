@@ -11,13 +11,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-light loginbg userelative">
+<div class="loginbg"></div>
 <div id="newapp">
     <nav class="navbar navbar-dark" style="background: rgba(0,0,0,0.25)">
         <span class="icon-logo navbar-brand" style="font-size: 2.5rem" v-if="checkLoginStatus === true"></span>
         <a href="#" class="navbar-brand" @click.prevent="firebaseSignOut" v-if="checkLoginStatus === true">登出</a>
     </nav>
     <div class="container">
-        <section v-if='login === false' class="loginbg fadeInDown fadeOutLeft">
+        <section v-if='login === false' class="fadeInDown fadeOutLeft">
             <div class="container">
                 <form class="form-signin">
                     <h1 class="text-center icon-logo show" style="font-size: 5rem; color: whitesmoke"></h1>

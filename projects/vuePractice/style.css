@@ -18,6 +18,7 @@ body {
 }
 .loginbg {
     height: 100%;
+    width: 100%;
     /*background: linear-gradient(to top, #6389c2, #9487c2, #bc84b7, #d886a4, #e58e8e) center fixed no-repeat; */
     background: url("pic/background.jpg") center fixed no-repeat;
     -webkit-background-size: cover;

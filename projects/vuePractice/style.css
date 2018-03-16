@@ -4,6 +4,20 @@
 body {
     height: 100%;
     width: 100%;
+    min-height:100%;
+}
+html{
+    height:100%;
+    background-color: transparent !important;
+    background-image: url(pic/background.jpg);
+
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 @import "../../css/notosanstc.css";
 * {
@@ -23,6 +37,8 @@ body {
     background: url("pic/background.jpg") center fixed no-repeat;
     -webkit-background-size: cover;
     background-size: cover;
+    z-index: -999;
+    overflow-y: scroll;
 }
 .userelative {
     height: 100%;

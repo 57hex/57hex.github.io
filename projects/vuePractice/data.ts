@@ -137,7 +137,7 @@ let app = new Vue({
         this.inputWorks.push({ content: todo, finished: false, pinned: false, editing: false })
         localStorage.setItem('savedData', '')
         localStorage.setItem('savedData', JSON.stringify(this.inputWorks))
-        firebase.database().ref(`${this.uid}/data`).set(this.inputWorks)
+        firebase.database().ref(`user/${this.uid}/data`).set(this.inputWorks)
 	      app.inputWork = ''
       }
     },
@@ -146,7 +146,7 @@ let app = new Vue({
 		    this.inputWorks.splice(this.inputWorks.indexOf(todo), 1)
 		    localStorage.setItem(STORAGE_KEY, '')
 		    localStorage.setItem(STORAGE_KEY, JSON.stringify(this.inputWorks))
-		    firebase.database().ref(`${this.uid}/data`).set(this.inputWorks)
+		    firebase.database().ref(`user/${this.uid}/data`).set(this.inputWorks)
 	    } else if (todo.pinned === true) {
 	    	alert('被保護不能被刪除。')
 	    }
@@ -161,7 +161,7 @@ let app = new Vue({
 	  editWork: function (todo) {
 		  if (todo.editing === true) {
 		  	todo.editing = false
-			  firebase.database().ref(`${this.uid}/data`).set(this.inputWorks)
+			  firebase.database().ref(`user/${this.uid}/data`).set(this.inputWorks)
 		  } else {
 		  	todo.editing = true
 		  }
@@ -175,7 +175,7 @@ let app = new Vue({
         localStorage.setItem(STORAGE_KEY, '')
         localStorage.setItem(STORAGE_KEY, JSON.stringify(this.inputWorks))
       }
-      firebase.database().ref(`${this.uid}/data`).set(this.inputWorks)
+      firebase.database().ref(`user/${this.uid}/data`).set(this.inputWorks)
     },
     finishWork: function (todo) {
       if (todo.finished === true) {
@@ -185,7 +185,7 @@ let app = new Vue({
       }
       localStorage.setItem(STORAGE_KEY, '')
       localStorage.setItem(STORAGE_KEY, JSON.stringify(this.inputWorks))
-      firebase.database().ref(`${this.uid}/data`).set(this.inputWorks)
+      firebase.database().ref(`user/${this.uid}/data`).set(this.inputWorks)
     },
     changeVisToAll: function () {
       return this.visibility = 'all'
@@ -226,10 +226,10 @@ let app = new Vue({
       if (app.account !== '' && app.password !== '') {
         firebase.auth().signInWithEmailAndPassword(app.account, app.password).then(function (user) {
 	        app.exitingUser = true
-          app.uid = app.account.split('.').join('_')
+          app.uid = user.uid  // app.account.split('.').join('_')
           app.login = true
 	        app.password = ''
-          const fire = firebase.database().ref(`${app.uid}/data`)
+          const fire = firebase.database().ref(`user/${app.uid}/data`)
           fire.once('value', function (s) {
             if (s.val() === null || s.val().length === 0 || app.inputWorks === null) {
               fire.set([{ vis: false }])
@@ -264,13 +264,13 @@ let app = new Vue({
       firebase.auth().createUserWithEmailAndPassword(app.regAccount, app.regPassword).then(function (user) {
 	      app.exitingUser = true
 	      app.account = app.regAccount
-	      app.uid = app.account.split('.').join('_')
+	      app.uid = user.uid   // app.account.split('.').join('_')
 	      app.regPassword = ''
 	      localStorage.setItem(STORAGE_MAIL_KEY, '')
 	      localStorage.setItem(STORAGE_MAIL_KEY, JSON.stringify({ email: app.account }))
 	      localStorage.setItem(STORAGE_UID_KEY, '')
 	      localStorage.setItem(STORAGE_UID_KEY, app.uid)
-	      const fire = firebase.database().ref(`${app.uid}/data`)
+	      const fire = firebase.database().ref(`user/${app.uid}/data`)
         fire.set([{ vis: false }])
         app.login = true
         fire.once('value', function (s) {
@@ -313,7 +313,33 @@ let app = new Vue({
 				  }
 		  )
 	  }
-  }
+  },
+  created: function () {
+	  firebase.auth().onAuthStateChanged(function(user) {
+		  if (user) {
+			  // User is signed in and currentUser will no longer return null.
+			  app.uid = user.uid
+			  const fire = firebase.database().ref(`user/${app.uid}/data`)
+			  localStorage.setItem(STORAGE_MAIL_KEY, '')
+			  localStorage.setItem(STORAGE_MAIL_KEY, JSON.stringify({ email: app.account }))
+			  localStorage.setItem(STORAGE_UID_KEY, '')
+			  localStorage.setItem(STORAGE_UID_KEY, app.uid)
+			  app.login = true
+			  fire.once('value', function (s) {
+				  if (s.val() === null || s.val().length === 0 || app.inputWorks === null) {
+					  fire.set([{ vis: false }])
+					  app.loading = false
+					  app.inputWorks = [{ vis: false }]
+				  }
+				  localStorage.setItem(STORAGE_KEY, JSON.stringify(s.val()))
+				  app.loading = false
+				  app.inputWorks = (JSON.parse(localStorage.getItem(STORAGE_KEY)))
+			  })
+		  } else {
+			  // No user is signed in.
+		  }
+	  })
+}
 })
 function checkExitUser () {
   return localStorage.getItem(STORAGE_MAIL_KEY) !== null && localStorage.getItem(STORAGE_MAIL_KEY) !== undefined && localStorage.getItem(STORAGE_MAIL_KEY) !== '' ? true : false

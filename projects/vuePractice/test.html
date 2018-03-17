@@ -81,7 +81,7 @@
                         <ul class="list-group list-group-flush rounded">
                             <li v-for="data in filterWorks.slice(pageStart, pageStart + countOfPage)" v-bind:class="{ active: data.finished }"
                                 class="list-group-item darkTheme show" @dblclick="editWork(data)">
-                                <p class="text-truncate text-white" v-if="data.editing === false"
+                                <p class="text-truncate text-white content" v-if="data.editing === false"
                                    >{{ data.content }}
                                     <span v-if="checkIsPinnedOrNot(data) === true"
                                           class="badge badge-pill badge-warning">被保護</span>

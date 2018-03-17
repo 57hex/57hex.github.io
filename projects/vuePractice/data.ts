@@ -70,8 +70,6 @@ let app = new Vue({
     uid: '',
     regAccount: '',
     regPassword: '',
-    regFirstName: '',
-    regLastName: '',
 	  loginErr: '',
 	  regError: '',
 	  inputWork: '',
@@ -299,12 +297,6 @@ let app = new Vue({
         }
       })
     },
-	  firebaseExitUser: function () {
-    if (checkExitUser()) {
-      	// 這邊要加上歡迎回來功能。其實只要增加一個按鈕按下去之後會自動填入 mail 即可。
-	      app.account = JSON.parse(localStorage.getItem(STORAGE_MAIL_KEY)).email
-    }
-	  },
 	  firebaseSignOut: function () {
 		  firebase.auth().signOut().then(
 		  		function () {
@@ -315,7 +307,7 @@ let app = new Vue({
 	  }
   },
   created: function () {
-	  firebase.auth().onAuthStateChanged(function(user) {
+	  firebase.auth().onAuthStateChanged(function (user) {
 		  if (user) {
 			  // User is signed in and currentUser will no longer return null.
 			  app.uid = user.uid
@@ -339,10 +331,7 @@ let app = new Vue({
 			  // No user is signed in.
 		  }
 	  })
-}
+  }
 })
-function checkExitUser () {
-  return localStorage.getItem(STORAGE_MAIL_KEY) !== null && localStorage.getItem(STORAGE_MAIL_KEY) !== undefined && localStorage.getItem(STORAGE_MAIL_KEY) !== '' ? true : false
-}
 
 // 好想睡 ( ；´Д｀)

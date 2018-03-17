@@ -40,9 +40,6 @@
                         <button class="btn btn-primary btn-block show" @click.prevent="changeVisToRegister()">{{ text.regBtn
                             }}
                         </button>
-                        <button class="btn btn-primary btn-block show" v-if="exitingUser === true"
-                                @click.prevent="firebaseExitUser"> {{ exitingUserName }} <br> 歡迎回來😊
-                        </button>
                     </div>
                     <div v-if="regPage" class="formBody show">
                         <input type="text" class="form-control show" placeholder="請輸入要註冊的帳號" v-model="regAccount" required

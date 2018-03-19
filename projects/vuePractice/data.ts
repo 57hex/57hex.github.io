@@ -111,6 +111,12 @@ let app = new Vue({
 	  exitingUser: function () {
 		  return checkExitUser()
 	  },
+	  unSignLogin: function () {
+		  if (app.login === true && app.account === '') {
+		  	alert('請勿逕自更改內部設定。')
+			  app.login = false
+		  }
+	  },
 	  exitingUserName: function () {
 		  if (checkExitUser()) {
 			  return JSON.parse(localStorage.getItem(STORAGE_MAIL_KEY)).email

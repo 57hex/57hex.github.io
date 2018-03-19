@@ -178,7 +178,7 @@ html{
     width: 10rem;
     margin: -5rem 0 0 -5rem;
     background-color: transparent;
-    border: 5px #F8ECE1 solid;
+    border: 1px #F8ECE1 solid;
     border-radius: 50%;
     top: 50%;
     left: 50%;
@@ -190,13 +190,73 @@ html{
     width: 10rem;
     margin: -5rem 0 0 -5rem;
     background-color: transparent;
-    border: 5px #00bfa5 solid;
+    border: 1px #53B3CB solid;
     border-bottom: transparent;
     border-right: transparent;
     border-radius: 50%;
     top: 50%;
     left: 50%;
-    animation: loading 1s infinite linear;
+    animation: loading 0.3s infinite ease;
+}
+.loading-item-2 {
+    display: inline-block;
+    position: absolute;
+    height: 10rem;
+    width: 10rem;
+    margin: -5rem 0 0 -5rem;
+    background-color: transparent;
+    border: 1px #F9C22E solid;
+    border-bottom: transparent;
+    border-right: transparent;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    animation: loading 0.5s 0.3s infinite ease;
+}
+.loading-item-3 {
+    display: inline-block;
+    position: absolute;
+    height: 10rem;
+    width: 10rem;
+    margin: -5rem 0 0 -5rem;
+    background-color: transparent;
+    border: 1px #E01A4F solid;
+    border-bottom: transparent;
+    border-right: transparent;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    animation: loading 0.7s .3s infinite ease;
+}
+.loading-item-4 {
+    display: inline-block;
+    position: absolute;
+    height: 10rem;
+    width: 10rem;
+    margin: -5rem 0 0 -5rem;
+    background-color: transparent;
+    border: 1px #0C090D solid;
+    border-bottom: transparent;
+    border-right: transparent;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    animation: loading 0.9s .3s infinite ease;
+}
+.loading-item-5 {
+    display: inline-block;
+    position: absolute;
+    height: 10rem;
+    width: 10rem;
+    margin: -5rem 0 0 -5rem;
+    background-color: transparent;
+    border: 1px #FF595E solid;
+    border-bottom: transparent;
+    border-right: transparent;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    animation: loading .9s infinite ease;
 }
 .loadingLogo {
     position: absolute;

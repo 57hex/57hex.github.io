@@ -14,10 +14,12 @@
 <div id="newapp">
     <nav class="navbar navbar-dark" style="background: rgba(0,0,0,0.25)">
         <span class="icon-logo navbar-brand" style="font-size: 2.5rem" v-if="checkLoginStatus === true"></span>
+        <a href="#" class="navbar-brand" v-if="checkLoginStatus === true">{{ account }}</a>
         <a href="#" class="navbar-brand" @click.prevent="firebaseSignOut" v-if="checkLoginStatus === true">登出</a>
     </nav>
     <div class="container">
-        <section v-if='login === false' class="fadeInDown fadeOutLeft">
+        <section v-if='login === false'>
+            <transition>
             <div class="container">
                 <form class="form-signin">
                     <h1 class="text-center icon-logo show" style="font-size: 5rem; color: whitesmoke"></h1>
@@ -53,6 +55,7 @@
                     </div>
                 </form>
             </div> <!-- /container -->
+                <transition>
         </section>
         <section v-if='login === true' class="fadeInDown fadeOutLeft">
             <h1 class="text-center text-secondary">{{ text.title }}</h1>
@@ -107,7 +110,7 @@
 
                             </li>
                             <p v-if="loading === true" class="text-white">載入中...</p>
-                                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                                <div class="btn-toolbar" v-if="emptyWorks !== true" role="toolbar" aria-label="Toolbar with button groups">
                                     <div class="btn-group mr-2" role="group">
                                         <button v-bind:class="{'disabled': (currPage === 1)}"
                                             class='btn btn-secondary' @click.prevent="setPage(currPage-1)">上一頁</button>
@@ -129,9 +132,19 @@
                                     </button>
                                     <button @click="changeVisToAll" class="btn text-light bg-primary col-lg-2">顯示全部
                                     </button>
-                                    <!-- <button @click="changeVisToSearch"
-                                            class="btn btn-lg text-light bg-primary col-lg-2" v-if="search === false">搜尋
-                                    </button>
+                                <!-- <button @click="changeVisToSearch"
+                                        class="btn btn-lg text-light bg-primary col-lg-2" v-if="search === false">搜尋
+                                </button>
+                                    <div class="input-group" v-if="search === true">
+                                    <input type="text" class="form-control mb-3"
+                                           v-model="searchKey" @keyup.enter="searchData">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary mb-3" v-on:click="searchData" type="button">
+                                            搜尋
+                                        </button>
+                                    </div>
+                                    </div> -->
+                                    <!--
                                     <input type="text" class="form-control" placeholder="輸入要搜尋的內容" v-model="searchKey" v-if="search === true" @blur="cancelSearch"> -->
                                     <p class="col-lg-4 text-white align-middle"
                                        style="margin-bottom: 0; margin-top: 8px">共有

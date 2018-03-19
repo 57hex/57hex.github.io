@@ -86,12 +86,20 @@ var app = new Vue({
         countOfPage: 8,
         currPage: 1,
         search: false,
-        searchKey: '123'
+        searchKey: '123',
+        fire: firebase.database(),
+        emptyWorks: false
     },
     computed: {
         filterWorks: function () {
             if (this.visibility !== 'search') {
-                return filters[this.visibility](this.inputWorks);
+                if (filters.length === 0) {
+                    app.emptyWorks = true;
+                    return filters[this.visibility](this.inputWorks);
+                }
+                else {
+                    return filters[this.visibility](this.inputWorks);
+                }
             }
             else if (this.visibility === 'search') {
                 return filters[this.visibility](this.inputWorks, this.searchKey);
@@ -143,7 +151,7 @@ var app = new Vue({
                 return false;
             }
             else {
-                this.inputWorks.push({ content: todo, finished: false, pinned: false, editing: false });
+                app.inputWorks.push({ content: todo, finished: false, pinned: false, editing: false });
                 localStorage.setItem('savedData', '');
                 localStorage.setItem('savedData', JSON.stringify(this.inputWorks));
                 firebase.database().ref("user/" + this.uid + "/data").set(this.inputWorks);
@@ -331,6 +339,7 @@ var app = new Vue({
             if (user) {
                 // User is signed in and currentUser will no longer return null.
                 app.uid = user.uid;
+                app.account = firebase.auth().currentUser.email;
                 var fire_1 = firebase.database().ref("user/" + app.uid + "/data");
                 localStorage.setItem(STORAGE_MAIL_KEY, '');
                 localStorage.setItem(STORAGE_MAIL_KEY, JSON.stringify({ email: app.account }));

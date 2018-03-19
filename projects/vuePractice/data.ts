@@ -55,7 +55,6 @@ let app = new Vue({
   el: '#newapp',
   data: {
   	text: {
-		  title: '待辦事項',
 		  inputAccount: '請輸入帳號',
 		  inputPassword: '請輸入密碼',
 		  loginBtn: '登入',
@@ -81,7 +80,7 @@ let app = new Vue({
 	  search: false,
 	  searchKey: '123',
 	  fire: firebase.database(),
-	  emptyWorks: false
+	  emptyWorks: false,
   },
   computed: {
     filterWorks: function () {

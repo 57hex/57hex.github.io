@@ -26,7 +26,9 @@
         <div class="collapse" id="navbarToggleExternalContent">
             <div class="p-4" style="background: rgba(0,0,0,0.25)">
                 <h6 class="text-white">Logged in as {{ account }}</h6>
-                <a href="#" class="navbar-brand text-white" @click.prevent="firebaseSignOut" v-if="checkLoginStatus === true">登出</a>
+                <a href="#" class="navbar-brand text-white" @click.prevent="firebaseSignOut" v-if="checkLoginStatus === true">
+                    <span class="icon-exit h1"></span>
+                </a>
             </div>
         </div>
         <nav class="navbar navbar-dark" style="background: rgba(0,0,0,0.25)">
@@ -40,7 +42,9 @@
         <span class="icon-logo navbar-brand" style="font-size: 2.5rem" v-if="checkLoginStatus === true"></span>
         <div class="navbar-right">
             <span class="navbar-text" v-if="checkLoginStatus === true">Logged in as {{ account }}</span>
-            <a href="#" class="navbar-brand" @click.prevent="firebaseSignOut" v-if="checkLoginStatus === true">登出</a>
+            <a href="#" class="navbar-brand" @click.prevent="firebaseSignOut" v-if="checkLoginStatus === true">
+                <span class="icon-exit"></span>
+            </a>
         </div>
         </nav>
     <div class="container">
@@ -84,10 +88,9 @@
                 <transition>
         </section>
         <section v-if='login === true' class="fadeInDown fadeOutLeft">
-            <h1 class="text-center text-secondary">{{ text.title }}</h1>
-            <div class="formBody">
+            <div class="formBody" style="margin: 16px;">
                 <input type="text" class="form-control d-none d-md-block" placeholder="請輸入待辦事項" v-model="inputWork"
-                       @keyup.enter="addWork(inputWork)">
+                       @keyup.enter="addWork(inputWork)" style="margin-bottom: 16px;">
                 <div class="container">
                     <div class="align-items-center">
                         <div class="fixed-bottom">
@@ -105,7 +108,7 @@
                         </div>
                     </div>
                 </div>
-                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="font-size: 14px;">
                     <li class="nav-item">
                         <a class="nav-link active text-white" @click="changeVisToYetFinished" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">未完成
                             <span class="badge badge-light">{{ filterNotFinishedWorks.length }}</span>
@@ -140,26 +143,35 @@
                                         </button>
                                     </div>
                                 </div>
-                                <button class="btn btn-outline-light" @click.prevent="finishWork(data)">已完成
+                                <button class="btn btn-outline-light" @click.prevent="finishWork(data)">
+                                    <span class="icon-checkmark"></span>
                                     </button>
                                         <button v-if="checkIsPinnedOrNot(data) === false" class="close delFixed"
                                                 @click.prevent="deleteWork(data)" aria-label="Close">
                                             <span class="text-white h3" aria-hidden="true">&times;</span>
                                         </button>
-                                        <button class="btn btn-warning" @click.prevent="pinWork(data)">保護
+                                        <button class="btn btn-warning" @click.prevent="pinWork(data)">
+                                            <span class="icon-heart" v-if="data.pinned === false"></span>
+                                            <span class="icon-heart-broken" v-if="data.pinned === true"></span>
                                         </button>
-                                <button class="btn btn-light d-md-none" @click="editWork(data)">修改</button>
+                                <button class="btn btn-light d-md-none" @click="editWork(data)">
+                                            <span class="icon-pencil"></span>
+                                </button>
 
                             </li>
-                                <div class="btn-toolbar" v-if="emptyWorks !== true" role="toolbar" aria-label="Toolbar with button groups">
+                                <div class="btn-toolbar" v-if="emptyWorks !== true" role="toolbar" aria-label="Toolbar with button groups" style="margin-top: 16px;">
                                     <div class="btn-group mr-2" role="group">
                                         <button v-bind:class="{'disabled': (currPage === 1)}"
-                                            class='btn btn-secondary' @click.prevent="setPage(currPage-1)">上一頁</button>
+                                            class='btn btn-secondary' @click.prevent="setPage(currPage-1)">
+                                            <span class="icon-circle-left"></span>
+                                        </button>
                                         <button v-for="n in totalPage" class='btn btn-secondary'
                                             v-bind:class="{'active': (currPage === (n))}"
                                             @click.prevent="setPage(n)">{{n}}</button>
                                         <button v-bind:class="{'disabled': (currPage === totalPage)}"
-                                                class='btn btn-secondary' @click.prevent="setPage(currPage+1)">下一頁</button>
+                                                class='btn btn-secondary' @click.prevent="setPage(currPage+1)">
+                                            <span class="icon-circle-right"></span>
+                                        </button>
                                     </div>
                                 </div>
                             <div class="row" style="margin: 0;">
@@ -178,7 +190,7 @@
                                     <!--
                                     <input type="text" class="form-control" placeholder="輸入要搜尋的內容" v-model="searchKey" v-if="search === true" @blur="cancelSearch"> -->
                                     <p class="col-lg-4 text-white align-middle"
-                                       style="margin-bottom: 0; margin-top: 8px">共有
+                                       style="margin-bottom: 0; margin-top: 16px">共有
                                         {{ inputWorks.length -1 }} 件事，還有 {{ filterNotFinishedWorks.length }}
                                         件事情未完成。</p>
                                 </div>

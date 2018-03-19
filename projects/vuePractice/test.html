@@ -12,17 +12,39 @@
 </head>
 <body class="bg-light loginbg userelative">
 <div id="newapp">
-    <nav class="navbar navbar-dark" style="background: rgba(0,0,0,0.25)">
+    <div class="loading" v-if="loading === true">
+        <div class="loading-item-0">
+            <span class="icon-logo loadingLogo text-white"></span>
+        </div>
+        <div class="loading-item-1"></div>
+    </div>
+    <div class="pos-f-t d-md-none" v-if="checkLoginStatus === true">
+        <div class="collapse" id="navbarToggleExternalContent">
+            <div class="p-4" style="background: rgba(0,0,0,0.25)">
+                <h6 class="text-white">Logged in as {{ account }}</h6>
+                <a href="#" class="navbar-brand text-white" @click.prevent="firebaseSignOut" v-if="checkLoginStatus === true">登出</a>
+            </div>
+        </div>
+        <nav class="navbar navbar-dark" style="background: rgba(0,0,0,0.25)">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <span class="icon-logo navbar-brand" style="font-size: 2.5rem" v-if="checkLoginStatus === true"></span>
+        </nav>
+    </div>
+    <nav class="navbar navbar-dark d-none d-md-flex" style="background: rgba(0,0,0,0.25)">
         <span class="icon-logo navbar-brand" style="font-size: 2.5rem" v-if="checkLoginStatus === true"></span>
-        <a href="#" class="navbar-brand" v-if="checkLoginStatus === true">{{ account }}</a>
-        <a href="#" class="navbar-brand" @click.prevent="firebaseSignOut" v-if="checkLoginStatus === true">登出</a>
-    </nav>
+        <div class="navbar-right">
+            <span class="navbar-text" v-if="checkLoginStatus === true">Logged in as {{ account }}</span>
+            <a href="#" class="navbar-brand" @click.prevent="firebaseSignOut" v-if="checkLoginStatus === true">登出</a>
+        </div>
+        </nav>
     <div class="container">
         <section v-if='login === false'>
             <transition>
             <div class="container">
                 <form class="form-signin">
-                    <h1 class="text-center icon-logo show" style="font-size: 5rem; color: whitesmoke"></h1>
+                    <h1 class="text-center icon-logo monoAppear" style="font-size: 5rem; color: whitesmoke"></h1>
                     <div v-if="loginPage" class="formBody">
                         <input type="email" class="form-control" :placeholder="text.inputAccount" v-model="account"
                                required autofocus>
@@ -36,19 +58,19 @@
                             </div>
                         </div>
                         <p v-if="loginErr !== ''" class="text-danger"> {{ loginErr }} </p>
-                        <button class="btn btn-lg btn-primary btn-block show" type="submit" @click.prevent="firebaseLogin">{{
+                        <button class="btn btn-lg btn-primary btn-block monoAppear" type="submit" @click.prevent="firebaseLogin">{{
                             text.loginBtn }}
                         </button>
-                        <button class="btn btn-primary btn-block show" @click.prevent="changeVisToRegister()">{{ text.regBtn
+                        <button class="btn btn-primary btn-block monoAppear" @click.prevent="changeVisToRegister()">{{ text.regBtn
                             }}
                         </button>
                     </div>
-                    <div v-if="regPage" class="formBody show">
-                        <input type="text" class="form-control show" placeholder="請輸入要註冊的帳號" v-model="regAccount" required
+                    <div v-if="regPage" class="formBody monoAppear">
+                        <input type="text" class="form-control monoAppear" placeholder="請輸入要註冊的帳號" v-model="regAccount" required
                                autofocus>
-                        <input type="password" class="form-control show" placeholder="請輸入要註冊的密碼" v-model="regPassword"
+                        <input type="password" class="form-control monoAppear" placeholder="請輸入要註冊的密碼" v-model="regPassword"
                                required>
-                        <button class="btn btn-lg btn-primary btn-block show" type="submit" @click.prevent="firebaseReg">註冊
+                        <button class="btn btn-lg btn-primary btn-block monoAppear" type="submit" @click.prevent="firebaseReg">註冊
                         </button>
                         <p v-if="regError !== ''" class="text-danger"> {{ regError }} </p>
                         <button class="btn btn-primary btn-block" @click.prevent="changeVisToLogin()">已經有帳號？</button>
@@ -66,7 +88,7 @@
                     <div class="align-items-center">
                         <div class="fixed-bottom">
                             <div class="d-md-none">
-                                <div class="input-group show">
+                                <div class="input-group monoAppear">
                                     <input type="text" class="form-control" placeholder="請輸入事項。" v-model="inputWork"
                                            @keyup.enter="addWork(inputWork)">
                                     <div class="input-group-append">
@@ -79,11 +101,27 @@
                         </div>
                     </div>
                 </div>
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active text-white" @click="changeVisToYetFinished" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">未完成
+                            <span class="badge badge-light">{{ filterNotFinishedWorks.length }}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" @click="changeVisToHaveFinished" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">已完成
+                            <span class="badge badge-light">{{ filterHaveFinishedWorks.length }}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" @click="changeVisToAll" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">
+                            顯示全部</a>
+                    </li>
+                </ul>
                 <div class="row">
                     <div class="col-lg">
                         <ul class="list-group list-group-flush rounded">
                             <li v-for="data in filterWorks.slice(pageStart, pageStart + countOfPage)" v-bind:class="{ active: data.finished }"
-                                class="list-group-item darkTheme show" @dblclick="editWork(data)">
+                                class="list-group-item darkTheme monoAppear" @dblclick="editWork(data)">
                                 <p class="text-truncate text-white content" v-if="data.editing === false"
                                    >{{ data.content }}
                                     <span v-if="checkIsPinnedOrNot(data) === true"
@@ -122,16 +160,6 @@
                                     </div>
                                 </div>
                             <div class="row" style="margin: 0;">
-                                    <button @click="changeVisToYetFinished"
-                                            class="btn btn-lg text-light bg-primary col-lg-2">未完成
-                                        <span class="badge badge-light">{{ filterNotFinishedWorks.length }}</span>
-                                    </button>
-                                    <button @click="changeVisToHaveFinished"
-                                            class="btn  btn-lg text-light bg-primary col-lg-2">
-                                        已完成 <span class="badge badge-light">{{ filterHaveFinishedWorks.length }}</span>
-                                    </button>
-                                    <button @click="changeVisToAll" class="btn text-light bg-primary col-lg-2">顯示全部
-                                    </button>
                                 <!-- <button @click="changeVisToSearch"
                                         class="btn btn-lg text-light bg-primary col-lg-2" v-if="search === false">搜尋
                                 </button>

@@ -75,7 +75,7 @@ let app = new Vue({
 	  inputWork: '',
 	  inputWorks: [{ vis: false }],
 	  visibility: 'all',
-    loading: true,
+    loading: false,
 	  countOfPage: 8,
 	  currPage: 1,
 	  search: false,
@@ -230,6 +230,7 @@ let app = new Vue({
     firebaseLogin: function () {
       if (app.account !== '' && app.password !== '') {
         firebase.auth().signInWithEmailAndPassword(app.account, app.password).then(function (user) {
+	        app.loading = true
 	        app.exitingUser = true
           app.uid = user.uid  // app.account.split('.').join('_')
           app.login = true
@@ -267,6 +268,7 @@ let app = new Vue({
     },
     firebaseReg: function () {
       firebase.auth().createUserWithEmailAndPassword(app.regAccount, app.regPassword).then(function (user) {
+      	app.loading = true
 	      app.exitingUser = true
 	      app.account = app.regAccount
 	      app.uid = user.uid   // app.account.split('.').join('_')
@@ -336,6 +338,7 @@ let app = new Vue({
 				  app.inputWorks = (JSON.parse(localStorage.getItem(STORAGE_KEY)))
 			  })
 		  } else {
+		  	app.loading =  false
 			  // No user is signed in.
 		  }
 	  })

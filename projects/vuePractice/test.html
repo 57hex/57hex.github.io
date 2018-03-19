@@ -12,7 +12,7 @@
 </head>
 <body class="bg-light loginbg userelative">
 <div id="newapp">
-    <div class="loading" v-if="loading === true">
+    <div class="loading monoAppear" v-if="loading === true">
         <div class="loading-item-0">
             <span class="icon-logo loadingLogo text-white"></span>
         </div>
@@ -147,7 +147,6 @@
                                 <button class="btn btn-light d-md-none" @click="editWork(data)">修改</button>
 
                             </li>
-                            <p v-if="loading === true" class="text-white">載入中...</p>
                                 <div class="btn-toolbar" v-if="emptyWorks !== true" role="toolbar" aria-label="Toolbar with button groups">
                                     <div class="btn-group mr-2" role="group">
                                         <button v-bind:class="{'disabled': (currPage === 1)}"

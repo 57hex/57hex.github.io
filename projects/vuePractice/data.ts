@@ -319,6 +319,7 @@ let app = new Vue({
 	  firebase.auth().onAuthStateChanged(function (user) {
 		  if (user) {
 			  // User is signed in and currentUser will no longer return null.
+			  app.loading = true
 			  app.uid = user.uid
 			  app.account = firebase.auth().currentUser.email
 			  const fire = firebase.database().ref(`user/${app.uid}/data`)
@@ -338,7 +339,7 @@ let app = new Vue({
 				  app.inputWorks = (JSON.parse(localStorage.getItem(STORAGE_KEY)))
 			  })
 		  } else {
-		  	app.loading =  false
+		  	app.loading = false
 			  // No user is signed in.
 		  }
 	  })

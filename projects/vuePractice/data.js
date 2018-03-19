@@ -340,6 +340,7 @@ var app = new Vue({
         firebase.auth().onAuthStateChanged(function (user) {
             if (user) {
                 // User is signed in and currentUser will no longer return null.
+                app.loading = true;
                 app.uid = user.uid;
                 app.account = firebase.auth().currentUser.email;
                 var fire_1 = firebase.database().ref("user/" + app.uid + "/data");

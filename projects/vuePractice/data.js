@@ -11,6 +11,7 @@ var config = {
     messagingSenderId: '36011476367'
 };
 firebase.initializeApp(config);
+var jiKan = new Date();
 var filters = {
     all: function (todo) {
         var filter = [];
@@ -156,7 +157,8 @@ var app = new Vue({
                 return false;
             }
             else {
-                app.inputWorks.push({ content: todo, finished: false, pinned: false, editing: false });
+                app.inputWorks.push({ content: todo, finished: false, pinned: false, editing: false, time: jiKan.getFullYear() + "/" + jiKan.getMonth() + "/" + jiKan.getDate() + "  " + jiKan.getHours() + " : " + jiKan.getMinutes(),
+                    more: false });
                 localStorage.setItem('savedData', '');
                 localStorage.setItem('savedData', JSON.stringify(this.inputWorks));
                 firebase.database().ref("user/" + this.uid + "/data").set(this.inputWorks);

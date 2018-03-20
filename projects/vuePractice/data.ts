@@ -11,8 +11,9 @@ let config = {
   messagingSenderId: '36011476367'
 }
 firebase.initializeApp(config)
+let jiKan = new Date()
 let filters = {
-  all: function (todo: any) { // 返回全部陣列
+  all: function (todo) { // 返回全部陣列
     let filter = []
     for (let obj of todo) {
       if (obj.vis !== false) {
@@ -21,7 +22,7 @@ let filters = {
     }
     return filter
   },
-  yetFinished: function (todo: any) { // 返回未完成的資料
+  yetFinished: function (todo) { // 返回未完成的資料
     let filter = []
     for (let obj of todo) {
       if (obj.finished === false && obj.vis !== false) {
@@ -30,7 +31,7 @@ let filters = {
     }
     return filter
   },
-  haveFinished: function (todo: any) { // 返回已完成的資料
+  haveFinished: function (todo) { // 返回已完成的資料
     let filter = []
     for (let obj of todo) {
       if (obj.finished === true && obj.vis !== false) {
@@ -144,7 +145,9 @@ let app = new Vue({
         alert('說點什麼吧？')
         return false
       } else {
-        app.inputWorks.push({ content: todo, finished: false, pinned: false, editing: false })
+        app.inputWorks.push({ content: todo, finished: false, pinned: false, editing: false, time:
+        `${jiKan.getFullYear()}/${jiKan.getMonth()}/${jiKan.getDate()}  ${jiKan.getHours()} : ${jiKan.getMinutes()}`,
+          more: false})
         localStorage.setItem('savedData', '')
         localStorage.setItem('savedData', JSON.stringify(this.inputWorks))
         firebase.database().ref(`user/${this.uid}/data`).set(this.inputWorks)

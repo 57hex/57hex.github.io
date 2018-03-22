@@ -25,6 +25,10 @@ html{
     font-family: "Noto Sans TC" !important;
     position: relative;
 }
+.error {
+    border: 1px #a94442 solid;
+    box-shadow: 2px 2px 1px rgba(0,0,0,0.5);
+}
 .square {
     display:flex;
     align-items:center;

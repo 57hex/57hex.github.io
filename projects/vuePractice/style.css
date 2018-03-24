@@ -344,3 +344,22 @@ html{
     -moz-border-radius: 50%;
     border-radius: 50%;
 }
+@keyframes uganda {
+    from {
+        transform: rotate(0deg);
+        height: 0;
+        opacity: 0;
+        width: 0;
+    } to {
+        transform: rotate(360deg);
+        height: 100%;
+        width: 100%;
+        left: 0;
+        opacity: 1;
+    }
+}
+.uganda {
+    left: 50%;
+    top: 0;
+    animation: uganda 1.5s infinite ease alternate-reverse;
+}

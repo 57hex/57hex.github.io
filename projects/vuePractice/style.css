@@ -1,3 +1,7 @@
+html{
+   scroll-behavior: smooth;
+}
+}
 .active a{
     color: red !important;
 }
@@ -49,6 +53,9 @@ html{
     height: 100%;
     width: 100%;
 }
+section {
+    padding-top: 76px;
+}
 .formBody {
     background-color: rgba(0, 0, 0, 0.25);
     -webkit-animation: bodyAppear 1s 0.3s ease-in alternate;
@@ -62,6 +69,7 @@ html{
     opacity: 0;
     border: transparent solid;
     border-radius: 7px;
+    margin-top: 50px
 }
 .loginbtn {
     padding: 0;

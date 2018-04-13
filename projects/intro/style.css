@@ -1,56 +1,114 @@
 @import "notosanstc.css";
 body{
-    margin: 0px;
-    padding: 0px;
-    height: 100%;
+    margin: 0 !important;
+    padding: 0;
+    overflow-x: hidden;
+    height: 100% !important;
+    width: 100% !important;
 }
 html{
     margin: 0;
     padding: 0;
-    height: 100%;
+    height: 100% !important;
+    width: 100% !important;
 }
 *{
     position: relative;
     font-family: "Noto Sans TC", Arial;
 }
-.wrapper{
+.left-square{
     height: 100%;
-    background: url("burger.jpg") center center fixed no-repeat;
-    background-size: cover;
+    width: 50%;
+    left: 0;
+    background-color: #939650;
+    display: inline-block;
+    animation: opendoor-left 1s .3s ease-out alternate forwards;
+    transition: .2s ease-out;
+    z-index: 4000;
 }
-.square{
-    height: 500px;
-    width: 500px;
-    background-color: rgba(0, 0, 0, 0.5);
-    -webkit-animation: squareAppear 1s 1s;
-    -o-animation: squareAppear 1s 1s;
-    animation: squareAppear 1s 1s;
+.right-square {
+    height: 100%;
+    width: 50%;
+    right: 0;
+    background-color: #606331;
+    display: inline-block;
+    animation: opendoor-right 1s .3s ease-out alternate forwards;
+    transition: .2s ease-out;
+    z-index: 4000;
 }
-.center{
-    position: fixed;
+@keyframes opendoor-left {
+    from {
+        left: 0;
+    }
+    to {
+        left: -100%;
+    }
+}
+@keyframes opendoor-right {
+    from {
+        right: 0;
+    }
+    to {
+        right: -100%;
+    }
+}
+.noMoneyPlzShutUp {
+    width: 100%;
+    position: absolute;
+    font-size: 1rem;
+    text-align: center;
+    transition: .5s ease;
     top: 50%;
     left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    animation: noMoneyBecomeBigger 1s 1s ease-in-out forwards;
+    z-index: 3999;
 }
-.text{
-    font-family: "Noto Sans TC" ;
-    color: aliceblue;
-    font-size: 2em;
-    overflow: hidden;
-    -ms-text-overflow: ellipsis;
-    text-overflow: ellipsis;
-}
-@keyframes squareAppear {
-    0%{
-        width: 0;
-        height: 0;
+@keyframes noMoneyBecomeBigger {
+    0% {
+        font-size: 1rem;
     }
-    100%{
-        height: 500px;
-        width: 500px;
+    10% {
+        font-size: 2rem;
+    }
+    50% {
+        font-size: 8rem;
+        opacity: 0.7;
+    }
+    100% {
+        font-size: 8rem;
+        opacity: 0;
+        display: none;
+    }
+}
+.innerText {
+    width: 100%;
+    position: absolute;
+    font-size: 2rem;
+    transition: .5s ease;
+    padding-left: 25px;
+    padding-right: 25px;
+    opacity: 0;
+    top: 10%;
+    left: 10%;
+    animation: textAppear 1s 2s ease-in-out forwards;
+    z-index: 3999;
+}
+ul > li {
+    list-style-type: circle !important;
+    font-size: 1.5rem;
+}
+ul {
+    font-size: 2rem;
+}
+@keyframes textAppear {
+    0%{
+        opacity: 0;
+    }
+    50% {
+        height: 100%;
+    }
+    100% {
+        opacity: 1;
     }
 }

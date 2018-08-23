@@ -1,0 +1,268 @@
+* {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  transition: 0.2s ease-in-out;
+}
+a {
+  text-decoration: none;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  scroll-behavior: smooth;
+}
+body {
+  background-color: #001F17;
+  color: #c0c0c0;
+}
+nav {
+  top: 0;
+  opacity: 0;
+  display: none;
+  position: fixed;
+  height: 6%;
+  width: 100%;
+  padding: 10px;
+}
+nav img {
+  margin-left: 1rem;
+}
+footer {
+  opacity: 0;
+  display: none;
+  position: fixed;
+  height: 8%;
+  width: 100%;
+  bottom: 0;
+  background-color: #000;
+}
+footer p {
+  position: absolute;
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  text-align: center;
+  font-size: 2.5rem;
+}
+footer p:hover {
+  background-color: #1a1a1a;
+}
+footer .left-arrow {
+  left: 0 !important;
+}
+footer .right-arrow {
+  left: 50% !important;
+}
+h1 {
+  color: #ffffff;
+  margin-bottom: 1rem;
+  font-size: 3.125rem;
+}
+p {
+  font-size: 1rem;
+  line-height: 1.8;
+}
+.text-pink {
+  color: #f58780 !important;
+}
+.btn-pink {
+  background-color: #f58780 !important;
+}
+.btn-green {
+  background-color: #a4c739 !important;
+}
+.container {
+  top: 5%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 75%;
+  padding: 5em 1em 5em 1em;
+}
+.container button:focus {
+  outline: none;
+}
+.container ::-moz-focus-inner {
+  border-color: transparent;
+}
+.container .btn {
+  display: inline-block;
+  position: relative;
+  color: #ffffff;
+  width: 150px;
+  height: 60px;
+  font-size: .85rem;
+  line-height: 60px;
+  margin: 0 15px 15px 0;
+  background-color: #c7c7cc;
+  border: none;
+  letter-spacing: 2px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.text-area {
+  position: relative;
+  height: auto;
+  margin-bottom: 2.7rem;
+}
+.btn-line {
+  display: block;
+  max-width: 750px;
+}
+.intro {
+  position: absolute;
+  width: 55%;
+}
+.phone-pos {
+  position: absolute;
+  left: 60%;
+  width: 42%;
+  height: 65%;
+  padding: 20px;
+}
+.phone-frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 500px;
+  width: 240px;
+  border: 1px #000 solid;
+  background-color: #c7c7cc;
+  border-radius: 30px;
+}
+.phone-frame .phone-top {
+  position: absolute;
+  top: 0;
+  height: 10%;
+  width: 100%;
+}
+.phone-frame .phone-top .camera {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #000;
+}
+.phone-frame .phone-middle {
+  top: 10%;
+  width: 95%;
+  height: 80%;
+  background-color: #000000;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.phone-frame .phone-middle img {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.phone-frame .phone-middle video {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.content-in-page {
+  position: absolute;
+  right: 0%;
+  opacity: 0;
+  max-width: 500px;
+}
+#page1-phone {
+  display: none;
+}
+#page2-phone {
+  display: none;
+}
+#page3-phone {
+  display: none;
+}
+@media screen and (max-width: 1070px) {
+  #main-phone {
+    display: none;
+  }
+  #page1-phone {
+    display: block;
+  }
+  #page2-phone {
+    display: block;
+  }
+  #page3-phone {
+    display: block;
+  }
+  .container {
+    top: 0;
+    width: 95%;
+  }
+  .intro {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+  }
+  .content-in-page {
+    position: relative;
+    width: 90%;
+    left: 5%;
+    right: unset;
+    opacity: 1 !important;
+    max-width: unset;
+  }
+  .intro {
+    position: relative;
+  }
+  .btn-line {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 230px;
+    max-height: 150px;
+    overflow: hidden;
+  }
+  .btn {
+    width: 105px !important;
+    height: 42px !important;
+    font-size: .595rem !important;
+    line-height: 42px !important;
+    display: inline-block !important;
+    text-align: center !important;
+    margin: 0 7px 7px 0 !important;
+  }
+  .center-frame {
+    position: relative;
+    width: 100%;
+    height: 150px;
+  }
+  .phone-pos {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25.2rem;
+    height: 39rem;
+  }
+  .center-frame-phone {
+    height: 39rem !important;
+    width: 100% !important;
+  }
+  h1 {
+    text-align: center !important;
+  }
+  p {
+    text-align: center !important;
+  }
+}
+/*# sourceMappingURL=style.css.map */

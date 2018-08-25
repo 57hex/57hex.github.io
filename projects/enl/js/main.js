@@ -1,5 +1,30 @@
 'use strict';
-
+var isIE = /*@cc_on!@*/false || !!document.documentMode;
+window.onload = function () {
+    if (isIE) {
+        width =  document.compatMode === "CSS1Compat" ? document.documentElement.clientWidth : document.body.clientWidth;
+    } else {
+        width =  self.innerWidth;
+    }
+}
+window.addEventListener('resize', function () {
+  if (isIE) {
+    width =  document.compatMode === "CSS1Compat" ? document.documentElement.clientWidth : document.body.clientWidth;
+    } else {
+    width =  self.innerWidth;
+  }
+  if (width <= 350) {
+    introTitle.innerHTML = '歡迎加入<br>Ingress<br>台灣綠軍'
+    title1.innerHTML = '選擇<br>對的陣營';
+    title2.innerHTML = '遊戲的<br>基本操作';
+  } else if (width <= 434) {
+    introTitle.innerHTML = '歡迎加入<br>Ingress<br>台灣綠軍';
+  } else {
+    introTitle.innerHTML = '歡迎加入 Ingress 台灣綠軍'
+    title1.innerHTML = '選擇對的陣營';
+    title2.innerHTML = '遊戲的基本操作';
+  }
+})
 var intro = document.querySelector('.intro');
 var phonePos = document.querySelector('.phone-pos');
 var nav = document.querySelector('nav');
@@ -12,6 +37,11 @@ var page1 = document.getElementById('content-page1');
 var page2 = document.getElementById('content-page2');
 var page3 = document.getElementById('content-page3');
 var count = 0;
+var width = 0;
+var introTitle = document.getElementById('intro-title');
+var title1 = document.getElementById('title-1')
+var title2 = document.getElementById('title-2')
+var title3 = document.getElementById('title-3')
 function changePage() {
   if (count === 0) {
     intro.style.opacity = '1';
@@ -50,7 +80,7 @@ function changePage() {
   }
 }
 start.addEventListener('click', function() {
-  if (window.innerWidth <= 1070) {
+  if (width <= 1070) {
     page1.scrollIntoView();
     return;
   }

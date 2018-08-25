@@ -51,9 +51,11 @@ footer p:hover {
 }
 footer .left-arrow {
   left: 0 !important;
+  margin: 0 !important;
 }
 footer .right-arrow {
   left: 50% !important;
+  margin: 0 !important;
 }
 h1 {
   color: #ffffff;
@@ -63,6 +65,10 @@ h1 {
 p {
   font-size: 1rem;
   line-height: 1.8;
+}
+p,
+hr {
+  margin: 1em 0 0.6em;
 }
 .text-pink {
   color: #f58780 !important;
@@ -192,6 +198,10 @@ p {
   display: none;
 }
 @media screen and (max-width: 1070px) {
+  html,
+  body {
+    width: 100%;
+  }
   #main-phone {
     display: none;
   }
@@ -251,7 +261,6 @@ p {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    width: 25.2rem;
     height: 39rem;
   }
   .center-frame-phone {

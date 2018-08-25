@@ -71,9 +71,11 @@ footer {
   }
   .left-arrow {
     left: 0 !important;
+    margin: 0 !important;
   }
   .right-arrow {
     left: 50% !important;
+    margin: 0 !important;
   }
 }
 h1 {
@@ -84,6 +86,9 @@ h1 {
 p {
   font-size: 1rem;
   line-height: 1.8;
+}
+p, hr {
+  margin: 1em 0 0.6em;
 }
 .text-pink {
   color: @pink !important;
@@ -194,6 +199,9 @@ p {
   display: none;
 }
 @media screen and (max-width: 1070px) {
+  html, body {
+    width: 100%;
+  }
   #main-phone {
     display: none;
   }
@@ -247,7 +255,6 @@ p {
   }
   .phone-pos {
     .centerX();
-    width: 25.2rem;
     height: 39rem;
   }
   .center-frame-phone {

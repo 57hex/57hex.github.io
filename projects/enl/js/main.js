@@ -26,17 +26,6 @@ window.addEventListener('resize', function () {
     } else {
     width =  self.innerWidth;
   }
-  if (width <= 350) {
-    introTitle.innerHTML = '歡迎加入<br>Ingress<br>台灣綠軍'
-    title1.innerHTML = '選擇<br>對的陣營';
-    title2.innerHTML = '遊戲的<br>基本操作';
-  } else if (width <= 434) {
-    introTitle.innerHTML = '歡迎加入<br>Ingress<br>台灣綠軍';
-  } else {
-    introTitle.innerHTML = '歡迎加入 Ingress 台灣綠軍'
-    title1.innerHTML = '選擇對的陣營';
-    title2.innerHTML = '遊戲的基本操作';
-  }
 })
 var intro = document.querySelector('.intro');
 var phonePos = document.querySelector('.phone-pos');

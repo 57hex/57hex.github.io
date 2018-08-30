@@ -101,6 +101,7 @@ body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  margin-left: 10rem;
 }
 .phone-pos {
   left: 60%;
@@ -171,6 +172,9 @@ body {
 @media screen and (max-width: 1070px) {
   .phone-pos {
     display: none;
+  }
+  .intro-content {
+    margin-left: 0 !important;
   }
 }
 /*# sourceMappingURL=style.css.map */

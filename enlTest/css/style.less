@@ -1,5 +1,5 @@
 @background: #4D5139;
-@gray: #878787;
+@gray: #D9D9D9;
 @yellow: #DDD23B;
 @orange: #E98B2A;
 .centerX() {
@@ -105,6 +105,7 @@ body {
       display: inline-flex;
       .centerY();
       right: -.5rem;
+      line-height: 1.3;
     }
     b {
       font-size: 5rem;
@@ -113,9 +114,18 @@ body {
     }
   }
 }
+.mb-0 {
+  margin-bottom: 0 !important;
+}
 .intro-content {
   .centerY();
   margin-left: 10rem;
+  p {
+    color: #F8F8F8 !important;
+  }
+  a {
+    color: @yellow !important;
+  }
 }
 .phone-pos {
   position: absolute;

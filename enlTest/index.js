@@ -34,7 +34,11 @@ window.onload = () => {
   bg_tra1.style.borderWidth = `0 0 ${height * 0.2}px ${height * 0.2}px`
   bg_tra2.style.borderWidth = `0 0 ${height * 0.6}px ${height * 0.6}px`
   bg_tra3.style.borderWidth = `0 0 ${height}px ${height}px`
-
+  if (width < 346) {
+    introContent.innerHTML = "2018 <span>/</span> <br> 10 <span>/</span> 20<br><b>台中</b><br><span class='intro-phone-text-color'>Recursion<br>Prime</span>"
+  } else {
+    introContent.innerHTML = "2018 <span>/</span> 10 <span>/</span> 20<br> <div class='intro-TC-RP-inline'> <b>台中</b><span>Recursion<br>Prime</span></div>"
+  }
 }
 window.addEventListener('resize', function () {
   if (isIE) {

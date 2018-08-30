@@ -60,6 +60,7 @@ body {
 #count-down-day {
   font-size: 2em !important;
   color: #F8F8F8;
+  margin-left: 3px;
 }
 .intro-page {
   height: 100%;
@@ -67,12 +68,16 @@ body {
 }
 .intro-title {
   font-size: 3.5em !important;
+  line-height: 1.1 !important;
   display: block;
 }
 .intro-title span {
   color: #E98B2A;
   font-size: 2rem;
   display: inline-flex;
+}
+.intro-title .intro-phone-text-color {
+  color: #DDD23B;
 }
 .intro-title .intro-TC-RP-inline {
   width: 100%;
@@ -90,6 +95,7 @@ body {
 .intro-title .intro-TC-RP-inline b {
   font-size: 5rem;
   display: inline-flex;
+  margin-left: -5px;
 }
 .intro-content {
   position: absolute;
@@ -161,5 +167,10 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+@media screen and (max-width: 1070px) {
+  .phone-pos {
+    display: none;
+  }
 }
 /*# sourceMappingURL=style.css.map */

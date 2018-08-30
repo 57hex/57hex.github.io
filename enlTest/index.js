@@ -10,8 +10,10 @@ let isIE = /*@cc_on!@*/false || !!document.documentMode;
 let height = 0;
 let width = 0;
 window.onload = () => {
-  betweenNowAndEndDay = Math.floor((end.valueOf() - now.valueOf()) / 86400000);
-  countDownDay.innerHTML = `還剩 <b>${betweenNowAndEndDay}</b> 天`;
+  betweenNowAndEndDay = Math.ceil((end-now) / 86400000);
+  if (betweenNowAndEndDay > 0) {
+    countDownDay.innerHTML = `還剩 <b>${betweenNowAndEndDay}</b> 天`;
+  }
   if (isIE) {
     height =  document.compatMode === "CSS1Compat" ? document.documentElement.clientHeight : document.body.clientHeight;
     width =  document.compatMode === "CSS1Compat" ? document.documentElement.clientWidth : document.body.clientWidth;

@@ -79,6 +79,15 @@ body {
   font-size: 2em !important;
   color: #F8F8F8;
   margin-left: 3px;
+  b {
+    span {
+      font-size: .5em !important;
+      color: @yellow;
+    }
+  }
+}
+#intro-inner-content {
+  margin-top: 0.6em !important;
 }
 .intro-page {
   height: 100%;
@@ -93,23 +102,32 @@ body {
     font-size: 2rem;
     display: inline-flex;
   }
+  .intro-phone-text {
+    color: @yellow !important;
+    margin-left: 3px;
+  }
   .intro-phone-text-color {
-    color: @yellow;
+    color: @yellow !important;
+  }
+  .text-yellow {
+    color: @yellow !important;
+  }
+  .text-orange {
+    color: @orange !important;
   }
   .intro-TC-RP-inline {
     width: 100%;
-    display: flex;
+    display: block;
     span {
-      color: @yellow;
       font-size: 2.3rem;
-      display: inline-flex;
+      display: inline-block;
       .centerY();
-      right: -.5rem;
       line-height: 1.3;
+      color: @yellow !important;
     }
     b {
       font-size: 5rem;
-      display: inline-flex;
+      display: inline-block;
       margin-left: -5px;
     }
   }
@@ -122,6 +140,7 @@ body {
   margin-left: 10rem;
   p {
     color: #F8F8F8 !important;
+    margin-left: 3px;
   }
   a {
     color: @yellow !important;
@@ -185,5 +204,8 @@ body {
   }
   .intro-content {
     margin-left: 0 !important;
+  }
+  #intro-inner-content {
+    margin-top: 0.4em !important;
   }
 }

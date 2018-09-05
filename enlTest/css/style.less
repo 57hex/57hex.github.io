@@ -23,8 +23,8 @@
   position: relative;
   transition: .2s ease-in-out;
   font-family: 'Noto Sans TC', sans-serif !important;
+  -webkit-overflow-scrolling: touch;
 }
-
 html, body {
   height: 100%;
   width: 100%;
@@ -78,6 +78,9 @@ body {
 }
 .page {
   overflow: hidden !important;
+  h1 {
+    text-align: center;
+  }
 }
 #count-down-day {
   font-size: 2em !important;
@@ -231,6 +234,9 @@ body {
     .centerXY();
     color: @gray
   }
+  span {
+    font-size: 0.7em;
+  }
 }
 @keyframes down_arrow {
   from {
@@ -255,6 +261,9 @@ body {
       width: 90%;
       line-height: 1.2;
       font-size: 1.5em;
+    }
+    span {
+      font-size: 1em;
     }
   }
 }
@@ -287,6 +296,9 @@ body {
       line-height: 1.2;
       font-size: 1.5em;
     }
+    span {
+      font-size: 1em;
+    }
   }
 }
 @media screen and (max-width: 992px) {
@@ -318,6 +330,9 @@ body {
       line-height: 1.2;
       font-size: 1.5em;
     }
+    span {
+      font-size: 1em;
+    }
   }
 }
 @media screen and (max-width: 768px) {
@@ -347,7 +362,10 @@ body {
       height: auto;
       width: 90%;
       line-height: 1.2;
-      font-size: 2em;
+      font-size: 1.5em;
+    }
+    span {
+      font-size: 1em;
     }
   }
 }
@@ -380,6 +398,9 @@ body {
       line-height: 1.2;
       font-size: 1.5em;
     }
+    span {
+      font-size: 1em;
+    }
   }
 }
 @media screen and (max-width: 480px) {
@@ -409,7 +430,10 @@ body {
       height: auto;
       width: 90%;
       line-height: 1.2;
-      font-size: 1.5em;
+      font-size: .9em;
+    }
+    span {
+      font-size: .7em;
     }
   }
 }

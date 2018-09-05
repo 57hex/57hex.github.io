@@ -3,6 +3,7 @@
   position: relative;
   transition: 0.2s ease-in-out;
   font-family: 'Noto Sans TC', sans-serif !important;
+  -webkit-overflow-scrolling: touch;
 }
 html,
 body {

@@ -2,6 +2,7 @@
 @gray: #D9D9D9;
 @yellow: #DDD23B;
 @orange: #E98B2A;
+@transBlack: rgba(0,0,0,0.2);
 .centerX() {
   position: absolute;
   left: 50%;
@@ -32,6 +33,24 @@ html, body {
 body {
   background-color: @background;
   scroll-behavior: smooth;
+}
+nav {
+  position: fixed;
+  background-color: @transBlack;
+  height: 10%;
+  width: 100%;
+  z-index: 0;
+}
+.language {
+  margin-left: 1rem;
+  margin-top: .5rem;
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+  padding: 10px 12px 10px 12px;
+  border-radius: 5px;
+  background-color: rgba(0,0,0,0.5);
+  color: @gray;
 }
 .container {
   height: 100%;
@@ -437,4 +456,14 @@ body {
       font-size: .7em;
     }
   }
+}
+.preventTouch-map {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 2;
+}
+.google-map {
+  z-index: 1;
 }

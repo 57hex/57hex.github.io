@@ -267,6 +267,22 @@ nav {
     bottom: 0;
   }
 }
+.intro-ico-container {
+  position: absolute;
+  top: 1%;
+}
+.intro-ico {
+  margin: 1rem 0;
+  position: relative;
+  height: 5rem;
+  width: 5rem;
+}
+.greenFilter {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgba(77, 81, 57, 0.9);
+}
 @media screen and (max-width: 1200px) {
   .page .bgImg {
     height: 100%;
@@ -289,6 +305,16 @@ nav {
   }
 }
 @media screen and (min-width: 993px) and (max-width: 1193px) {
+  .intro-ico-container {
+    position: absolute;
+    top: 1%;
+  }
+  .intro-ico {
+    margin: 1rem 0;
+    position: relative;
+    height: 5rem;
+    width: 5rem;
+  }
   .phone-pos {
     display: none;
   }
@@ -357,6 +383,16 @@ nav {
   }
 }
 @media screen and (max-width: 768px) {
+  .intro-ico-container {
+    position: absolute;
+    top: 1%;
+  }
+  .intro-ico {
+    margin: 1rem 0;
+    position: relative;
+    height: 5rem;
+    width: 5rem;
+  }
   .phone-pos {
     display: none;
   }
@@ -393,6 +429,16 @@ nav {
   }
 }
 @media screen and (max-width: 680px) {
+  .intro-ico-container {
+    position: absolute;
+    top: 1%;
+  }
+  .intro-ico {
+    margin: 1rem 0;
+    position: relative;
+    height: 6rem;
+    width: 6rem;
+  }
   .phone-pos {
     display: none;
   }
@@ -402,6 +448,7 @@ nav {
   }
   .intro-content {
     margin-left: 0 !important;
+    top: 45% !important;
   }
   #intro-inner-content {
     margin-top: 0.3em !important;
@@ -427,6 +474,16 @@ nav {
   }
 }
 @media screen and (max-width: 480px) {
+  .intro-ico-container {
+    position: absolute;
+    top: 1%;
+  }
+  .intro-ico {
+    margin: 1rem 0;
+    position: relative;
+    height: 5rem;
+    width: 5rem;
+  }
   .phone-pos {
     display: none;
   }
@@ -438,7 +495,8 @@ nav {
     margin-left: 0 !important;
   }
   #intro-inner-content {
-    margin-top: 0.3em !important;
+    margin-top: 0.1em !important;
+    margin-bottom: 0.1em !important;
   }
   .page .bgImg {
     height: 100%;
@@ -469,5 +527,19 @@ nav {
 }
 .google-map {
   z-index: 1;
+}
+@media screen and (max-width: 360px) {
+  .intro-ico-container {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .intro-ico {
+    margin: 1rem 0;
+    float: right;
+    position: relative;
+    height: 6rem;
+    width: 6rem;
+  }
 }
 /*# sourceMappingURL=style.css.map */

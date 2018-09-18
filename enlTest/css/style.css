@@ -268,7 +268,7 @@ nav {
   }
 }
 .intro-ico-container {
-  position: absolute;
+  position: relative;
   top: 1%;
 }
 .intro-ico {
@@ -306,7 +306,7 @@ nav {
 }
 @media screen and (min-width: 993px) and (max-width: 1193px) {
   .intro-ico-container {
-    position: absolute;
+    position: relative;
     top: 1%;
   }
   .intro-ico {
@@ -384,7 +384,7 @@ nav {
 }
 @media screen and (max-width: 768px) {
   .intro-ico-container {
-    position: absolute;
+    position: relative;
     top: 1%;
   }
   .intro-ico {
@@ -430,7 +430,7 @@ nav {
 }
 @media screen and (max-width: 680px) {
   .intro-ico-container {
-    position: absolute;
+    position: relative;
     top: 1%;
   }
   .intro-ico {
@@ -475,7 +475,7 @@ nav {
 }
 @media screen and (max-width: 480px) {
   .intro-ico-container {
-    position: absolute;
+    position: relative;
     top: 1%;
   }
   .intro-ico {

@@ -544,5 +544,8 @@ nav {
     height: 6rem;
     width: 6rem;
   }
+  .intro-content {
+    top: 45%;
+  }
 }
 /*# sourceMappingURL=style.css.map */
